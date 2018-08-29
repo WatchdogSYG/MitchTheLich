@@ -1,5 +1,7 @@
 ﻿// MDT_Brandon startContribution based off of https://www.youtube.com/watch?v=XhliRnzJe5g
 // On any key input, moves object relative to camera in the xz plane. Instant movement wih x rotation.
+
+//KNOWN BUGS: slowly slidees to the right sometimes on odd intit conditions, not reproducible yet.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,15 +34,15 @@ public class planarTranslate : MonoBehaviour {
     //assigns motion to object
     private void move() {
         //define direction for currently pressed key
-        Vector3 currentDirection = new Vector3(Input.GetAxis("xKey"),0,Input.GetAxis("zKey"));//UNUSED
+       // Vector3 currentDirection = new Vector3(Input.GetAxis("xKey"),0,Input.GetAxis("zKey"));//UNUSED from tutorial
 
-        Vector3 rightMovement = baseMoveSpeed * playerRight * Time.deltaTime * Input.GetAxis("xKey");//v(u_r)dt dot (+-x_dir);
-        Vector3 forwardMovement = baseMoveSpeed * playerForward * Time.deltaTime * Input.GetAxis("zKey");//v(u_f)dt dot (+-z_dir);
+        Vector3 rightMovement = baseMoveSpeed * playerRight * Time.deltaTime * (Input.GetAxis("xKey")-Input.GetAxis("xNKey"));//v(u_r)dt dot (+-x_dir);
+        Vector3 forwardMovement = baseMoveSpeed * playerForward * Time.deltaTime * (Input.GetAxis("zKey") - Input.GetAxis("zNKey"));//v(u_f)dt dot (+-z_dir);
 
-        Vector3 resultantDir = Vector3.Normalize(rightMovement + forwardMovement);
+        //Vector3 resultantDir = Vector3.Normalize(rightMovement + forwardMovement);//also UNUSED from tutorial
 
         //change transform in world space to calculated vectors
-        transform.forward = resultantDir;
+        //transform.forward = resultantDir;//rotates char with movement dir which we dont want
         transform.position += forwardMovement;
         transform.position += rightMovement;
 
