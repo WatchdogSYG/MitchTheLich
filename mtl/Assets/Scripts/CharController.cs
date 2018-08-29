@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//COMMENT YOUR FILE OR IT WILL BE DELETED
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
