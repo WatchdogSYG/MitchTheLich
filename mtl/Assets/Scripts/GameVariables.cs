@@ -1,21 +1,21 @@
 ﻿// MDT This script is for placing game-gobal variables for tuning and moularization.
 //May want to enable word wrap...
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+namespace mtl {
 
-public class tuningVariables : MonoBehaviour {
-    [SerializeField]
-    const float PLAYER_BASE_MOVE_SPEED = 5f; //base player move speed. All other movement variables should be a function of this variable.
-    
-    // Use this for initialization
-    void Start () {
+    public class Player {
+            public const float PLAYER_BASE_MOVE_SPEED = 15f; //base player move speed. All other movement variables should be a function of this variable.
+    }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public class Projectile {
+
+    }
+
+    public class Damage {
+
+    }
+
+    public class Spawning {
+
+    }
 }

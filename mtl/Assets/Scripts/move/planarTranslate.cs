@@ -5,12 +5,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using mtl;
 
 
 public class planarTranslate : MonoBehaviour {
-
-    [SerializeField]//edit in gui
-    float baseMoveSpeed = 5f;//base movement (use multipliers from here)
 
     Vector3 playerForward, playerRight;
 
@@ -36,8 +34,8 @@ public class planarTranslate : MonoBehaviour {
         //define direction for currently pressed key
        // Vector3 currentDirection = new Vector3(Input.GetAxis("xKey"),0,Input.GetAxis("zKey"));//UNUSED from tutorial
 
-        Vector3 rightMovement = baseMoveSpeed * playerRight * Time.deltaTime * (Input.GetAxis("xKey")-Input.GetAxis("xNKey"));//v(u_r)dt dot (+-x_dir);
-        Vector3 forwardMovement = baseMoveSpeed * playerForward * Time.deltaTime * (Input.GetAxis("zKey") - Input.GetAxis("zNKey"));//v(u_f)dt dot (+-z_dir);
+        Vector3 rightMovement = mtl.Player.PLAYER_BASE_MOVE_SPEED * playerRight * Time.deltaTime * (Input.GetAxis("xKey")-Input.GetAxis("xNKey"));//v(u_r)dt dot (+-x_dir);
+        Vector3 forwardMovement = mtl.Player.PLAYER_BASE_MOVE_SPEED * playerForward * Time.deltaTime * (Input.GetAxis("zKey") - Input.GetAxis("zNKey"));//v(u_f)dt dot (+-z_dir);
 
         //Vector3 resultantDir = Vector3.Normalize(rightMovement + forwardMovement);//also UNUSED from tutorial
 
