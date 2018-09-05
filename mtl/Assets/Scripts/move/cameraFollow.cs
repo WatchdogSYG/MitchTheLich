@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using mtl;
 
-public class cameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour {
 	//returns a string displaying the xyz components of a Vector3 (may be moved into a lib later)
 	string Vector3Log(Vector3 v, int sigFig) {
 		string vString = "(" +
@@ -25,7 +25,7 @@ public class cameraFollow : MonoBehaviour {
 		Quaternion rotation = Quaternion.Euler(mtl.Camera.ISO_PITCH, mtl.Camera.ISO_YAW, mtl.Camera.ISO_ROLL);
 		UnityEngine.Camera.main.transform.rotation = rotation;
 		//give a unit vector in the direction of the player facing the camera
-		unitPlayerToCam = rotation * new Vector3(0, 0, 1);
+		unitPlayerToCam = rotation * worldDefaultUnitVector;
 	}
 	
 	// Update is called once per frame
