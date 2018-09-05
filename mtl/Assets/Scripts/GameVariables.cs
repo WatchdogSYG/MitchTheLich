@@ -8,7 +8,7 @@ namespace mtl {
 		public const float ISO_YAW = 0f;//degrees around the y axis for this isometric camera
 		public const float ISO_ROLL = 0f;//degrees around the z axis for this isometric camera
 		public const float CAM_DISPLACEMENT = 10f;//metres from focus target (for lighting and near-clip plane modifications only)
-		public const float ORTHO_HEIGHT = 15f;//length of the orthographic half-box height
+		public const float ORTHO_HEIGHT = 8f;//length of the orthographic half-box height
 	}
 
 
