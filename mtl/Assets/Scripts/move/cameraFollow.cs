@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour {
 	}
 
 	Vector3 worldDefaultUnitVector = new Vector3(0, 0, 1);//a vector with no rotation points in the z direction
-	Vector3 playerInitialPos, unitPlayerToCam;
+	Vector3 playerInitialPos, unitPlayerToCam, manualCameraDisplacement;
 
 	// Use this for initialization
 	void Start() {
@@ -26,14 +26,22 @@ public class CameraFollow : MonoBehaviour {
 		UnityEngine.Camera.main.transform.rotation = rotation;
 		//give a unit vector in the direction of the player facing the camera
 		unitPlayerToCam = rotation * worldDefaultUnitVector;
+		
+		//define where mitch wants to be on screen TOFIX
+		manualCameraDisplacement = new Vector3(-(mtl.Camera.MITCH_DEFAULT_XPOS_RATIO - 0.5f) * mtl.Camera.ORTHO_HEIGHT * mtl.Camera.DESIRED_ASPECT_RATIO,
+												(mtl.Camera.MITCH_DEFAULT_YPOS_RATIO - 0.5f) * mtl.Camera.ORTHO_HEIGHT,0);
+		Debug.Log(manualCameraDisplacement.ToString("F3"));
+		manualCameraDisplacement = rotation * manualCameraDisplacement;
+		Debug.Log(manualCameraDisplacement.ToString("F3"));
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		//find the player's current position
 		playerInitialPos = GameObject.FindWithTag("Player").transform.position;
 		//set the camera so that it faces the player at a distance of CAM_DISPLACEMENT
-		UnityEngine.Camera.main.transform.position = playerInitialPos + (mtl.Camera.CAM_DISPLACEMENT * Vector3.Normalize(-unitPlayerToCam));
+		UnityEngine.Camera.main.transform.position = playerInitialPos + (mtl.Camera.CAM_DISPLACEMENT * Vector3.Normalize(-unitPlayerToCam)) + manualCameraDisplacement;
 	}
 }
 //MDT_Brandon endContribution

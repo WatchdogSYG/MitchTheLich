@@ -33,7 +33,7 @@ public class CursorTargeting : MonoBehaviour {
 
 		//check if the mouse is within the viewport (we dont want a player to target things off screen)
 		bool withinViewport = false;
-		if ((mousePos.x <= cam.pixelWidth) && (mousePos.y <= cam.pixelHeight)) {
+		if ((mousePos.x <= cam.pixelWidth) && (mousePos.y <= cam.pixelHeight)) {//undef behaviour on first iteration
 			withinViewport = true;
 		}
 
