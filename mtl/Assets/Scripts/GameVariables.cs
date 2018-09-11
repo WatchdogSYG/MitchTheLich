@@ -24,15 +24,15 @@ namespace mtl {
             public const float PLAYER_BASE_MOVE_SPEED = 12f; //base player move speed. All other movement variables should be a function of this variable.
     }
 
-    public class Projectile {
+    public class Spell {
 
     }
 
-    public class Damage {
+    public class Buff {
 
     }
 
-    public class Spawning {
+    public class Familiar {
 
     }
 }
