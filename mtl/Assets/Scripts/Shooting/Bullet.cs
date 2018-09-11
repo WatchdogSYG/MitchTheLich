@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
 
     // Use this for initialization
 
-    public float MaxLifeTime = 2f;
+    public float MaxLifeTime = mtl.Projectile.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
 	void Start () {
         // if it isnt already destroyed kill object after 2 seconds
         Destroy(gameObject, MaxLifeTime);

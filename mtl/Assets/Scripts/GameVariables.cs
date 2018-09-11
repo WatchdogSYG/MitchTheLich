@@ -21,8 +21,13 @@ namespace mtl {
 
 
     public class Player {
-            public const float PLAYER_BASE_MOVE_SPEED = 12f; //base player move speed. All other movement variables should be a function of this variable.
+		public const float PLAYER_BASE_MOVE_SPEED = 12f; //base player move speed. All other movement variables should be a function of this variable.
     }
+
+	public class Projectile {
+		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
+		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
+	}
 
     public class Spell {
 
