@@ -11,23 +11,24 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour {
 
     public Rigidbody fireball;
-
+    
     public Transform firetransform;
-
+    // how fast the bullet goes
     public float launchforce = 30f;
 
 
 	
 	// Update is called once per frame
 	void Update () {
-		
+		// if press leftclick call Fire function
         if(Input.GetButtonUp("Fire1"))
         {
             //print("i have fired");
             Fire();
         }
 	}
-
+    // responsible for creating the bullet object each time player press left click
+    // and then launch the object forward
     private void Fire()
     {
         Rigidbody fireballInstance = Instantiate(fireball, firetransform.position, firetransform.rotation) as Rigidbody;
