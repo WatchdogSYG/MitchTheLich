@@ -18,7 +18,7 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	public Transform projectileSpawner;
 	// how fast the bullet goes
-	public float launchSpeed = mtl.Projectile.BASE_PROJECTILE_SPEED;
+	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
 
 
 

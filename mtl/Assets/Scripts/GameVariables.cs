@@ -20,11 +20,40 @@ namespace mtl {
 	}
 
 
-    public class Player {
-		public const float PLAYER_BASE_MOVE_SPEED = 12f; //base player move speed. All other movement variables should be a function of this variable.
+    public class Health {
+
+		public float AssignState(string tag) {
+			float h;
+
+			switch (tag) {
+				case "Player":
+					h = mtl.Health.PLAYER_DEFAULT_HEALTH;
+					break;
+				case "Bunny":
+					h = 30f;
+					break;
+				case "Dummy":
+					h = mtl.Health.DEV_TEST_DUMMY_HEALTH;
+					break;
+				default:
+					h = 0;
+					break;
+			}
+			return h;
+		}
+
+		public const float DEV_TEST_DUMMY_HEALTH = 1000f;
+		public const float PLAYER_DEFAULT_HEALTH = 100f;
+
     }
 
-	public class Projectile {
+	public class Damage {
+		public const float DEV_TEST_BULLET_DAMAGE = 10f;
+	}
+
+	public class Movement {
+		public const float PLAYER_BASE_MOVE_SPEED = 12f; //base player move speed. All other movement variables should be a function of this variable.
+
 		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 	}
