@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using mtl;
 
-public class CameraFollow : MonoBehaviour {
+public class cameraFollow : MonoBehaviour {
 	//returns a string displaying the xyz components of a Vector3 (may be moved into a lib later)
 	string Vector3Log(Vector3 v, int sigFig) {
 		string vString = "(" +
