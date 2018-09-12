@@ -1,5 +1,7 @@
 ﻿// MDT This script is for placing game-gobal variables for tuning and moularization.
 //May want to enable word wrap for long descriptions...
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace mtl {
@@ -19,32 +21,32 @@ namespace mtl {
 		public const float DESIRED_ASPECT_RATIO = 16f / 9f;
 	}
 
-
     public class Health {
-
-		public float AssignState(string tag) {
-			float h;
-
-			switch (tag) {
-				case "Player":
-					h = mtl.Health.PLAYER_DEFAULT_HEALTH;
-					break;
-				case "Bunny":
-					h = 30f;
-					break;
-				case "Dummy":
-					h = mtl.Health.DEV_TEST_DUMMY_HEALTH;
-					break;
-				default:
-					h = 0;
-					break;
-			}
-			return h;
-		}
+		/*string[] healthTag = ["Player","Bunny","Dummy"];
+		float[] healthValue = [mtl.Health.PLAYER_DEFAULT_HEALTH, 30f, mtl.Health.DEV_TEST_DUMMY_HEALTH];*/
 
 		public const float DEV_TEST_DUMMY_HEALTH = 1000f;
 		public const float PLAYER_DEFAULT_HEALTH = 100f;
 
+		public static float AssignState(string tag) {
+			
+			//temporary kv for health, extend to json for entity atributes
+			List<KeyValuePair<string, float>> healthKV = new List<KeyValuePair<string, float>>();
+			healthKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_HEALTH));
+			healthKV.Add(new KeyValuePair<string, float>("Bunny", 30f));
+			healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
+
+			float hey;
+
+			foreach (KeyValuePair<string, float> kv in healthKV) {
+				if (tag == kv.Key) {
+					Debug.Log(kv.Key + " has " + kv.Value.ToString("F0") + "HP");
+					hey = kv.Value;
+				} 
+			}
+
+			return hey=100f;
+		}
     }
 
 	public class Damage {
@@ -56,6 +58,14 @@ namespace mtl {
 
 		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
+
+		public const float MOVEMENT_EASE_IO = 7;
+
+		public float easeFunction(float coeff, float t, float desiredSpeed) {
+			//v=50e^(coeff(t-1))
+			float v = 50 * Mathf.Exp(coeff * (t - 1));
+			return v;
+		}
 	}
 
     public class Spell {

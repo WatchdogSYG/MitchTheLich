@@ -215,6 +215,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4db69b79f75d843acd544e670df150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &75102724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 75102721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235bcdec5b7bbd24b863696e152cf4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  speedMultiplier: 1
 --- !u!4 &75102725 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400014, guid: 1256285ce02f0a949bd3cb00fa7c99f7,
@@ -3749,7 +3762,7 @@ GameObject:
   - component: {fileID: 843271420}
   m_Layer: 0
   m_Name: TestDummy
-  m_TagString: Untagged
+  m_TagString: Dummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3765,6 +3778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235bcdec5b7bbd24b863696e152cf4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
+  speedMultiplier: 1
 --- !u!135 &843271421
 SphereCollider:
   m_ObjectHideFlags: 0

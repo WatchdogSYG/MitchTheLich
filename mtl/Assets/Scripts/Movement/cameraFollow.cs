@@ -30,9 +30,7 @@ public class CameraFollow : MonoBehaviour {
 		//define where mitch wants to be on screen TOFIX
 		manualCameraDisplacement = new Vector3(-(mtl.Camera.MITCH_DEFAULT_XPOS_RATIO - 0.5f) * mtl.Camera.ORTHO_HEIGHT * mtl.Camera.DESIRED_ASPECT_RATIO,
 												(mtl.Camera.MITCH_DEFAULT_YPOS_RATIO - 0.5f) * mtl.Camera.ORTHO_HEIGHT,0);
-		Debug.Log(manualCameraDisplacement.ToString("F3"));
 		manualCameraDisplacement = rotation * manualCameraDisplacement;
-		Debug.Log(manualCameraDisplacement.ToString("F3"));
 	}
 	
 	// Update is called once per frame

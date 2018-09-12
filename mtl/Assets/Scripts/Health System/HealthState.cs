@@ -1,21 +1,30 @@
-﻿using System.Collections;
+﻿//MDT_Brandon startContribution
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthState : MonoBehaviour {
 
-	float currentHealth;
+	public float currentHealth;
+	public float speedMultiplier = 1;
 
 	// Use this for initialization
 	void Start () {
-		//what object is this?
-		//to abstract
-		currentHealth = 100f;
+		//what object is this? set health to appropriate value as defined in mtl class
+		currentHealth = mtl.Health.AssignState(gameObject.tag);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(currentHealth <= 0) {
+		if (currentHealth <= 0) {
+			Death();
+		}
+
+		
+
+
+
+		if (currentHealth <= 0) {
 			Death();
 		}
 	}
@@ -31,3 +40,4 @@ public class HealthState : MonoBehaviour {
 		return;
 	}
 }
+//MDT_Brandon startContribution
