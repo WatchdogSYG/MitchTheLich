@@ -22,9 +22,6 @@ namespace mtl {
 	}
 
     public class Health {
-		/*string[] healthTag = ["Player","Bunny","Dummy"];
-		float[] healthValue = [mtl.Health.PLAYER_DEFAULT_HEALTH, 30f, mtl.Health.DEV_TEST_DUMMY_HEALTH];*/
-
 		public const float DEV_TEST_DUMMY_HEALTH = 1000f;
 		public const float PLAYER_DEFAULT_HEALTH = 100f;
 
