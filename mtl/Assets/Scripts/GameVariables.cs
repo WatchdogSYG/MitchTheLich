@@ -33,10 +33,10 @@ namespace mtl {
 			//temporary kv for health, extend to json for entity atributes
 			List<KeyValuePair<string, float>> healthKV = new List<KeyValuePair<string, float>>();
 			healthKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_HEALTH));
-			healthKV.Add(new KeyValuePair<string, float>("Bunny", 30f));
+			healthKV.Add(new KeyValuePair<string, float>("Bunny", 10f));
 			healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
 
-			float hey;
+			float hey= -1f;
 
 			foreach (KeyValuePair<string, float> kv in healthKV) {
 				if (tag == kv.Key) {
@@ -45,7 +45,7 @@ namespace mtl {
 				} 
 			}
 
-			return hey=100f;
+			return hey;
 		}
     }
 
@@ -60,6 +60,11 @@ namespace mtl {
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
 		public const float MOVEMENT_EASE_IO = 7;
+
+		public static int chooseAIByTag(string tag) {
+
+			return 0;
+		}
 
 		public float easeFunction(float coeff, float t, float desiredSpeed) {
 			//v=50e^(coeff(t-1))
