@@ -28,9 +28,5 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 
-# Unity3D Generated File On Crash Reports
-sysinfo.txt
-
-# Builds
-*.apk
-*.unitypackage
+mtl/Assets/Terrain/New Terrain.asset
+mtl/Assets/Terrain/New Terrain.asset
