@@ -25,7 +25,7 @@ namespace mtl {
 		public const float DEV_TEST_DUMMY_HEALTH = 1000f;
 		public const float PLAYER_DEFAULT_HEALTH = 100f;
 
-		public static float AssignState(string tag) {
+		public static float AssignHealth(string tag) {
 			
 			//temporary kv for health, extend to json for entity atributes
 			List<KeyValuePair<string, float>> healthKV = new List<KeyValuePair<string, float>>();
@@ -33,16 +33,23 @@ namespace mtl {
 			healthKV.Add(new KeyValuePair<string, float>("Bunny", 10f));
 			healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
 
-			float hey= -1f;
+			float h= -1f;
+			float h0 = 696969f;//fallback for untagged (a entity must have health)
 
 			foreach (KeyValuePair<string, float> kv in healthKV) {
 				if (tag == kv.Key) {
 					Debug.Log(kv.Key + " has " + kv.Value.ToString("F0") + "HP");
-					hey = kv.Value;
+					h = kv.Value;
 				} 
 			}
 
-			return hey;
+			//if no kv pair is found
+			if (h < 0) {
+				Debug.Log("The entity tag does not appear in the Key-Value List, set MAX_MANA to" + h0);
+				return h0;
+			}
+
+			return h;
 		}
     }
 
@@ -75,8 +82,33 @@ namespace mtl {
     }
 
     public class Buff {
+		public const float PLAYER_DEFAULT_MANA = 100f;
+		public const float DEFAULT_MANA_REGEN = 30f;
+		public const float WIZARD1_MANA = 50f;
+		public static float AssignMana(string tag) {
 
-    }
+			//temporary kv for health, extend to json for entity atributes
+			List<KeyValuePair<string, float>> healthKV = new List<KeyValuePair<string, float>>();
+			healthKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_MANA));
+			healthKV.Add(new KeyValuePair<string, float>("Wizard1", WIZARD1_MANA));
+
+			float m = -1f;
+			float m0 = 0f;//if its untagged, it doesnt have any mana
+
+			foreach (KeyValuePair<string, float> kv in healthKV) {
+				if (tag == kv.Key) {
+					m = kv.Value;
+				}
+			}
+
+			//if no kv pair is found
+			if (m < 0) {
+				Debug.Log("The entity tag does not appear in the Key-Value List, set MAX_MANA to" + m0);
+				return m0;
+			}
+			return m;
+		}
+	}
 
     public class Familiar {
 
