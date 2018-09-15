@@ -12,16 +12,20 @@ public class planarTranslate : MonoBehaviour {
 
     Vector3 playerForward, playerRight;
 	float desiredSpeed;
-	float smoothingCoeff = mtl.Movement.MOVEMENT_EASE_IO;
+	//float smoothingCoeff = mtl.Movement.MOVEMENT_EASE_IO;
 
 	bool controllable = false;
+	string ai;
 
 	// Use this for initialization
 	void Start () {
 		//is this thing controllable by the player?
 		if(gameObject.tag == "Player") {
 			controllable = true;
+		} else {
+			ai = mtl.Movement.AssignAI(gameObject.tag);
 		}
+
 
         //aligns control axes with camera axes
         playerForward = UnityEngine.Camera.main.transform.forward;//must explicitly use UnityEngine.* (vs/unity bug?)
@@ -40,9 +44,8 @@ public class planarTranslate : MonoBehaviour {
 			}
 		} else {
 			//chose AI type
-			mtl.Movement.chooseAIByTag(gameObject.tag);
+			
 		}
-		
 	}
 
 	void autoMove(int ai, float speedMultiplier) {
@@ -61,10 +64,10 @@ public class planarTranslate : MonoBehaviour {
         //Vector3 resultantDir = Vector3.Normalize(rightMovement + forwardMovement);//also UNUSED from tutorial
 
         //change transform in world space to calculated vectors
-        //transform.forward = resultantDir;//rotates char with movement dir which we dont want
         transform.position += forwardMovement;
         transform.position += rightMovement;
 
+		
         return;
     }
 }

@@ -10,15 +10,17 @@ namespace mtl {
 		public const float ISO_PITCH = 60f;//degrees downwards around the x axis for this isometric camera
 		public const float ISO_YAW = 0f;//degrees around the y axis for this isometric camera
 		public const float ISO_ROLL = 0f;//degrees around the z axis for this isometric camera
-		public const float CAM_DISPLACEMENT = 250f;//metres from focus target (for lighting and near-clip plane modifications only)
+		public const float CAM_DISPLACEMENT = 200f;//metres from focus target (for lighting and near-clip plane modifications only)
 		public const float ORTHO_HEIGHT = 16f;//length of the orthographic half-box height
 
 		//the ratio of the screen dimension describing where we want to place Mitch
 		public const float MITCH_DEFAULT_YPOS_RATIO = 0.5f;//proportion of ortho half box we want mitch to move down from centre
-		public const float MITCH_DEFAULT_XPOS_RATIO = -0.2f;//proportion of ortho half box we want mitch to move left from centre
+		public const float MITCH_DEFAULT_XPOS_RATIO = -0.1f;//proportion of ortho half box we want mitch to move left from centre
 
 		//desired aspect ratio
 		public const float DESIRED_ASPECT_RATIO = 16f / 9f;
+
+		public const float CAM_SMOOTH_COEFF = 2f;//interpolation free parameter smoothing coefficient
 	}
 
     public class Health {
@@ -58,16 +60,36 @@ namespace mtl {
 	}
 
 	public class Movement {
-		public const float PLAYER_BASE_MOVE_SPEED = 12f; //base player move speed. All other movement variables should be a function of this variable.
+		public const float PLAYER_BASE_MOVE_SPEED = 18f; //base player move speed. All other movement variables should be a function of this variable.
 
 		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
-		public const float MOVEMENT_EASE_IO = 7;
+		public const float MOVEMENT_SMOOTH_COEFF = 5f;//interpolation free parameter smoothing coefficient for movement
+		public const float AI_FOLLOW_ANGULAR_SPEED = 2 * Mathf.PI;//rad per s
 
-		public static int chooseAIByTag(string tag) {
+		public static string AssignAI(string tag) {
 
-			return 0;
+			//temporary kv for ai, extend to json for entity atributes
+			List<KeyValuePair<string, string>> AIKV = new List<KeyValuePair<string, string>>();
+			AIKV.Add(new KeyValuePair<string, string>("Bunny", "Follow"));
+			AIKV.Add(new KeyValuePair<string, string>("Dummy", "Follow"));
+
+			string ai = null;
+
+			foreach (KeyValuePair<string, string> kv in AIKV) {
+				if (tag == kv.Key) {
+					Debug.Log(kv.Key + " has been assigned the " + kv.Value + " AI type.");
+					ai = kv.Value;
+				}
+			}
+
+			//if no kv pair is found
+			if (ai == null) {
+				Debug.Log("The entity tag does not appear in the Key-Value List, it has no AI assigned to it");
+				return ai;
+			}
+			return ai;
 		}
 
 		public float easeFunction(float coeff, float t, float desiredSpeed) {
@@ -87,15 +109,15 @@ namespace mtl {
 		public const float WIZARD1_MANA = 50f;
 		public static float AssignMana(string tag) {
 
-			//temporary kv for health, extend to json for entity atributes
-			List<KeyValuePair<string, float>> healthKV = new List<KeyValuePair<string, float>>();
-			healthKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_MANA));
-			healthKV.Add(new KeyValuePair<string, float>("Wizard1", WIZARD1_MANA));
+			//temporary kv for mana, extend to json for entity atributes
+			List<KeyValuePair<string, float>> manaKV = new List<KeyValuePair<string, float>>();
+			manaKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_MANA));
+			manaKV.Add(new KeyValuePair<string, float>("Wizard1", WIZARD1_MANA));
 
 			float m = -1f;
 			float m0 = 0f;//if its untagged, it doesnt have any mana
 
-			foreach (KeyValuePair<string, float> kv in healthKV) {
+			foreach (KeyValuePair<string, float> kv in manaKV) {
 				if (tag == kv.Key) {
 					m = kv.Value;
 				}

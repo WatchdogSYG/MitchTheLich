@@ -1,5 +1,6 @@
 ﻿//MDT_Brandon startContribution
 //Camera follows the first object with the "Player" tag at a distance of mtl.Camera.CAM_DISPLACEMENT metres away with an orthographic size of ORTHO_HEIGHT. Works with any camera rotation.
+//https://www.youtube.com/watch?v=MFQhpwc6cKE smoothed movement
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,12 +35,19 @@ public class cameraFollow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-		//find the player's current position
+	void LateUpdate () {
+		//find the player's current position and camera offset
 		playerInitialPos = GameObject.FindWithTag("Player").transform.position;
-		//set the camera so that it faces the player at a distance of CAM_DISPLACEMENT
-		UnityEngine.Camera.main.transform.position = playerInitialPos + (mtl.Camera.CAM_DISPLACEMENT * Vector3.Normalize(-unitPlayerToCam)) + manualCameraDisplacement;
+		Vector3 totalOffset = (mtl.Camera.CAM_DISPLACEMENT * Vector3.Normalize(-unitPlayerToCam)) + manualCameraDisplacement;
+		Vector3 desiredPos = playerInitialPos + totalOffset;
+		//remove floating point rounding frame rate discrepancies
+		if(Vector3.Magnitude(desiredPos- UnityEngine.Camera.main.transform.position) < 0.01f) {
+			UnityEngine.Camera.main.transform.position = desiredPos;
+		}
+		else {
+			//set the camera so that it faces the player at a distance of CAM_DISPLACEMENT (with smoothing)
+			UnityEngine.Camera.main.transform.position = Vector3.Lerp(UnityEngine.Camera.main.transform.position, desiredPos, mtl.Camera.CAM_SMOOTH_COEFF * Time.deltaTime);
+		}
 	}
 }
 //MDT_Brandon endContribution
