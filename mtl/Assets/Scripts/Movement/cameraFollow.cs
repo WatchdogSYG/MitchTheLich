@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using mtl;
 
-public class cameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour {
 	//returns a string displaying the xyz components of a Vector3 (may be moved into a lib later)
 	string Vector3Log(Vector3 v, int sigFig) {
 		string vString = "(" +
@@ -30,9 +30,7 @@ public class cameraFollow : MonoBehaviour {
 		//define where mitch wants to be on screen TOFIX
 		manualCameraDisplacement = new Vector3(-(mtl.Camera.MITCH_DEFAULT_XPOS_RATIO - 0.5f) * mtl.Camera.ORTHO_HEIGHT * mtl.Camera.DESIRED_ASPECT_RATIO,
 												(mtl.Camera.MITCH_DEFAULT_YPOS_RATIO - 0.5f) * mtl.Camera.ORTHO_HEIGHT,0);
-		Debug.Log(manualCameraDisplacement.ToString("F3"));
 		manualCameraDisplacement = rotation * manualCameraDisplacement;
-		Debug.Log(manualCameraDisplacement.ToString("F3"));
 	}
 	
 	// Update is called once per frame
