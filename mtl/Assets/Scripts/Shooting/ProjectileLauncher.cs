@@ -24,6 +24,8 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
+		gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3 (1, 0, 1);
+		Debug.DrawRay (gameObject.transform.position, gameObject.transform.forward * 20f);
 		// if press leftclick call Fire function
 		if (Input.GetButtonUp("Primary Fire")) {
 			//print("i have fired");

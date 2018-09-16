@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -96,4 +96,4 @@ public class PlayerHealth : MonoBehaviour
         //playerMovement.enabled = false;
         playerShooting.enabled = false;
     }
-}
+}*/
