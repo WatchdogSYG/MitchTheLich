@@ -32,7 +32,7 @@ public class ProjectileLauncher : MonoBehaviour {
 	//Example:
 	//if 1 is pressed run this code and disable element 2 code
 	//if 2 is pressed run this code and disable element 1 code
-	private bool Element1IsReady = false;
+	private bool Element1IsReady = true;
 	private bool Element2IsReady = false;
 
 
