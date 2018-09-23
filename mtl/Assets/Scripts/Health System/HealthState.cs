@@ -43,10 +43,6 @@ public class HealthState : MonoBehaviour {
 		else {
 			currentMana = maxMana;
 		}
-		
-
-
-
 	}
 
 	public void TakeDamage(float damage) {
