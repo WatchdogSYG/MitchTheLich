@@ -66,7 +66,10 @@ namespace mtl {
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
 		public const float MOVEMENT_SMOOTH_COEFF = 5f;//interpolation free parameter smoothing coefficient for movement
-		public const float AI_FOLLOW_ANGULAR_SPEED = 2 * Mathf.PI;//rad per s
+		public const float AI_FOLLOW_ANGULAR_SPEED = 3 * (2 * Mathf.PI);//rad per s
+
+		public const float BUNNY_LUNGE_DISTANCE = 10f;
+		public const float BUNNY_LUNGE_TIME = 0.05f;
 
 		public static string AssignAI(string tag) {
 
@@ -136,6 +139,13 @@ namespace mtl {
 		public const float DelayBetweenShots = 1f;
 		public const int Distance = 40;
 
+	}
+
+	public class AIStates {
+		public const int STATE_IDLE = 0;//statenumber when objcet does not move
+		public const int STATE_LOOK = 1;//statenumber for when object is stationary and looks at a target
+		public const int STATE_FOLLOW = 2;//statenumber when an object follows a target
+		public const int STATE_LUNGE_MELEE = 3;//statenumber when an object moves through a target quickly and does damage
 	}
 
     public class Familiar {

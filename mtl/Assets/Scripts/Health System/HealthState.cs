@@ -54,7 +54,7 @@ public class HealthState : MonoBehaviour {
 			currentMana = maxMana;
 		}
 
-        //
+        /*
         if (damaged)
         {
             damageImage.color = flashColour; // Flash red screen on taking damage
@@ -65,7 +65,7 @@ public class HealthState : MonoBehaviour {
             damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
         // Reset the damaged flag.
-        damaged = false;
+        damaged = false;*/
 
     }
 
@@ -93,9 +93,10 @@ public class HealthState : MonoBehaviour {
 
 	public void UseMana(float mana) {
 		currentMana -= mana;
-        //this debug gets annoying if it regens per frame
-        //Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
-        ManaSlider.value = currentMana;
+		//this debug gets annoying if it regens per frame
+		//Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
+		//CAUSING ERRORS
+		//ManaSlider.value = currentMana;
 
 
         //an entity can only die if it takes damage, therefore check for death here
