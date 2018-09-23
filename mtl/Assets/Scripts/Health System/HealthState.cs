@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthState : MonoBehaviour {
 
@@ -14,8 +15,17 @@ public class HealthState : MonoBehaviour {
 	public float manaRegenRate = mtl.Buff.DEFAULT_MANA_REGEN;
 	public float manaRegenMultiplier = 1f;
 
-	//unused concept buffs
-	/*
+
+    public Slider HealthSlider; // Referenceing UI Slider
+    public Slider ManaSlider; //Reference UI ManaSlider
+    public Image damageImage;   // Reference to an image to flash on the screen on being hurt.
+    public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
+    bool damaged;   // True when the player gets damaged.
+
+
+    //unused concept buffs
+    /*
 	public float damageDealtMultiplier = 1f;
 	public float damageTakenMultiplier = 1f;
 	public float healthRegenRate = 0f;
@@ -24,8 +34,8 @@ public class HealthState : MonoBehaviour {
 	public bool spreadOnContact = false;
 	*/
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		//what object is this? set stats to appropriate values as defined in mtl class
 		maxHealth = mtl.Health.AssignHealth(gameObject.tag);
 		maxMana = mtl.Buff.AssignMana(gameObject.tag);
@@ -43,19 +53,38 @@ public class HealthState : MonoBehaviour {
 		else {
 			currentMana = maxMana;
 		}
-		
 
+        //
+        if (damaged)
+        {
+            damageImage.color = flashColour; // Flash red screen on taking damage
+        }
+        else
+        {
+            // ... transition the colour back to clear.
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        // Reset the damaged flag.
+        damaged = false;
 
-
-	}
+    }
 
 	public void TakeDamage(float damage) {
-		currentHealth -= damage;
-		//this debug gets annoying if it regens per frame
-		//Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
-		
-		//an entity can only die if it takes damage, therefore check for death here
-		if (currentHealth <= 0) {
+
+        // Set the damaged flag so the screen will flash.
+        damaged = true;
+
+        // Reduce the current health by the damage amount.
+        currentHealth -= damage;
+        //this debug gets annoying if it regens per frame
+        //Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
+
+
+       
+        HealthSlider.value = currentHealth; // Set the health bar's value to the current health
+
+        //an entity can only die if it takes damage, therefore check for death here
+        if (currentHealth <= 0) {
 			Death();
 		}
 		return;
@@ -63,11 +92,13 @@ public class HealthState : MonoBehaviour {
 
 	public void UseMana(float mana) {
 		currentMana -= mana;
-		//this debug gets annoying if it regens per frame
-		//Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
-		
-		//an entity can only die if it takes damage, therefore check for death here
-		if (currentHealth <= 0) {
+        //this debug gets annoying if it regens per frame
+        //Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
+        ManaSlider.value = currentMana;
+
+
+        //an entity can only die if it takes damage, therefore check for death here
+        if (currentHealth <= 0) {
 			Death();
 		}
 		return;
