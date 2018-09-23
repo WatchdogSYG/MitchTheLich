@@ -11,7 +11,7 @@ namespace mtl {
 		public const float ISO_YAW = 0f;//degrees around the y axis for this isometric camera
 		public const float ISO_ROLL = 0f;//degrees around the z axis for this isometric camera
 		public const float CAM_DISPLACEMENT = 200f;//metres from focus target (for lighting and near-clip plane modifications only)
-		public const float ORTHO_HEIGHT = 16f;//length of the orthographic half-box height
+		public const float ORTHO_HEIGHT = 25f;//length of the orthographic half-box height
 
 		//the ratio of the screen dimension describing where we want to place Mitch
 		public const float MITCH_DEFAULT_YPOS_RATIO = 0.5f;//proportion of ortho half box we want mitch to move down from centre

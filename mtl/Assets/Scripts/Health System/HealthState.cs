@@ -69,6 +69,7 @@ public class HealthState : MonoBehaviour {
 
     }
 
+
 	public void TakeDamage(float damage) {
 
         // Set the damaged flag so the screen will flash.

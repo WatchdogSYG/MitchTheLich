@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour {
 	
 	void OnCollisionEnter (Collision other)
     {
-		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
+		other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
 		Destroy(gameObject);
 	}
 }
