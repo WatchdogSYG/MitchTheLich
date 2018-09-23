@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
     public void LoadLevel(string name)
     {
         print("level load request for: " + name);
-        Application.LoadLevel(name);
+        //Application.LoadLevel(name);
     }
 	
 }

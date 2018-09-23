@@ -132,6 +132,12 @@ namespace mtl {
 		}
 	}
 
+	public class EnemyShooting {
+		public const float DelayBetweenShots = 1f;
+		public const int Distance = 40;
+
+	}
+
     public class Familiar {
 
     }
