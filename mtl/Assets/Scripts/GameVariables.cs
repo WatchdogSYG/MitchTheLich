@@ -55,9 +55,11 @@ namespace mtl {
 		}
     }
 
-	public class Damage {
+	public class Damage : MonoBehaviour
+    {
 		public const float DEV_TEST_BULLET_DAMAGE = 10f;
-	}
+        //public int attackDamage = 10; //Tim Edit - Trying to call from GameVariables to bullet damage is difficult
+    }
 
 	public class Movement {
 		public const float PLAYER_BASE_MOVE_SPEED = 18f; //base player move speed. All other movement variables should be a function of this variable.

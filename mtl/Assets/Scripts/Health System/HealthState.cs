@@ -1,4 +1,5 @@
 ﻿//MDT_Brandon startContribution
+//MDT_Timothy Added References and code to UI Health and mana sliders and image //No value given to damage or Take Damage causing NullReference Exceptions I think
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,13 @@ public class HealthState : MonoBehaviour {
 	public float manaRegenRate = mtl.Buff.DEFAULT_MANA_REGEN;
 	public float manaRegenMultiplier = 1f;
 
-
+    
     public Slider HealthSlider; // Referenceing UI Slider
     public Slider ManaSlider; //Reference UI ManaSlider
     public Image damageImage;   // Reference to an image to flash on the screen on being hurt.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
-    bool damaged;   // True when the player gets damaged.
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to flash.
+    //bool damaged;   //  when the player gets damaged.
 
 
     //unused concept buffs
@@ -54,7 +55,7 @@ public class HealthState : MonoBehaviour {
 			currentMana = maxMana;
 		}
 
-        /*
+        /* //Bullets need to do actual damage otherwise Null errors occure because damage is not being done - I need to be able to reference enemy attacks that will cause damage to player
         if (damaged)
         {
             damageImage.color = flashColour; // Flash red screen on taking damage
@@ -69,11 +70,11 @@ public class HealthState : MonoBehaviour {
 
     }
 
-
+    
 	public void TakeDamage(float damage) {
 
         // Set the damaged flag so the screen will flash.
-        damaged = true;
+       // damaged = true;
 
         // Reduce the current health by the damage amount.
         currentHealth -= damage;
@@ -82,7 +83,7 @@ public class HealthState : MonoBehaviour {
 
 
        
-        HealthSlider.value = currentHealth; // Set the health bar's value to the current health
+        //HealthSlider.value = currentHealth; // Set the health bar's value to the current health
 
         //an entity can only die if it takes damage, therefore check for death here
         if (currentHealth <= 0) {
@@ -95,7 +96,8 @@ public class HealthState : MonoBehaviour {
 		currentMana -= mana;
 		//this debug gets annoying if it regens per frame
 		//Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
-		//CAUSING ERRORS
+		
+        //CAUSING ERRORS
 		//ManaSlider.value = currentMana;
 
 

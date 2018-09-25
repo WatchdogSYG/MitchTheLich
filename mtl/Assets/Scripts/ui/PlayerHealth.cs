@@ -17,10 +17,10 @@ namespace mtl
         public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
 
 
-        Animator anim;                                              // Reference to the Animator component.
-        AudioSource playerAudio;                                    // Reference to the AudioSource component.
+        //Animator anim;                                              // Reference to the Animator component.
+        //AudioSource playerAudio;                                    // Reference to the AudioSource component.
         //PlayerMovement playerMovement;                              // Reference to the player's movement.
-        Projectile_Script playerShooting;                              // Reference to the PlayerShooting script.
+       // Projectile_Script playerShooting;                              // Reference to the PlayerShooting script.
         // bool isDead;                                                // Whether the player is dead.
         bool damaged;                                               // True when the player gets damaged.
         
@@ -28,10 +28,10 @@ namespace mtl
         void Awake()
         {
             // Setting up the references.
-            anim = GetComponent<Animator>();
+           // anim = GetComponent<Animator>();
             //playerAudio = GetComponent<AudioSource>();
             //playerMovement = GetComponent<PlayerMovement>();
-            playerShooting = GetComponentInChildren<Projectile_Script>();
+           // playerShooting = GetComponentInChildren<Projectile_Script>();
 
             // Set the initial health of the player.
             currentHealth = startingHealth;

@@ -1552,9 +1552,9 @@ MonoBehaviour:
   speedMultiplier: 1
   manaRegenRate: 30
   manaRegenMultiplier: 1
-  HealthSlider: {fileID: 0}
-  ManaSlider: {fileID: 0}
-  damageImage: {fileID: 0}
+  HealthSlider: {fileID: 2142764181}
+  ManaSlider: {fileID: 1647469078}
+  damageImage: {fileID: 224164756}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!4 &75102725 stripped
@@ -1594,7 +1594,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 20, z: 1}
+  m_Size: {x: 5, y: 20, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &75102731
 Rigidbody:
@@ -9698,12 +9698,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 842907507}
-        m_MethodName: 
+      - m_Target: {fileID: 842907508}
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

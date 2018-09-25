@@ -8,9 +8,33 @@ public class Bullet : MonoBehaviour {
     //Date: 06/09/2018
 
     // Use this for initialization
+    //Edit Author - Timothy
+    //Purpose: to give damage to the bullet when it hits the player
+
+   // public int attackDamage = 10; //The amount of health damaged
+
+    HealthState healthState;    // Reference to the player's health.
+    GameObject player;          // Reference to the player GameObject.
+    public int attackDamage = 10;
+    //mtl.Damage attackDamage;
+
+
 
     public float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
-	void Start () {
+
+
+
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        healthState = player.GetComponent<HealthState>();
+       //attackDamage = GetComponent<mtl.Damage>();
+
+    }
+
+
+
+    void Start () {
         // if it isnt already destroyed kill object after 2 seconds
         Destroy(gameObject, MaxLifeTime);
 		
@@ -21,5 +45,17 @@ public class Bullet : MonoBehaviour {
     {
 		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
 		Destroy(gameObject);
+        Damage();
+
 	}
+
+    void Damage()
+    {
+        // If the player has health to lose...
+        if (healthState.currentHealth > 0)
+        {
+            // ... damage the player.
+           healthState.TakeDamage(attackDamage);
+        }
+    }
 }
