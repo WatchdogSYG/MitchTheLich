@@ -102,7 +102,7 @@ public class HealthState : MonoBehaviour {
 		//Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
 		
         //CAUSING ERRORS
-		//ManaSlider.value = currentMana;
+		ManaSlider.value = currentMana;
 
 
         //an entity can only die if it takes damage, therefore check for death here
