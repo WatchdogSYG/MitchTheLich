@@ -71,6 +71,9 @@ namespace mtl {
 		public const float BUNNY_LUNGE_DISTANCE = 10f;
 		public const float BUNNY_LUNGE_TIME = 0.05f;
 
+		public const float BLINK_DISTANCE = 14f;
+		public const float BLINT_TIME = 0.025f;
+
 		public static string AssignAI(string tag) {
 
 			//temporary kv for ai, extend to json for entity atributes
