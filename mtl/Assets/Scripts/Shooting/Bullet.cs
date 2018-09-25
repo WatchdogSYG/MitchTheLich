@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     //Purpose: to give properties to bullet
     //Date: 06/09/2018
 
-    // Use this for initialization
+   
     //Edit Author - Timothy
     //Purpose: to give damage to the bullet when it hits the player
 
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
 
     HealthState healthState;    // Reference to the player's health.
     GameObject player;          // Reference to the player GameObject.
-    public int attackDamage = 10;
+    public int attackDamage = 10; // Set the attack damage
     //mtl.Damage attackDamage;
 
 
@@ -25,9 +25,9 @@ public class Bullet : MonoBehaviour {
 
 
     void Awake()
-    {
+    {//Setting references
         player = GameObject.FindGameObjectWithTag("Player");
-        healthState = player.GetComponent<HealthState>();
+        healthState = player.GetComponent<HealthState>();//
        //attackDamage = GetComponent<mtl.Damage>();
 
     }
@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour {
     {
 		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
 		Destroy(gameObject);
-        Damage();
+        Damage(); //Call damage on collision
 
 	}
 
@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour {
         // If the player has health to lose...
         if (healthState.currentHealth > 0)
         {
-            // ... damage the player.
+            // damage the player
            healthState.TakeDamage(attackDamage);
         }
     }

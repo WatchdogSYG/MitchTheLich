@@ -22,7 +22,7 @@ public class HealthState : MonoBehaviour {
     public Image damageImage;   // Reference to an image to flash on the screen on being hurt.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to flash.
-    //bool damaged;   //  when the player gets damaged.
+    bool damaged;   //  when the player gets damaged.
 
 
     //unused concept buffs
@@ -54,8 +54,13 @@ public class HealthState : MonoBehaviour {
 		else {
 			currentMana = maxMana;
 		}
+        
+    }
 
-        /* //Bullets need to do actual damage otherwise Null errors occure because damage is not being done - I need to be able to reference enemy attacks that will cause damage to player
+
+    /*public void DamageFlash()
+    {
+        //Bullets need to do actual damage otherwise Null errors occure because damage is not being done - I need to be able to reference enemy attacks that will cause damage to player
         if (damaged)
         {
             damageImage.color = flashColour; // Flash red screen on taking damage
@@ -65,16 +70,15 @@ public class HealthState : MonoBehaviour {
             // ... transition the colour back to clear.
             damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
-        // Reset the damaged flag.
-        damaged = false;*/
+        //Reset the damaged flag.
+        damaged = false;
+    }*/
 
-    }
 
-    
-	public void TakeDamage(float damage) {
-
+    public void TakeDamage(float damage) {
+        //DamageFlash();
         // Set the damaged flag so the screen will flash.
-       // damaged = true;
+        damaged = true;
 
         // Reduce the current health by the damage amount.
         currentHealth -= damage;
@@ -83,7 +87,7 @@ public class HealthState : MonoBehaviour {
 
 
        
-        //HealthSlider.value = currentHealth; // Set the health bar's value to the current health
+        HealthSlider.value = currentHealth; // Set the health bar's value to the current health
 
         //an entity can only die if it takes damage, therefore check for death here
         if (currentHealth <= 0) {
@@ -114,3 +118,4 @@ public class HealthState : MonoBehaviour {
 	}
 }
 //MDT_Brandon startContribution
+                               
