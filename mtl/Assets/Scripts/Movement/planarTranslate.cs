@@ -8,7 +8,7 @@ using UnityEngine;
 using mtl;
 
 
-public class PlanarTranslate : MonoBehaviour {
+public class planarTranslate : MonoBehaviour {
 
     Vector3 playerForward, playerRight;
 	float desiredSpeed;

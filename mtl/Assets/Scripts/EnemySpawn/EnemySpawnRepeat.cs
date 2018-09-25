@@ -16,7 +16,9 @@ public class EnemySpawnRepeat : MonoBehaviour {
 	// starts at zero and equals whatever time.time was before
 	private float lastSpawnTime;
 	// this controls the total amount of enemies that can be spawned from the enemyspawner transform
-	public int counter = mtl.EnemySpawner.AmountOfEnemies;
+	public int amountofenemies = mtl.EnemySpawner.AmountOfEnemies;
+	// increments by 1 each time an enemy spawns
+	private int counter = 0;
 
 	void Update()
 	{
@@ -30,7 +32,7 @@ public class EnemySpawnRepeat : MonoBehaviour {
 		// if time is greater than the last time it spawned plus whatever the delay is
 		// set lastFireTime = to the current time
 		// and create a bunny at the location of where the enemyspawner transform is
-		if (Time.time > (lastSpawnTime + spawnDelay) && counter < 5) {
+		if (Time.time > (lastSpawnTime + spawnDelay) && counter < amountofenemies) {
 			lastSpawnTime = Time.time;
 			Instantiate (bunny, enemyspawner.position, enemyspawner.rotation);
 			counter++;

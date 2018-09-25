@@ -1573,21 +1573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a38a158842766d4cbebd8eb152e77be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &75102727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 75102721}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10524ca15fff14e439372f97c13288e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Element1RedBullet: {fileID: 0}
-  Element2BlueBullet: {fileID: 0}
-  projectileSpawner: {fileID: 205262940}
-  launchSpeed: 30
 --- !u!114 &75102729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17675,6 +17660,7 @@ MonoBehaviour:
   bunny: {fileID: 54339006510512898, guid: acb77766dc671424cab1f50d416daf6f, type: 2}
   enemyspawner: {fileID: 983494100}
   spawnDelay: 2
+  amountofenemies: 5
 --- !u!4 &983494100
 Transform:
   m_ObjectHideFlags: 0
