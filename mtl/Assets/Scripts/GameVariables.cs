@@ -136,9 +136,19 @@ namespace mtl {
 	}
 
 	public class EnemyShooting {
+		//this variable makes it so their is a 1 second delay inbetween shots
 		public const float DelayBetweenShots = 1f;
-		public const int Distance = 40;
+		//this variable is the maximum distance that the enemy can fire
+		public const int MaxDistance = 40;
 
+	}
+
+	public class EnemySpawner {
+
+		// this variable will delay each enemy spawned by 2 seconds
+		public const float spawnTimer = 2f;
+		// this variable controls how many enemies spawn from a particular spawn point
+		public const int AmountOfEnemies = 5;
 	}
 
 	public class AIStates {
