@@ -1,4 +1,4 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,9 +11,9 @@ public class Spell_Blink : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("Blink")){
-			gameObject.GetComponent<HealthState>().isBlinking = true;
-		}
+		if(Input.GetButtonDown("Movement Ability")){
+            TimedSpeedBuff tsb = new TimedSpeedBuff(mtl.Movement.BLINK_TIME, new SpeedBuff(), gameObject);
+            gameObject.GetComponent<Buffable>().AddBuff(tsb);
+        }
 	}
 }
-*/
