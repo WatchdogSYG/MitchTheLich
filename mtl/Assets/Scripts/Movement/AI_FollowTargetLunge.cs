@@ -62,8 +62,6 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 				if(currentStateSequence == aiSequence.Length){
 					currentStateSequence = 0;
 				}
-
-				Debug.Log("I am now in state " + currentStateSequence.ToString("F1"));
 			}	
 		}
 	}

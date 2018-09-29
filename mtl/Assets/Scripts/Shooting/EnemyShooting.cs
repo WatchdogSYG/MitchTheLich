@@ -17,7 +17,7 @@ public class EnemyShooting : MonoBehaviour {
 	// How long it takes for the next shot to fire
 	public float delay = mtl.EnemyShooting.DelayBetweenShots;
 	//this is the maximum distance from the enemy to the player that the enemy will be able to shoot
-	public int maxAttackDistance = mtl.EnemyShooting.Distance;
+	public int maxAttackDistance = mtl.EnemyShooting.MaxDistance;
 
 	//target is the player
 	public Transform target;

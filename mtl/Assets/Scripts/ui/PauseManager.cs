@@ -7,7 +7,8 @@ using UnityEditor;
 #endif
 
 public class PauseManager : MonoBehaviour {
-
+    //Author Timothy Waclawik 
+    //Purpose: Create a pause menu when the escape key is used
 
    // public AudioMixerSnapshot paused;     //Audio for paused menu
    // public AudioMixerSnapshot unpaused;
