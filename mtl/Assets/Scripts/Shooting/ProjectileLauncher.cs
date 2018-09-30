@@ -63,7 +63,8 @@ public class ProjectileLauncher : MonoBehaviour {
 		//if leftclick and 1 was pressed run this Element1Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element1IsReady == true) {
 			print ("i have fired");
-			Element1Fire ();
+			Element1Fire();
+            gameObject.GetComponent<HealthState>().currentMana -= 30;//TO ABSTRACT //MDT_Brandon contrubtion
 		}
 		//if leftclick and 2 was pressed run this Element2Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element2IsReady == true) {

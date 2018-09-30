@@ -24,7 +24,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		//find follow target
-		target = GameObject.FindWithTag("Player");float returnTimer = aiTime[0];//how long will we be in this state? this<0 means forever until another trigger
+		target = GameObject.FindWithTag("Player");
 	}
 
 	// Update is called once per frame

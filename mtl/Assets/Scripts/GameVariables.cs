@@ -55,7 +55,7 @@ namespace mtl {
 		}
     }
 
-	public class Damage : MonoBehaviour
+	public class Damage
     {
 		public const float DEV_TEST_BULLET_DAMAGE = 10f;
         //public int attackDamage = 10; //Tim Edit - Trying to call from GameVariables to bullet damage is difficult
@@ -73,8 +73,9 @@ namespace mtl {
 		public const float BUNNY_LUNGE_DISTANCE = 10f;
 		public const float BUNNY_LUNGE_TIME = 0.05f;
 
+        //v=s/t
 		public const float BLINK_DISTANCE = 14f;
-		public const float BLINT_TIME = 0.025f;
+		public const float BLINK_TIME = 0.025f;
 
 		public static string AssignAI(string tag) {
 
@@ -115,6 +116,8 @@ namespace mtl {
 		public const float PLAYER_DEFAULT_MANA = 100f;
 		public const float DEFAULT_MANA_REGEN = 30f;
 		public const float WIZARD1_MANA = 50f;
+
+        public const float BLINK_SPEED_MAGNITUDE = (mtl.Movement.BLINK_DISTANCE / mtl.Movement.BLINK_TIME) / mtl.Movement.PLAYER_BASE_MOVE_SPEED;
 		public static float AssignMana(string tag) {
 
 			//temporary kv for mana, extend to json for entity atributes
