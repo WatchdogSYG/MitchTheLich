@@ -15,6 +15,8 @@ using UnityEngine;
 	Edited: MDT_Owen 17/09/18: Added two rigidbodys with different colours that represent different bullets
 	//also this script can now fire any prefab as long as its defined in mitch_spellcaster
 	//you should be able to custimose a particular bullet without effecting the other
+
+    Edited: MDT_Timothy 28?09/2018:
   */
 public class ProjectileLauncher : MonoBehaviour {
 
@@ -35,9 +37,21 @@ public class ProjectileLauncher : MonoBehaviour {
 	private bool Element1IsReady = true;
 	private bool Element2IsReady = false;
 
+    GameObject player;
+    HealthState healthState;
+    public int Attackmana = 20; //set the mana used
 
-	// Update is called once per frame
-	void Update() {
+    void Awake()
+    {
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        healthState = player.GetComponent<HealthState>(); ; //Needed to be called on awake and not update otherwise errors will occure
+    }
+
+
+
+    // Update is called once per frame
+    void Update() {
 		gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3 (1, 0, 1);
 		Debug.DrawRay (gameObject.transform.position, gameObject.transform.forward * 20f);
 		// if press 1 set boolean variable to true and other false
@@ -63,13 +77,22 @@ public class ProjectileLauncher : MonoBehaviour {
 		//if leftclick and 1 was pressed run this Element1Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element1IsReady == true) {
 			print ("i have fired");
-			Element1Fire();
-            gameObject.GetComponent<HealthState>().currentMana -= 30;//TO ABSTRACT //MDT_Brandon contrubtion
-		}
+            if (healthState.currentMana > 0)
+            {
+                Element1Fire();
+                Mana();
+            }
+            
+        }
 		//if leftclick and 2 was pressed run this Element2Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element2IsReady == true) {
 			print ("i have fired");
-			Element2Fire ();
+            if (healthState.currentMana > 0)
+            {
+                Element2Fire();
+                Mana();
+            }
+            
 		}
 
 	}
@@ -79,6 +102,7 @@ public class ProjectileLauncher : MonoBehaviour {
 		Rigidbody projectileInstance = Instantiate(Element1RedBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
 
 		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
+       
 	}
 
 	// and then launch the object forward
@@ -89,4 +113,12 @@ public class ProjectileLauncher : MonoBehaviour {
 
 		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
 	}
+
+    void Mana()
+     {
+         if (healthState.currentMana > 0)
+         {
+             healthState.UseMana(Attackmana);
+         }
+     }
 }

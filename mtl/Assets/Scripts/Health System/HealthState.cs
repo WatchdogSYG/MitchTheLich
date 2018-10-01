@@ -97,7 +97,9 @@ public class HealthState : MonoBehaviour {
 	}
 
 	public void UseMana(float mana) {
-		currentMana -= mana;
+
+
+        currentMana -= mana;
 		//this debug gets annoying if it regens per frame
 		//Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
 		
