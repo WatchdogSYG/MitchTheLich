@@ -9,16 +9,16 @@ public class MovementAnimation : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
-        anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>(); //Makes it so the animator is connected to the script
 	}
 
     private void Update()
     {
-        if (Input.GetKeyDown("d")) {
-            anim.SetBool("moveForward", true);
+        if (Input.GetKeyDown("d")) { //When the key is pushed, transitions from idle into movement animation
+            anim.SetBool("moveForward", true); 
         }
 
-        if (Input.GetKeyUp("d"))
+        if (Input.GetKeyUp("d")) //when released the animation transitions back into idle
         {
             anim.SetBool("moveForward", false);
         }
