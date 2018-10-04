@@ -16,7 +16,7 @@ using UnityEngine;
 	//also this script can now fire any prefab as long as its defined in mitch_spellcaster
 	//you should be able to custimose a particular bullet without effecting the other
 
-    Edited: MDT_Timothy 28?09/2018:
+    Edited: MDT_Timothy 28?09/2018: Edited to add mana use
   */
 public class ProjectileLauncher : MonoBehaviour {
 
@@ -39,13 +39,14 @@ public class ProjectileLauncher : MonoBehaviour {
 
     GameObject player;
     HealthState healthState;
-    public int Attackmana = 20; //set the mana used
+    public float Attackmana = mtl.Buff.PLAYER_DEFAULT_MANA; //set the mana used
 
     void Awake()
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        healthState = player.GetComponent<HealthState>(); ; //Needed to be called on awake and not update otherwise errors will occure
+        healthState = player.GetComponent<HealthState>(); ; 
+        GetComponent<HealthState>().UseMana(Attackmana);
     }
 
 
@@ -77,7 +78,7 @@ public class ProjectileLauncher : MonoBehaviour {
 		//if leftclick and 1 was pressed run this Element1Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element1IsReady == true) {
 			print ("i have fired");
-            if (healthState.currentMana > 0)
+            if (healthState.currentMana > 10)
             {
                 Element1Fire();
                 Mana();
@@ -87,7 +88,7 @@ public class ProjectileLauncher : MonoBehaviour {
 		//if leftclick and 2 was pressed run this Element2Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element2IsReady == true) {
 			print ("i have fired");
-            if (healthState.currentMana > 0)
+            if (healthState.currentMana > 10)
             {
                 Element2Fire();
                 Mana();
@@ -116,7 +117,7 @@ public class ProjectileLauncher : MonoBehaviour {
 
     void Mana()
      {
-         if (healthState.currentMana > 0)
+         if (healthState.currentMana > 10)
          {
              healthState.UseMana(Attackmana);
          }

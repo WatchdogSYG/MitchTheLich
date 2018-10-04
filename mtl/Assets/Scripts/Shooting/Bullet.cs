@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
 
     HealthState healthState;    // Reference to the player's health.
     GameObject player;          // Reference to the player GameObject.
-    public int attackDamage = 10; // Set the attack damage
+    public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
     //mtl.Damage attackDamage;
 
 
@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour {
     {//Setting references
         player = GameObject.FindGameObjectWithTag("Player");
         healthState = player.GetComponent<HealthState>();//
+        GetComponent<HealthState>().TakeDamage(attackDamage);
        //attackDamage = GetComponent<mtl.Damage>();
 
     }
@@ -55,7 +56,7 @@ public class Bullet : MonoBehaviour {
         if (healthState.currentHealth > 0)
         {
             // damage the player
-           healthState.TakeDamage(attackDamage);
+            healthState.TakeDamage(attackDamage);
         }
     }
 }
