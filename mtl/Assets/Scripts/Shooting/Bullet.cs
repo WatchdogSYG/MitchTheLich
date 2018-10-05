@@ -28,7 +28,8 @@ public class Bullet : MonoBehaviour {
     {//Setting references
         player = GameObject.FindGameObjectWithTag("Player");
         healthState = player.GetComponent<HealthState>();//
-        GetComponent<HealthState>().TakeDamage(attackDamage);
+		//Error: Object reference not set to an instance of an object
+       // GetComponent<HealthState>().TakeDamage(attackDamage);
        //attackDamage = GetComponent<mtl.Damage>();
 
     }

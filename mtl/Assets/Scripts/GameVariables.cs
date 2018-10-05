@@ -109,7 +109,8 @@ namespace mtl {
 	}
 
     public class Spell {
-
+		//this variable makes it so their is a half second delay inbetween shots
+		public const float DelayBetweenShots = 0.5f;
     }
 
     public class Buff {

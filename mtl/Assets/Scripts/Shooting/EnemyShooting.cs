@@ -45,7 +45,7 @@ public class EnemyShooting : MonoBehaviour {
 		// and call Fire function
 		if ((distance <= maxAttackDistance) && Time.time > (lastFireTime + delay)) {
 			
-		//	print (Time.time);
+			//print (Time.time);
 		//	print (lastFireTime);
 			lastFireTime = Time.time;
 			Fire ();

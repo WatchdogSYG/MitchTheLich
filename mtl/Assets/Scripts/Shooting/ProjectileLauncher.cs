@@ -29,6 +29,10 @@ public class ProjectileLauncher : MonoBehaviour {
 	public Transform projectileSpawner;
 	// how fast the bullet goes
 	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
+	//variable for delay between shots
+	public float shotDelay = mtl.Spell.DelayBetweenShots;
+
+
 
 	//private boolean variables which basically acts like a switch
 	//Example:
@@ -36,6 +40,9 @@ public class ProjectileLauncher : MonoBehaviour {
 	//if 2 is pressed run this code and disable element 1 code
 	private bool Element1IsReady = true;
 	private bool Element2IsReady = false;
+
+	//starts at zero and equals what ever Time.time was before
+	private float lastFireTime;
 
     GameObject player;
     HealthState healthState;
@@ -46,7 +53,8 @@ public class ProjectileLauncher : MonoBehaviour {
 
         player = GameObject.FindGameObjectWithTag("Player");
         healthState = player.GetComponent<HealthState>(); ; 
-        GetComponent<HealthState>().UseMana(Attackmana);
+		//Object reference not set to an instance of an object
+        //GetComponent<HealthState>().UseMana(Attackmana);
     }
 
 
@@ -78,8 +86,9 @@ public class ProjectileLauncher : MonoBehaviour {
 		//if leftclick and 1 was pressed run this Element1Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element1IsReady == true) {
 			print ("i have fired");
-            if (healthState.currentMana > 10)
+			if (healthState.currentMana > 10 && (Time.time > (lastFireTime + shotDelay)))
             {
+					lastFireTime = Time.time;
                 Element1Fire();
                 Mana();
             }
@@ -88,8 +97,9 @@ public class ProjectileLauncher : MonoBehaviour {
 		//if leftclick and 2 was pressed run this Element2Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element2IsReady == true) {
 			print ("i have fired");
-            if (healthState.currentMana > 10)
+			if (healthState.currentMana > 10 && (Time.time > (lastFireTime + shotDelay)))
             {
+				lastFireTime = Time.time;
                 Element2Fire();
                 Mana();
             }
@@ -100,7 +110,8 @@ public class ProjectileLauncher : MonoBehaviour {
 	// responsible for creating the bullet object each time player press left click
 	// and then launch the object forward
 	private void Element1Fire() {
-		Rigidbody projectileInstance = Instantiate(Element1RedBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
+		
+	    Rigidbody projectileInstance = Instantiate(Element1RedBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
 
 		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
        
