@@ -16,7 +16,6 @@ public class Bullet : MonoBehaviour {
     HealthState healthState;    // Reference to the player's health.
     GameObject player;          // Reference to the player GameObject.
     public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
-    //mtl.Damage attackDamage;
 
     public float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
 
@@ -29,6 +28,7 @@ public class Bullet : MonoBehaviour {
 		//Error: Object reference not set to an instance of an object
        // GetComponent<HealthState>().TakeDamage(attackDamage);
        //attackDamage = GetComponent<mtl.Damage>();
+       //why player specifically
 
     }
 
@@ -37,7 +37,9 @@ public class Bullet : MonoBehaviour {
     void Start () {
         // if it isnt already destroyed kill object after 2 seconds
         Destroy(gameObject, MaxLifeTime);
-		
+        ParticleSystem ps = GetComponent<ParticleSystem>();
+        ps.Play();
+        Destroy(ps, ps.main.duration);
 	}
 	
 	//modified from OnCollisionEnter(Collision other)
@@ -51,6 +53,7 @@ public class Bullet : MonoBehaviour {
 		Destroy(gameObject);
         Damage(); //Call damage on collision
 		}
+        //why player specifically
 	}
 
     void Damage()
@@ -62,5 +65,6 @@ public class Bullet : MonoBehaviour {
             healthState.TakeDamage(attackDamage);
 
         }
+        //redundant if, it already checks in healthstate update.
     }
 }
