@@ -64,7 +64,8 @@ namespace mtl {
 	public class Movement {
 		public const float PLAYER_BASE_MOVE_SPEED = 18f; //base player move speed. All other movement variables should be a function of this variable.
 
-		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
+		public const float BASE_PROJECTILE_SPEED1 = 30f;//base projectile speed (a "medium" speed projectile)
+		public const float BASE_PROJECTILE_SPEED2 = 60f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
 		public const float MOVEMENT_SMOOTH_COEFF = 5f;//interpolation free parameter smoothing coefficient for movement
@@ -110,7 +111,8 @@ namespace mtl {
 
     public class Spell {
 		//this variable makes it so their is a half second delay inbetween shots
-		public const float DelayBetweenShots = 0.5f;
+		public const float DelayBetweenShots1 = 0.25f;
+		public const float DelayBetweenShots2 = 1f;
     }
 
     public class Buff {

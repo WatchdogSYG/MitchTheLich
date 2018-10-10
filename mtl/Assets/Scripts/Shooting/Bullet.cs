@@ -18,8 +18,6 @@ public class Bullet : MonoBehaviour {
     public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
     //mtl.Damage attackDamage;
 
-
-
     public float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
 
 
@@ -42,13 +40,17 @@ public class Bullet : MonoBehaviour {
 		
 	}
 	
-	
-	void OnCollisionEnter (Collision other)
+	//modified from OnCollisionEnter(Collision other)
+	//to OnTriggerEnter and (Collider other)
+	void OnTriggerEnter (Collider other)
     {
+		
 		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
+		if(other.gameObject.tag == "Player")
+		{
 		Destroy(gameObject);
         Damage(); //Call damage on collision
-
+		}
 	}
 
     void Damage()
@@ -58,6 +60,7 @@ public class Bullet : MonoBehaviour {
         {
             // damage the player
             healthState.TakeDamage(attackDamage);
+
         }
     }
 }

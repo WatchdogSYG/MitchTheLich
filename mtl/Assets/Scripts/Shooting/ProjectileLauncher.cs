@@ -28,9 +28,9 @@ public class ProjectileLauncher : MonoBehaviour {
 	//this is where the bullet spawns
 	public Transform projectileSpawner;
 	// how fast the bullet goes
-	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
+	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED1;
 	//variable for delay between shots
-	public float shotDelay = mtl.Spell.DelayBetweenShots;
+	public float shotDelay = mtl.Spell.DelayBetweenShots1;
 
 
 
@@ -69,6 +69,8 @@ public class ProjectileLauncher : MonoBehaviour {
 			// 1 is now active and 2 is not
 			Element1IsReady = true;
 			Element2IsReady = false;
+			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED1;
+			shotDelay = mtl.Spell.DelayBetweenShots1;
 			//debug
 			print ("element1 is ready" + Element1IsReady);
 		}
@@ -79,6 +81,8 @@ public class ProjectileLauncher : MonoBehaviour {
 			// 2 is active and 1 is not
 			Element2IsReady = true;
 			Element1IsReady = false;
+			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED2;
+			shotDelay = mtl.Spell.DelayBetweenShots2;
 			//debug
 			print ("element2 is ready" + Element2IsReady);
 		}
