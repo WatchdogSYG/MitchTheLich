@@ -13,7 +13,7 @@ public class EnemyShooting : MonoBehaviour {
 	// transform for projectileSpawner which is Enemy_Spellcaster(1) in scene Attached to EnemyPlaceHolder
 	public Transform projectileSpawner;
 	// how fast the projectile goes
-	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED1;
+	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
 	// How long it takes for the next shot to fire
 	public float delay = mtl.EnemyShooting.DelayBetweenShots;
 	//this is the maximum distance from the enemy to the player that the enemy will be able to shoot

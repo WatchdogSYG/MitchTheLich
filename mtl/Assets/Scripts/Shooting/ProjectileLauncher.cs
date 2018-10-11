@@ -29,19 +29,20 @@ public class ProjectileLauncher : MonoBehaviour {
 	//this is where the bullet spawns
 	public Transform projectileSpawner;
 	// how fast the bullet goes
-	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED1;
+	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
 	//variable for delay between shots
 	public float shotDelay = mtl.Spell.DelayBetweenShots1;
-
-
-
-	//private boolean variables which basically acts like a switch
+	
+	/*//private boolean variables which basically acts like a switch
 	//Example:
 	//if 1 is pressed run this code and disable element 2 code
 	//if 2 is pressed run this code and disable element 1 code
 	private bool Element1IsReady = true;
 	private bool Element2IsReady = false;
-	private bool Element3IsReady = false;
+	private bool Element3IsReady = false;*/
+
+	//MDT_Brandon instead have an array so we can pass an index through a function
+	int element = mtl.Spell.ELEMENT_NULL;
 
 	//starts at zero and equals what ever Time.time was before
 	private float lastFireTime;
@@ -50,9 +51,11 @@ public class ProjectileLauncher : MonoBehaviour {
     HealthState healthState;
     public float Attackmana = mtl.Buff.PLAYER_DEFAULT_MANA; //set the mana used
 
-    void Awake()
-    {
+	mtl.Spell.SpellProperties sp;
+	const int SPELLSLOTS = 2;//primary, secondary fire
+	mtl.Spell[][] SpellIndex = new mtl.Spell[SPELLSLOTS][];//two spells per element
 
+    void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
         healthState = player.GetComponent<HealthState>(); ; 
 		//Object reference not set to an instance of an object
@@ -61,51 +64,31 @@ public class ProjectileLauncher : MonoBehaviour {
 
 
 
-    // Update is called once per frame
-    void Update() {
-		gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3 (1, 0, 1);
-		Debug.DrawRay (gameObject.transform.position, gameObject.transform.forward * 20f);
-		// if press 1 set boolean variable to true and other false
-		if (Input.GetButtonUp ("Element1")) 
-		{
-			// 1 is now active and 2 is not
-			Element1IsReady = true;
-			Element2IsReady = false;
-			Element3IsReady = false;
-			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED1;
-			shotDelay = mtl.Spell.DelayBetweenShots1;
-			//debug
-			print ("element1 is ready" + Element1IsReady);
-		}
+	// Update is called once per frame
+	void Update() {
+		//make the gameObject face in a direction
+		gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3(1, 0, 1);
+		Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 20f);
 
-		//if press 2 set boolean variable to true and other false
-		if (Input.GetButtonUp ("Element2")) 
-		{
-			// 2 is active and 1 is not
-			Element3IsReady = false;
-			Element2IsReady = true;
-			Element1IsReady = false;
-			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED2;
-			shotDelay = mtl.Spell.DelayBetweenShots2;
-			//debug
-			print ("element2 is ready" + Element2IsReady);
-		}
+		//if the player wants to change elements, set spells then check for shoot intent
+		//else check for if the player wants to shoot
 
-		if (Input.GetButtonUp ("Element3")) 
-		{
-			// 2 is active and 1 is not
-			Element3IsReady = true;
-			Element2IsReady = false;
-			Element1IsReady = false;
-			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED2;
-			//shotDelay = mtl.Spell.DelayBetweenShots2;
-			//debug
-			print ("element3 is ready" + Element3IsReady);
-		}
+		//Switch Elements or Hotbars depending on which key is pressed
+		int elementChange = SelectElement();
+		if (elementChange > 0) {//the player wants to change, cannot change to null element
+			//first change the element
+			element = elementChange;
 
+			//then change the equipped spells for every spellslot
+			for(int i = 0; i < SPELLSLOTS; i++) {
+				sp.damage = SpellIndex[0][element].damage;
+				sp.mana = SpellIndex[0][element].mana;
+			}
+			
+		}
 
 		//if leftclick and 1 was pressed run this Element1Fire code
-		if (Input.GetButtonUp ("Primary Fire") && Element1IsReady == true) {
+		if (Input.GetKey("Primary Fire") && element==1) {
 			print ("i have fired");
 			if (healthState.currentMana > 10 && (Time.time > (lastFireTime + shotDelay)))
             {
@@ -139,7 +122,33 @@ public class ProjectileLauncher : MonoBehaviour {
 		}
 
 	}
-	// responsible for creating the bullet object each time player press left click
+	
+    private int SelectElement() {
+		//check for which element the player wants to change to and return it
+
+		if (Input.GetKeyDown("Element1")) {//MDT_Brandon changed to keydown event
+			//debug
+			print("element1 is ready" + element);
+			return 1;
+		}
+
+		if (Input.GetKeyDown("Element2")) {//MDT_Brandon changed to keydown event
+			//debug
+			print("Element2 is ready" + element);
+			return 2;
+		}
+
+		if (Input.GetKeyDown("Element3")) {//MDT_Brandon changed to keydown event
+			//debug
+			print("Element3 is ready" + element);
+			return 3;
+		}
+
+		//if the player doesnt press a change key, keep the element the same by returning a negative int
+		return -1;
+	}
+    
+    // responsible for creating the bullet object each time player press left click
 	// and then launch the object forward
 	private void Element1Fire() {
 		

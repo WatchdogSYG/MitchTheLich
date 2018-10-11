@@ -47,7 +47,7 @@ namespace mtl {
 
 			//if no kv pair is found
 			if (h < 0) {
-				Debug.Log("The entity tag does not appear in the Key-Value List, set MAX_MANA to" + h0);
+				Debug.Log("The entity tag does not appear in the Key-Value List, set MAX_MANA to " + h0);
 				return h0;
 			}
 
@@ -64,7 +64,7 @@ namespace mtl {
 	public class Movement {
 		public const float PLAYER_BASE_MOVE_SPEED = 18f; //base player move speed. All other movement variables should be a function of this variable.
 
-		public const float BASE_PROJECTILE_SPEED1 = 30f;//base projectile speed (a "medium" speed projectile)
+		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_SPEED2 = 60f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
@@ -110,9 +110,38 @@ namespace mtl {
 	}
 
     public class Spell {
+		//element index
+		public const int ELEMENT_NULL	= 0;//this is for entities that dont have elements defined eg. Bunny Melee
+		public const int ELEMENT_FIRE	= 1;
+		public const int ELEMENT_ICE	= 2;
+		public const int ELEMENT_SHADOW = 3;
+
+		public struct SpellProperties {
+			public float damage;
+			public float mana;
+		};
+
+		mtl.Spell[][] SpellIndex = new mtl.Spell[2][] { new Fireball()  ,{new Fireball() } };
+
 		//this variable makes it so their is a half second delay inbetween shots
 		public const float DelayBetweenShots1 = 0.25f;
-		public const float DelayBetweenShots2 = 1f;
+        public const float DelayBetweenShots2 = 1f;
+
+
+        public class Fireball{
+            public const float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
+            public const float lifetime = mtl.Movement.BASE_PROJECTILE_LIFETIME;
+            public const float fireDelay = 0.5f;
+
+            public const float damage = 30f;
+            public const float manaCost = 20f;
+
+			public List<Abstract_TimedBuff> BuffsApplied(GameObject o) {
+                List<Abstract_TimedBuff> buffList = new List<Abstract_TimedBuff>();
+                buffList.Add(new TimedSpeedBuff(3f, new SpeedBuff(), o));
+                return buffList;
+            }
+        }
     }
 
     public class Buff {
