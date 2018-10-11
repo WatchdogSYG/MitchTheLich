@@ -132,7 +132,7 @@ public class ProjectileLauncher : MonoBehaviour {
 
     void Mana()
      {
-         if (healthState.currentMana > 10)
+         if (healthState.currentMana > 0)
          {
              healthState.UseMana(Attackmana);
          }
