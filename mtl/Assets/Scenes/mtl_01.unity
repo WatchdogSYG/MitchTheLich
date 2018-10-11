@@ -8517,6 +8517,8 @@ MonoBehaviour:
     type: 2}
   Element2BlueBullet: {fileID: 54014504988065998, guid: 27a362ec81f33804a9359eb1626fcd0f,
     type: 2}
+  Element3FlameThrower: {fileID: 54225098720099290, guid: 6b34258bd9863b54eabd3ac7689f6f2f,
+    type: 2}
   projectileSpawner: {fileID: 205262940}
   launchSpeed: 30
   shotDelay: 0.25

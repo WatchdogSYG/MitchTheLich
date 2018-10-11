@@ -24,6 +24,7 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	public Rigidbody Element1RedBullet;
 	public Rigidbody Element2BlueBullet;
+	public Rigidbody Element3FlameThrower;
 
 	//this is where the bullet spawns
 	public Transform projectileSpawner;
@@ -40,6 +41,7 @@ public class ProjectileLauncher : MonoBehaviour {
 	//if 2 is pressed run this code and disable element 1 code
 	private bool Element1IsReady = true;
 	private bool Element2IsReady = false;
+	private bool Element3IsReady = false;
 
 	//starts at zero and equals what ever Time.time was before
 	private float lastFireTime;
@@ -69,6 +71,7 @@ public class ProjectileLauncher : MonoBehaviour {
 			// 1 is now active and 2 is not
 			Element1IsReady = true;
 			Element2IsReady = false;
+			Element3IsReady = false;
 			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED1;
 			shotDelay = mtl.Spell.DelayBetweenShots1;
 			//debug
@@ -79,6 +82,7 @@ public class ProjectileLauncher : MonoBehaviour {
 		if (Input.GetButtonUp ("Element2")) 
 		{
 			// 2 is active and 1 is not
+			Element3IsReady = false;
 			Element2IsReady = true;
 			Element1IsReady = false;
 			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED2;
@@ -86,6 +90,19 @@ public class ProjectileLauncher : MonoBehaviour {
 			//debug
 			print ("element2 is ready" + Element2IsReady);
 		}
+
+		if (Input.GetButtonUp ("Element3")) 
+		{
+			// 2 is active and 1 is not
+			Element3IsReady = true;
+			Element2IsReady = false;
+			Element1IsReady = false;
+			launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED2;
+			//shotDelay = mtl.Spell.DelayBetweenShots2;
+			//debug
+			print ("element3 is ready" + Element3IsReady);
+		}
+
 
 		//if leftclick and 1 was pressed run this Element1Fire code
 		if (Input.GetButtonUp ("Primary Fire") && Element1IsReady == true) {
@@ -110,6 +127,17 @@ public class ProjectileLauncher : MonoBehaviour {
             
 		}
 
+		//if leftclick and 3 was pressed run this Element3Fire code
+		if (Input.GetButton ("Primary Fire") && Element3IsReady == true) {
+			print ("i have fired");
+			//if (healthState.currentMana > 10)
+			//{
+				Element3Fire();
+			//	Mana();
+			//}
+
+		}
+
 	}
 	// responsible for creating the bullet object each time player press left click
 	// and then launch the object forward
@@ -126,6 +154,12 @@ public class ProjectileLauncher : MonoBehaviour {
 	//you can change either ones propeties as you wish
 	private void Element2Fire() {
 		Rigidbody projectileInstance = Instantiate(Element2BlueBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
+
+		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
+	}
+
+	private void Element3Fire() {
+		Rigidbody projectileInstance = Instantiate(Element3FlameThrower, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
 
 		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
 	}
