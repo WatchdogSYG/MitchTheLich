@@ -216,7 +216,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4165741132018764}
   - component: {fileID: 95860046262071440}
-  - component: {fileID: 54339006510512898}
+  - component: {fileID: 65093917613669714}
+  - component: {fileID: 114576898715125786}
+  - component: {fileID: 54195688164611280}
+  - component: {fileID: 114705832822274396}
+  - component: {fileID: 114603011063585102}
   m_Layer: 0
   m_Name: Bunny
   m_TagString: Untagged
@@ -334,8 +338,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834690004104502}
-  m_LocalRotation: {x: -0, y: -0.7052963, z: -0, w: 0.70891273}
-  m_LocalPosition: {x: 231.4, y: 0, z: 160.1}
+  m_LocalRotation: {x: 0, y: -0.70529646, z: 0, w: 0.7089125}
+  m_LocalPosition: {x: 91.39083, y: 0, z: 157.6246}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 4428990084934096}
@@ -536,7 +540,7 @@ Transform:
   m_Father: {fileID: 4165741132018764}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54339006510512898
+--- !u!54 &54195688164611280
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -551,6 +555,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65093917613669714
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 1.1, z: 0.4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95860046262071440
 Animator:
   serializedVersion: 3
@@ -569,6 +585,52 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114576898715125786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af7b62938e94b7468b41744db350638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114603011063585102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d5e7db1cba106478ac7c9489385295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 10
+--- !u!114 &114705832822274396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235bcdec5b7bbd24b863696e152cf4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  currentMana: 0
+  maxHealth: 0
+  maxMana: 0
+  speedMultiplier: 1
+  manaRegenRate: 30
+  manaRegenMultiplier: 1
+  HealthSlider: {fileID: 0}
+  ManaSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!137 &137699088173774984
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
