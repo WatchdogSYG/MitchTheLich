@@ -100,5 +100,11 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		//lunge a certain distance based on the time v=s/t
 		gameObject.transform.position += (2* lungeDistance / aiTime[currentStateSequence]) * Time.deltaTime * Vector3.Normalize(gameObject.transform.forward);
 	}
+
+	void BunnyDeath()
+	{
+		enabled = false;
+
+	}
 }
 //MDT_Brandon endContrubution

@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthState : MonoBehaviour {
-
+	
+	public float enemyCurrentHealth;
+	public float enemyMaxHealth;
 	public float currentHealth;
 	public float currentMana;
 	public float maxHealth;
@@ -25,6 +27,8 @@ public class HealthState : MonoBehaviour {
     bool damaged;   //  when the player gets damaged.
 
 
+
+
     //unused concept buffs
     /*
 	public float damageDealtMultiplier = 1f;
@@ -38,9 +42,11 @@ public class HealthState : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		//what object is this? set stats to appropriate values as defined in mtl class
+
 		maxHealth = mtl.Health.AssignHealth(gameObject.tag);
 		maxMana = mtl.Buff.AssignMana(gameObject.tag);
-
+		enemyMaxHealth = mtl.Health.AssignHealth ("Enemy");
+		enemyCurrentHealth = enemyMaxHealth;
 		currentHealth = maxHealth;
 		currentMana = 0;
 	}
@@ -80,19 +86,32 @@ public class HealthState : MonoBehaviour {
         // Set the damaged flag so the screen will flash.
         damaged = true;
 
-        // Reduce the current health by the damage amount.
-        currentHealth -= damage;
+       
         //this debug gets annoying if it regens per frame
         //Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
 
 
 		if(whoIsHit == false)
 		{
+			// Reduce the current health by the damage amount.
+			currentHealth -= damage;
         HealthSlider.value = currentHealth; // Set the health bar's value to the current health
+
+
+		}
+		if (whoIsHit == true) 
+		{
+
+			enemyCurrentHealth -= damage;
+			print ("bunny has been hit");
 		}
         //an entity can only die if it takes damage, therefore check for death here
         if (currentHealth <= 0) {
 			Death();
+		}
+		if (enemyCurrentHealth <= 0) {
+
+			EnemyDeath ();
 		}
 		return;
 	}
@@ -118,6 +137,12 @@ public class HealthState : MonoBehaviour {
 	void Death() {
 		Debug.Log("oh noes");
 		return;
+	}
+
+	void EnemyDeath()
+	{
+		Debug.Log ("i have died :( ");
+
 	}
 }
 //MDT_Brandon startContribution
