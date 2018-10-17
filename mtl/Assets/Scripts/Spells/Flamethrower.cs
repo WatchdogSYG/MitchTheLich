@@ -2,28 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : Abstract_Spell {
+public class Flamethrower : Abstract_Spell {
 
 	//declare specific properties
 	public float launchSpeed;
+	public float coneAngle;
 	private Rigidbody rb;
 
 	//set specific stats
-	public Fireball() {
+	public Flamethrower() {
 		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
 		this.manaCost = 10f;
+		this.fireDelay = 0.1f;
 
 
 		this.launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
+		this.coneAngle = 45f;
 	}
 
 	public override void Launch(GameObject spawner) {
-		//We need a Ridigbody in the first arg for Instantiate. 
-		//We also dont want to use the editor to define a Rigidbody from a GameObject because the class extending Abstract_Spell is not a gameobject. 
-		//GameObject cannot be cast to Rigidbody.
-		//Therefore we Load a prefab as Object then cast to GameObject.
-		//Get the prefab (now GameObject) 's RigidBody component, and then process from there.
-		//GetComponent is expensive though.
 		GameObject r = Resources.Load("Element1RedBullet") as GameObject;
 
 		rb = r.GetComponent<Rigidbody>();

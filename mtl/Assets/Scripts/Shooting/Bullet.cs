@@ -46,13 +46,13 @@ public class Bullet : MonoBehaviour {
 	//to OnTriggerEnter and (Collider other)
 	void OnTriggerEnter (Collider other)
     {
-		
 		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
-		if(other.gameObject.tag == "Player")
-		{
+		/*if(other.gameObject.tag == "Player")
+		{*/
 		Destroy(gameObject);
         Damage(); //Call damage on collision
-		}
+		ApplyBuff(other.gameObject);
+		//}
         //why player specifically
 	}
 
@@ -67,4 +67,8 @@ public class Bullet : MonoBehaviour {
         }
         //redundant if, it already checks in healthstate update.
     }
+
+	void ApplyBuff(GameObject o) {
+		o.GetComponent<Buffable>();
+	}
 }

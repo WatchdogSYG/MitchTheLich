@@ -20,6 +20,7 @@ public class Buffable : MonoBehaviour {
             if (b.IsFinished)
             {
                 CurrentBuffs.Remove(b);
+				print("Buff " + b + " removed.");
             }
         }
     }

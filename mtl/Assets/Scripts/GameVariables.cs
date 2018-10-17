@@ -118,30 +118,23 @@ namespace mtl {
 
 		public struct SpellProperties {
 			public float damage;
+		public const int ELEMENT_NULL	= 100;//this is for entities that dont have elements defined eg. Bunny Melee
+		public const int ELEMENT_FIRE	= 0;
+		public const int ELEMENT_ICE	= 1;
+		public const int ELEMENT_SHADOW = 2;
+
+		//no dev checking on this one
+		//the properties of spells that the ProjectileLauncher has to know about
+
+		public struct CastProperties {
 			public float mana;
+			public float fireDelay;
 		};
 
-		mtl.Spell[][] SpellIndex = new mtl.Spell[2][] { new Fireball()  ,{new Fireball() } };
 
 		//this variable makes it so their is a half second delay inbetween shots
 		public const float DelayBetweenShots1 = 0.25f;
         public const float DelayBetweenShots2 = 1f;
-
-
-        public class Fireball{
-            public const float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
-            public const float lifetime = mtl.Movement.BASE_PROJECTILE_LIFETIME;
-            public const float fireDelay = 0.5f;
-
-            public const float damage = 30f;
-            public const float manaCost = 20f;
-
-			public List<Abstract_TimedBuff> BuffsApplied(GameObject o) {
-                List<Abstract_TimedBuff> buffList = new List<Abstract_TimedBuff>();
-                buffList.Add(new TimedSpeedBuff(3f, new SpeedBuff(), o));
-                return buffList;
-            }
-        }
     }
 
     public class Buff {
@@ -156,6 +149,7 @@ namespace mtl {
 			List<KeyValuePair<string, float>> manaKV = new List<KeyValuePair<string, float>>();
 			manaKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_MANA));
 			manaKV.Add(new KeyValuePair<string, float>("Wizard1", WIZARD1_MANA));
+			manaKV.Add(new KeyValuePair<string, float>("Dummy", WIZARD1_MANA));
 
 			float m = -1f;
 			float m0 = 0f;//if its untagged, it doesnt have any mana

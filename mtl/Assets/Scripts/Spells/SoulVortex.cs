@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Abstract_Projectile : MonoBehaviour {
+public class SoulVortex : Abstract_Spell {
 
+
+
+	public override void Launch(GameObject spawner) {
+		throw new System.NotImplementedException();
+	}
 	// Use this for initialization
 	void Start () {
 		

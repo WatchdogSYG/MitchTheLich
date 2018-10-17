@@ -27,12 +27,14 @@ public class ProjectileLauncher : MonoBehaviour {
 	public Rigidbody Element3FlameThrower;
 
 	//this is where the bullet spawns
-	public Transform projectileSpawner;
+	/*public Transform projectileSpawner;//redundant now*/
+	/*
 	// how fast the bullet goes
 	public float launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
 	//variable for delay between shots
 	public float shotDelay = mtl.Spell.DelayBetweenShots1;
-	
+	*/
+
 	/*//private boolean variables which basically acts like a switch
 	//Example:
 	//if 1 is pressed run this code and disable element 2 code
@@ -42,7 +44,7 @@ public class ProjectileLauncher : MonoBehaviour {
 	private bool Element3IsReady = false;*/
 
 	//MDT_Brandon instead have an array so we can pass an index through a function
-	int element = mtl.Spell.ELEMENT_NULL;
+	int element = mtl.Spell.ELEMENT_FIRE;
 
 	//starts at zero and equals what ever Time.time was before
 	private float lastFireTime;
@@ -51,15 +53,30 @@ public class ProjectileLauncher : MonoBehaviour {
     HealthState healthState;
     public float Attackmana = mtl.Buff.PLAYER_DEFAULT_MANA; //set the mana used
 
-	mtl.Spell.SpellProperties sp;
-	const int SPELLSLOTS = 2;//primary, secondary fire
-	mtl.Spell[][] SpellIndex = new mtl.Spell[SPELLSLOTS][];//two spells per element
+	//the spell's data we use (for mouse0 and mouse1)
+	mtl.Spell.CastProperties properties0;
+	mtl.Spell.CastProperties properties1;
 
-    void Awake() {
+	const int SPELLSLOTS = 2;//primary, secondary fire
+
+	/* a 2D array requires AbstractSpell to not be abstract, cannot create new Abstract[]
+	public Abstract_Spell[][] SpellIndex = new Abstract_Spell[2][]{
+		new Abstract_Spell[3] { new Fireball(), new Fireball(), new Fireball() },
+		new Abstract_Spell[3] { new Flamethrower(), new Fireball(), new Fireball() }
+		};*/
+	
+	//the possible bound spells to m0/m1
+	Abstract_Spell[] SpellIndex0 = new Abstract_Spell[3] { new Fireball(), new Fireball(), new SoulVortex() };//elements on Mouse0
+	Abstract_Spell[] SpellIndex1 = new Abstract_Spell[3] { new Flamethrower(), new Fireball(), new Fireball() };//elements on Mouse1
+
+
+	void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
-        healthState = player.GetComponent<HealthState>(); ; 
+        healthState = player.GetComponent<HealthState>(); ;
+		/*projectileSpawner = gameObject.transform;//redundant now*/
 		//Object reference not set to an instance of an object
-        //GetComponent<HealthState>().UseMana(Attackmana);
+		//GetComponent<HealthState>().UseMana(Attackmana);
+		ChangeSpell(element);
     }
 
 
@@ -75,109 +92,111 @@ public class ProjectileLauncher : MonoBehaviour {
 
 		//Switch Elements or Hotbars depending on which key is pressed
 		int elementChange = SelectElement();
-		if (elementChange > 0) {//the player wants to change, cannot change to null element
+		if (elementChange >= 0) {//the player wants to change, cannot change to null element
 			//first change the element
 			element = elementChange;
 
 			//then change the equipped spells for every spellslot
-			for(int i = 0; i < SPELLSLOTS; i++) {
-				sp.damage = SpellIndex[0][element].damage;
-				sp.mana = SpellIndex[0][element].mana;
-			}
-			
+			ChangeSpell(element);
 		}
 
-		//if leftclick and 1 was pressed run this Element1Fire code
-		if (Input.GetKey("Primary Fire") && element==1) {
-			print ("i have fired");
-			if (healthState.currentMana > 10 && (Time.time > (lastFireTime + shotDelay)))
-            {
-					lastFireTime = Time.time;
-                Element1Fire();
-                Mana();
+		//if leftclick is pressed run this code
+		//MDT_Brandon removed element argument, its handled above
+		if (Input.GetButton("Primary Fire")) {
+			if ((healthState.currentMana > SpellIndex0[element].manaCost) && (Time.time > (lastFireTime + SpellIndex0[element].fireDelay))){
+				lastFireTime = Time.time;
+				SpellIndex0[element].Launch(gameObject);
+                UseMana();//MDT_Brandon renamed to explicitly state using mana
+				print ("I have Primary Fired element " + element);
             }
             
         }
-		//if leftclick and 2 was pressed run this Element2Fire code
-		if (Input.GetButtonUp ("Primary Fire") && Element2IsReady == true) {
-			print ("i have fired");
-			if (healthState.currentMana > 10 && (Time.time > (lastFireTime + shotDelay)))
-            {
+
+		//if rightclick is pressed run this code
+		if (Input.GetButton("Secondary Fire")) {
+			if ((healthState.currentMana > SpellIndex1[element].manaCost) && (Time.time > (lastFireTime + SpellIndex1[element].fireDelay))) {
 				lastFireTime = Time.time;
-                Element2Fire();
-                Mana();
-            }
-            
+				SpellIndex1[element].Launch(gameObject);
+				UseMana();//MDT_Brandon renamed to explicitly state using mana
+				print("I have Secondary Fired element " + element);
+			}
 		}
 
-		//if leftclick and 3 was pressed run this Element3Fire code
-		if (Input.GetButton ("Primary Fire") && Element3IsReady == true) {
-			print ("i have fired");
-			//if (healthState.currentMana > 10)
-			//{
-				Element3Fire();
-			//	Mana();
-			//}
-
-		}
-
+		/*UNUSED
+						//if leftclick and 3 was pressed run this Element3Fire code
+						if (Input.GetButton ("Primary Fire") && Element3IsReady == true) {
+							print ("i have fired");
+							//if (healthState.currentMana > 10)
+							//{
+								Element3Fire();
+							//	Mana();
+							//}
+						}*/
 	}
 	
     private int SelectElement() {
 		//check for which element the player wants to change to and return it
-
-		if (Input.GetKeyDown("Element1")) {//MDT_Brandon changed to keydown event
+		if (Input.GetButtonDown("Element1")) {//MDT_Brandon changed to buttondown event
 			//debug
-			print("element1 is ready" + element);
+			print("Element 0 is ready");
+			return 0;
+		}
+
+		if (Input.GetButtonDown("Element2")) {//MDT_Brandon changed to buttondown event
+			//debug
+			print("Element 1 is ready");
 			return 1;
 		}
 
-		if (Input.GetKeyDown("Element2")) {//MDT_Brandon changed to keydown event
+		if (Input.GetButton("Element3")) {//MDT_Brandon changed to buttondown event
 			//debug
-			print("Element2 is ready" + element);
+			print("Element 2 is ready");
 			return 2;
-		}
-
-		if (Input.GetKeyDown("Element3")) {//MDT_Brandon changed to keydown event
-			//debug
-			print("Element3 is ready" + element);
-			return 3;
 		}
 
 		//if the player doesnt press a change key, keep the element the same by returning a negative int
 		return -1;
 	}
-    
-    // responsible for creating the bullet object each time player press left click
-	// and then launch the object forward
-	private void Element1Fire() {
-		
-	    Rigidbody projectileInstance = Instantiate(Element1RedBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
 
-		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
-       
+	private void ChangeSpell(int e) {
+		//unfortunately we have to hard code this twice
+
+		properties0.mana = SpellIndex0[element].manaCost;
+		properties1.mana = SpellIndex1[element].manaCost;
+
+		properties0.fireDelay = SpellIndex0[element].fireDelay;
+		properties1.fireDelay = SpellIndex1[element].fireDelay;
 	}
 
-	// and then launch the object forward
-	//Both of these are the same except now it launches a different bullet
-	//you can change either ones propeties as you wish
-	private void Element2Fire() {
-		Rigidbody projectileInstance = Instantiate(Element2BlueBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
-
-		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
+	void UseMana() {
+		if (healthState.currentMana > 0) {
+			healthState.UseMana(Attackmana);
+		}
 	}
 
-	private void Element3Fire() {
-		Rigidbody projectileInstance = Instantiate(Element3FlameThrower, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
+		/*UNUSED
+		// responsible for creating the bullet object each time player press left click
+		// and then launch the object forward
+		private void Element1Fire() {
 
-		projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
+			Rigidbody projectileInstance = Instantiate(Element1RedBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
+
+			projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
+
+		}
+
+		// and then launch the object forward
+		//Both of these are the same except now it launches a different bullet
+		//you can change either ones propeties as you wish
+		private void Element2Fire() {
+			Rigidbody projectileInstance = Instantiate(Element2BlueBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
+
+			projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
+		}
+
+		private void Element3Fire() {
+			Rigidbody projectileInstance = Instantiate(Element3FlameThrower, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
+
+			projectileInstance.velocity = launchSpeed * projectileSpawner.forward;
+		}*/
 	}
-
-    void Mana()
-     {
-         if (healthState.currentMana > 0)
-         {
-             healthState.UseMana(Attackmana);
-         }
-     }
-}
