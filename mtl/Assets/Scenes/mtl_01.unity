@@ -34834,6 +34834,15 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1834690004104502, guid: acb77766dc671424cab1f50d416daf6f, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 114705832822274396, guid: acb77766dc671424cab1f50d416daf6f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114187748612168002, guid: acb77766dc671424cab1f50d416daf6f, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: acb77766dc671424cab1f50d416daf6f, type: 2}
@@ -48676,29 +48685,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1834690004104502, guid: acb77766dc671424cab1f50d416daf6f,
     type: 2}
   m_PrefabInternal: {fileID: 1375006855}
---- !u!114 &1908649564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1908649559}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 235bcdec5b7bbd24b863696e152cf4b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  currentMana: 0
-  maxHealth: 0
-  maxMana: 0
-  speedMultiplier: 1
-  manaRegenRate: 30
-  manaRegenMultiplier: 1
-  HealthSlider: {fileID: 0}
-  ManaSlider: {fileID: 0}
-  damageImage: {fileID: 0}
-  flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!54 &1908649565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48714,18 +48700,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1908649566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1908649559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d5e7db1cba106478ac7c9489385295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 10
 --- !u!4 &1908734508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 29309c306e8c62342816092f3078a347,

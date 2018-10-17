@@ -7,7 +7,7 @@ public class Damage : MonoBehaviour {
 	HealthState healthState;    // Reference to the player's health.
 	GameObject player;          // Reference to the player GameObject.
 	public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
-
+	private bool whoIsHit = false;
 	void Awake()
 	{//Setting references
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -37,7 +37,7 @@ public class Damage : MonoBehaviour {
 		if (healthState.currentHealth > 0)
 		{
 			// damage the player
-			healthState.TakeDamage(attackDamage);
+			healthState.TakeDamage(attackDamage, whoIsHit);
 
 		}
 		//redundant if, it already checks in healthstate update.

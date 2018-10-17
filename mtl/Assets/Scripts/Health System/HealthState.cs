@@ -75,7 +75,7 @@ public class HealthState : MonoBehaviour {
     }*/
 
 
-    public void TakeDamage(float damage) {
+	public void TakeDamage(float damage, bool whoIsHit) {
         //DamageFlash();
         // Set the damaged flag so the screen will flash.
         damaged = true;
@@ -86,9 +86,10 @@ public class HealthState : MonoBehaviour {
         //Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
 
 
-       
+		if(whoIsHit == false)
+		{
         HealthSlider.value = currentHealth; // Set the health bar's value to the current health
-
+		}
         //an entity can only die if it takes damage, therefore check for death here
         if (currentHealth <= 0) {
 			Death();
@@ -108,9 +109,9 @@ public class HealthState : MonoBehaviour {
 
 
         //an entity can only die if it takes damage, therefore check for death here
-        if (currentHealth <= 0) {
+       /* if (currentHealth <= 0) {
 			Death();
-		}
+		}*/
 		return;
 	}
 
