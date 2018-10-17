@@ -47,7 +47,7 @@ namespace mtl {
 
 			//if no kv pair is found
 			if (h < 0) {
-				Debug.Log("The entity tag does not appear in the Key-Value List, set MAX_MANA to" + h0);
+				Debug.Log("The entity tag does not appear in the Key-Value List, set MAX_MANA to " + h0);
 				return h0;
 			}
 
@@ -64,7 +64,7 @@ namespace mtl {
 	public class Movement {
 		public const float PLAYER_BASE_MOVE_SPEED = 18f; //base player move speed. All other movement variables should be a function of this variable.
 
-		public const float BASE_PROJECTILE_SPEED1 = 30f;//base projectile speed (a "medium" speed projectile)
+		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_SPEED2 = 60f;//base projectile speed (a "medium" speed projectile)
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
@@ -109,11 +109,27 @@ namespace mtl {
 		}
 	}
 
-    public class Spell {
-		//this variable makes it so their is a half second delay inbetween shots
-		public const float DelayBetweenShots1 = 0.25f;
-		public const float DelayBetweenShots2 = 1f;
-    }
+	public class Spell {
+		
+			public float damage;
+			public const int ELEMENT_NULL = 100;//this is for entities that dont have elements defined eg. Bunny Melee
+			public const int ELEMENT_FIRE = 0;
+			public const int ELEMENT_ICE = 1;
+			public const int ELEMENT_SHADOW = 2;
+
+			//no dev checking on this one
+			//the properties of spells that the ProjectileLauncher has to know about
+
+			public struct CastProperties {
+				public float mana;
+				public float fireDelay;
+			};
+
+
+			//this variable makes it so their is a half second delay inbetween shots
+			public const float DelayBetweenShots1 = 0.25f;
+			public const float DelayBetweenShots2 = 1f;
+	}
 
     public class Buff {
 		public const float PLAYER_DEFAULT_MANA = 100f;
@@ -127,6 +143,7 @@ namespace mtl {
 			List<KeyValuePair<string, float>> manaKV = new List<KeyValuePair<string, float>>();
 			manaKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_MANA));
 			manaKV.Add(new KeyValuePair<string, float>("Wizard1", WIZARD1_MANA));
+			manaKV.Add(new KeyValuePair<string, float>("Dummy", WIZARD1_MANA));
 
 			float m = -1f;
 			float m0 = 0f;//if its untagged, it doesnt have any mana

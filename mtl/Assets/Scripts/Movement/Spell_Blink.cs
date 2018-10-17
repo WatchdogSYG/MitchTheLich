@@ -12,7 +12,8 @@ public class Spell_Blink : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetButtonDown("Movement Ability")){
-            TimedSpeedBuff tsb = new TimedSpeedBuff(mtl.Movement.BLINK_TIME, new SpeedBuff(), gameObject);
+			print("Blinking");
+            TimedSpeedBuff tsb = new TimedSpeedBuff(mtl.Movement.BLINK_TIME, ScriptableObject.CreateInstance("SpeedBuff") as Abstract_ScriptableBuff, gameObject);
             gameObject.GetComponent<Buffable>().AddBuff(tsb);
         }
 	}
