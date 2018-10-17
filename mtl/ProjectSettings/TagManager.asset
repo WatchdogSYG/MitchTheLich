@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dummy
   - Terrain
+  - TriggerText1
   layers:
   - Default
   - TransparentFX
