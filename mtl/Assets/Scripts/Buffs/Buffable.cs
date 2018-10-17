@@ -12,7 +12,7 @@ public class Buffable : MonoBehaviour {
         //check for pausing here
         //...
 
-
+		//enemeration error (which is icky behaviour) but it effectively doesnt matter as its removing the (prev) element in the list, we wont access that again in the loop, therefore no NullPointers.
 		foreach(Abstract_TimedBuff b in CurrentBuffs){
             //increment time
             b.BuffTick(Time.deltaTime);
@@ -20,6 +20,7 @@ public class Buffable : MonoBehaviour {
             if (b.IsFinished)
             {
                 CurrentBuffs.Remove(b);
+				print("Buff " + b + " removed.");
             }
         }
     }

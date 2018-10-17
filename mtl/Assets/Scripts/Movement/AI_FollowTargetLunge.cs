@@ -88,7 +88,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		gameObject.transform.forward = Vector3.Scale(gameObject.transform.forward, new Vector3(1, 0, 1));
 
 		//move at constant speed
-		gameObject.transform.position += (moveSpeed * Time.deltaTime) * gameObject.transform.forward;
+		gameObject.transform.position += (moveSpeed * gameObject.GetComponent<HealthState>().speedMultiplier * Time.deltaTime) * gameObject.transform.forward;
 
 		//are we too close?
 		if (Vector3.Magnitude(target.transform.position - gameObject.transform.position) < readyDistance) {
@@ -99,6 +99,12 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 	void LungeMelee(float lungeDistance) {
 		//lunge a certain distance based on the time v=s/t
 		gameObject.transform.position += (2* lungeDistance / aiTime[currentStateSequence]) * Time.deltaTime * Vector3.Normalize(gameObject.transform.forward);
+	}
+
+	void BunnyDeath()
+	{
+		enabled = false;
+
 	}
 }
 //MDT_Brandon endContrubution

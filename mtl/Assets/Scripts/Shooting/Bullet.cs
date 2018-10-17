@@ -19,7 +19,8 @@ public class Bullet : MonoBehaviour {
 
     public float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
 
-
+	// this bool is to determine whether the bullet hits the player or the enemy
+	private bool whoIsHit = false;
 
     void Awake()
     {//Setting references
@@ -46,13 +47,27 @@ public class Bullet : MonoBehaviour {
 	//to OnTriggerEnter and (Collider other)
 	void OnTriggerEnter (Collider other)
     {
-		
 		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
+
 		if(other.gameObject.tag == "Player")
 		{
+			whoIsHit = false;
 		Destroy(gameObject);
         Damage(); //Call damage on collision
 		}
+
+		if (other.gameObject.tag == "Enemy") {
+			whoIsHit = true;
+			Destroy (gameObject);
+			Damage ();
+		}
+
+		/*if(other.gameObject.tag == "Player")
+		{*/
+		Destroy(gameObject);
+        Damage(); //Call damage on collision
+		ApplyBuff(other.gameObject);
+		//}
         //why player specifically
 	}
 
@@ -62,9 +77,19 @@ public class Bullet : MonoBehaviour {
         if (healthState.currentHealth > 0)
         {
             // damage the player
-            healthState.TakeDamage(attackDamage);
+			healthState.TakeDamage(attackDamage,whoIsHit);
 
         }
         //redundant if, it already checks in healthstate update.
     }
+
+	void ApplyBuff(GameObject o) {
+		//check if buffable
+		Buffable b = o.GetComponent<Buffable>();
+		if (b) {
+			Fireball f = new Fireball();
+			print("this entity is Buffable");
+			f.ApplyBuffs(o);
+		}
+	}
 }
