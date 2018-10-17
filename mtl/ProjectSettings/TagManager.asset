@@ -6,7 +6,11 @@ TagManager:
   tags:
   - Dummy
   - Terrain
+<<<<<<< HEAD
   - Enemy
+=======
+  - TriggerText1
+>>>>>>> 18d7e06cfef32cf3192b0b2ce7dc46f33106be0e
   layers:
   - Default
   - TransparentFX
