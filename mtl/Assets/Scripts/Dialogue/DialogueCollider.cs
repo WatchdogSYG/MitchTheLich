@@ -5,11 +5,13 @@ using UnityEngine;
 public class DialogueCollider : MonoBehaviour {
 
 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "TriggerText1")
-        {
-            Fungus.Flowchart.BroadcastFungusMessage("fuckFlowersText");
-        }
+      
+        
+        Fungus.Flowchart.BroadcastFungusMessage("fuckFlowersText");
+        Debug.Log("its working");
+        
     }
 }
