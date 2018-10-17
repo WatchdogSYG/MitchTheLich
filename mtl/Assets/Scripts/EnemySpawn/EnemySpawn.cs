@@ -15,7 +15,8 @@ public class EnemySpawn : MonoBehaviour {
 
 
 	public void EnemySpawner()
-	{
+	{   
+        
 		//when this function is called from CheckPointCollider
 		//spawn a bunny where the transform is
 		Instantiate (bunny, enemyspawner.position, enemyspawner.rotation);

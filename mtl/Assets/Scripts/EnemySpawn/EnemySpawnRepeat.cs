@@ -8,7 +8,8 @@ public class EnemySpawnRepeat : MonoBehaviour {
 	//Purpose: To repeatbly spawn an enemy at a location every 2 seconds up to 5 enemies for now
 	//Date: 24/09/2018
 	//reference to bunny prefab
-	public Rigidbody bunny;
+	public GameObject bunny;
+    GameObject bunnyClone;
 	//reference to BunnySpawnRepeat object in Inspector
 	public Transform enemyspawner;
 	// this delays each spawn by a particular time
@@ -28,13 +29,14 @@ public class EnemySpawnRepeat : MonoBehaviour {
 	}
 	public void EnemySpawnerR()
 	{
-		//Time.time means the time in seconds since start of the game
-		// if time is greater than the last time it spawned plus whatever the delay is
-		// set lastFireTime = to the current time
-		// and create a bunny at the location of where the enemyspawner transform is
+        //Time.time means the time in seconds since start of the game
+        // if time is greater than the last time it spawned plus whatever the delay is
+        // set lastFireTime = to the current time
+        // and create a bunny at the location of where the enemyspawner transform is
+       
 		if (Time.time > (lastSpawnTime + spawnDelay) && counter < amountofenemies) {
 			lastSpawnTime = Time.time;
-			Instantiate (bunny, enemyspawner.position, enemyspawner.rotation);
+			bunnyClone = Instantiate(bunny, enemyspawner.position, enemyspawner.rotation) as GameObject;
 			counter++;
 			print ("bunny number " + counter + " created ");
 		}
