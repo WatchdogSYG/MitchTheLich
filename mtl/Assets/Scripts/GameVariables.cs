@@ -109,33 +109,27 @@ namespace mtl {
 		}
 	}
 
-    public class Spell {
-		//element index
-		public const int ELEMENT_NULL	= 0;//this is for entities that dont have elements defined eg. Bunny Melee
-		public const int ELEMENT_FIRE	= 1;
-		public const int ELEMENT_ICE	= 2;
-		public const int ELEMENT_SHADOW = 3;
-
-		public struct SpellProperties {
+	public class Spell {
+		
 			public float damage;
-		public const int ELEMENT_NULL	= 100;//this is for entities that dont have elements defined eg. Bunny Melee
-		public const int ELEMENT_FIRE	= 0;
-		public const int ELEMENT_ICE	= 1;
-		public const int ELEMENT_SHADOW = 2;
+			public const int ELEMENT_NULL = 100;//this is for entities that dont have elements defined eg. Bunny Melee
+			public const int ELEMENT_FIRE = 0;
+			public const int ELEMENT_ICE = 1;
+			public const int ELEMENT_SHADOW = 2;
 
-		//no dev checking on this one
-		//the properties of spells that the ProjectileLauncher has to know about
+			//no dev checking on this one
+			//the properties of spells that the ProjectileLauncher has to know about
 
-		public struct CastProperties {
-			public float mana;
-			public float fireDelay;
-		};
+			public struct CastProperties {
+				public float mana;
+				public float fireDelay;
+			};
 
 
-		//this variable makes it so their is a half second delay inbetween shots
-		public const float DelayBetweenShots1 = 0.25f;
-        public const float DelayBetweenShots2 = 1f;
-    }
+			//this variable makes it so their is a half second delay inbetween shots
+			public const float DelayBetweenShots1 = 0.25f;
+			public const float DelayBetweenShots2 = 1f;
+	}
 
     public class Buff {
 		public const float PLAYER_DEFAULT_MANA = 100f;
