@@ -27,6 +27,7 @@ namespace mtl {
 		public const float DEV_TEST_DUMMY_HEALTH = 1000f;
 		public const float PLAYER_DEFAULT_HEALTH = 100f;
 		public const float ENEMY_DEFAULT_HEALTH = 30f;
+
 		public static float AssignHealth(string tag) {
 			
 			//temporary kv for health, extend to json for entity atributes
@@ -69,7 +70,7 @@ namespace mtl {
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
 		public const float MOVEMENT_SMOOTH_COEFF = 5f;//interpolation free parameter smoothing coefficient for movement
-		public const float AI_FOLLOW_ANGULAR_SPEED = 3 * (2 * Mathf.PI);//rad per s
+		public const float AI_FOLLOW_ANGULAR_SPEED = 1 * (2 * Mathf.PI);//rad per s
 
 		public const float BUNNY_LUNGE_DISTANCE = 10f;
 		public const float BUNNY_LUNGE_TIME = 0.05f;

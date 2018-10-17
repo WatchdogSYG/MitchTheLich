@@ -9,13 +9,8 @@ public class SoulVortex : Abstract_Spell {
 	public override void Launch(GameObject spawner) {
 		throw new System.NotImplementedException();
 	}
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public override void ApplyBuffs(GameObject o) {
+		throw new System.NotImplementedException();
 	}
 }

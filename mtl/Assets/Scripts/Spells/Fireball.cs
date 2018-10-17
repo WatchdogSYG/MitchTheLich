@@ -33,4 +33,14 @@ public class Fireball : Abstract_Spell {
 		projectileInstance.velocity = launchSpeed * spawner.transform.forward;
 		Debug.Log("Instantiate Fireball");
 	}
+
+	public override void ApplyBuffs(GameObject o) {
+		List<Abstract_TimedBuff> buffs = this.BList(o);
+		Buffable b = o.GetComponent<Buffable>();
+
+		foreach (Abstract_TimedBuff atb in buffs) {
+			b.AddBuff(atb);
+			print("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
+		}
+	}
 }

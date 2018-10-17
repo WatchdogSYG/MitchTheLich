@@ -9635,9 +9635,6 @@ MonoBehaviour:
     type: 2}
   Element3FlameThrower: {fileID: 54225098720099290, guid: 6b34258bd9863b54eabd3ac7689f6f2f,
     type: 2}
-  projectileSpawner: {fileID: 205262940}
-  launchSpeed: 30
-  shotDelay: 0.25
   Attackmana: 20
 --- !u!1001 &205735616
 Prefab:
@@ -23500,13 +23497,33 @@ GameObject:
   - component: {fileID: 843271421}
   - component: {fileID: 843271425}
   - component: {fileID: 843271426}
+  - component: {fileID: 843271427}
+  - component: {fileID: 843271420}
   m_Layer: 0
   m_Name: TestDummy
   m_TagString: Dummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &843271420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 843271419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c4e74980c817d48b880aef728a53ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemBullet: {fileID: 54292640184746672, guid: e059a22f98485364fb4b091963738dc6,
+    type: 2}
+  projectileSpawner: {fileID: 329196610}
+  launchSpeed: 5
+  delay: 1
+  maxAttackDistance: 40
+  target: {fileID: 75102725}
 --- !u!135 &843271421
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23592,11 +23609,36 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 843271419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2af7b62938e94b7468b41744db350638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &843271427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 843271419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235bcdec5b7bbd24b863696e152cf4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCurrentHealth: 0
+  enemyMaxHealth: 0
+  currentHealth: 0
+  currentMana: 0
+  maxHealth: 0
+  maxMana: 0
+  speedMultiplier: 1
+  manaRegenRate: 30
+  manaRegenMultiplier: 1
+  HealthSlider: {fileID: 0}
+  ManaSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!1001 &848452246
 Prefab:
   m_ObjectHideFlags: 0
@@ -49094,6 +49136,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1834690004104502, guid: acb77766dc671424cab1f50d416daf6f,
     type: 2}
   m_PrefabInternal: {fileID: 1375006855}
+--- !u!114 &1908649560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1908649559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e81d4d65c7f3b3449a30d699e568bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &1908649565
 Rigidbody:
   m_ObjectHideFlags: 0

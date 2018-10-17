@@ -8,6 +8,7 @@ public class Damage : MonoBehaviour {
 	GameObject player;          // Reference to the player GameObject.
 	public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
 	private bool whoIsHit = false;
+
 	void Awake()
 	{//Setting references
 		player = GameObject.FindGameObjectWithTag("Player");

@@ -87,15 +87,15 @@ public class HealthState : MonoBehaviour {
         damaged = true;
 
        
-        //this debug gets annoying if it regens per frame
-        //Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
+        //this debug gets annoying if it regens per frame... it doesnt call this per frame tho
+        Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
+		currentHealth -= damage;
 
-
-		if(whoIsHit == false)
+		if (whoIsHit == false)
 		{
 			// Reduce the current health by the damage amount.
 			currentHealth -= damage;
-        HealthSlider.value = currentHealth; // Set the health bar's value to the current health
+			HealthSlider.value = currentHealth; // Set the health bar's value to the current health
 
 
 		}
@@ -105,6 +105,7 @@ public class HealthState : MonoBehaviour {
 			enemyCurrentHealth -= damage;
 			print ("bunny has been hit");
 		}
+
         //an entity can only die if it takes damage, therefore check for death here
         if (currentHealth <= 0) {
 			Death();

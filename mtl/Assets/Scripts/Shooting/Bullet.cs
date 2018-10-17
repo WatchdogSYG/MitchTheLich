@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour {
 	void OnTriggerEnter (Collider other)
     {
 		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
-<<<<<<< HEAD
+
 		if(other.gameObject.tag == "Player")
 		{
 			whoIsHit = false;
@@ -60,16 +60,14 @@ public class Bullet : MonoBehaviour {
 			whoIsHit = true;
 			Destroy (gameObject);
 			Damage ();
-
 		}
-=======
+
 		/*if(other.gameObject.tag == "Player")
 		{*/
 		Destroy(gameObject);
         Damage(); //Call damage on collision
 		ApplyBuff(other.gameObject);
 		//}
->>>>>>> b861787a87a5862afc8d7da0a887666d43b741b4
         //why player specifically
 	}
 
@@ -86,6 +84,12 @@ public class Bullet : MonoBehaviour {
     }
 
 	void ApplyBuff(GameObject o) {
-		o.GetComponent<Buffable>();
+		//check if buffable
+		Buffable b = o.GetComponent<Buffable>();
+		if (b) {
+			Fireball f = new Fireball();
+			print("this entity is Buffable");
+			f.ApplyBuffs(o);
+		}
 	}
 }
