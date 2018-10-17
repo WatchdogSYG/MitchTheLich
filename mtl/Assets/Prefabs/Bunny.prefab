@@ -216,6 +216,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4165741132018764}
   - component: {fileID: 95860046262071440}
+  - component: {fileID: 114976720207717942}
+  - component: {fileID: 114272640388890494}
   - component: {fileID: 54339006510512898}
   m_Layer: 0
   m_Name: Bunny
@@ -569,6 +571,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114272640388890494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235bcdec5b7bbd24b863696e152cf4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  currentMana: 0
+  maxHealth: 0
+  maxMana: 0
+  speedMultiplier: 1
+  manaRegenRate: 30
+  manaRegenMultiplier: 1
+  HealthSlider: {fileID: 0}
+  ManaSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+--- !u!114 &114976720207717942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af7b62938e94b7468b41744db350638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137699088173774984
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
