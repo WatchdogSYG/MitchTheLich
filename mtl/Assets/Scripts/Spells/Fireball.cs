@@ -43,4 +43,8 @@ public class Fireball : Abstract_Spell {
 			print("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
 		}
 	}
+
+	public override string ToString() {
+		return "Fireball";
+	}
 }

@@ -38,7 +38,7 @@ public class Damage : MonoBehaviour {
 		if (healthState.currentHealth > 0)
 		{
 			// damage the player
-			healthState.TakeDamage(attackDamage, whoIsHit);
+			healthState.TakeDamage(attackDamage);
 
 		}
 		//redundant if, it already checks in healthstate update.

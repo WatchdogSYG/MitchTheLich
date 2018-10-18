@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class HealthState : MonoBehaviour {
 	
-	public float enemyCurrentHealth;
-	public float enemyMaxHealth;
 	public float currentHealth;
 	public float currentMana;
 	public float maxHealth;
@@ -45,8 +43,6 @@ public class HealthState : MonoBehaviour {
 
 		maxHealth = mtl.Health.AssignHealth(gameObject.tag);
 		maxMana = mtl.Buff.AssignMana(gameObject.tag);
-		enemyMaxHealth = mtl.Health.AssignHealth ("Enemy");
-		enemyCurrentHealth = enemyMaxHealth;
 		currentHealth = maxHealth;
 		currentMana = 0;
 	}
@@ -55,6 +51,7 @@ public class HealthState : MonoBehaviour {
 	void Update () {
 		//refresh stats
 		if (currentMana < maxMana) {
+			//everyone has constant mana regen
 			UseMana(-manaRegenRate * manaRegenMultiplier * Time.deltaTime);
 		}
 		else {
@@ -81,7 +78,7 @@ public class HealthState : MonoBehaviour {
     }*/
 
 
-	public void TakeDamage(float damage, bool whoIsHit) {
+	public void TakeDamage(float damage) {
         //DamageFlash();
         // Set the damaged flag so the screen will flash.
         damaged = true;
@@ -91,28 +88,9 @@ public class HealthState : MonoBehaviour {
         Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
 		currentHealth -= damage;
 
-		if (whoIsHit == false)
-		{
-			// Reduce the current health by the damage amount.
-			currentHealth -= damage;
-			HealthSlider.value = currentHealth; // Set the health bar's value to the current health
-
-
-		}
-		if (whoIsHit == true) 
-		{
-
-			enemyCurrentHealth -= damage;
-			print ("bunny has been hit");
-		}
-
         //an entity can only die if it takes damage, therefore check for death here
         if (currentHealth <= 0) {
 			Death();
-		}
-		if (enemyCurrentHealth <= 0) {
-
-			EnemyDeath ();
 		}
 		return;
 	}
@@ -136,14 +114,8 @@ public class HealthState : MonoBehaviour {
 	}
 
 	void Death() {
-		Debug.Log("oh noes");
+		Debug.Log(gameObject.tag + " has died.");
 		return;
-	}
-
-	void EnemyDeath()
-	{
-		Debug.Log ("i have died :( ");
-
 	}
 }
 //MDT_Brandon startContribution
