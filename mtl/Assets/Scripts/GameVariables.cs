@@ -60,8 +60,7 @@ namespace mtl {
 		}
     }
 
-	public class Damage
-    {
+	public class Damage{
 		public const float DEV_TEST_BULLET_DAMAGE = 10f;
         //public int attackDamage = 10; //Tim Edit - Trying to call from GameVariables to bullet damage is difficult
     }
@@ -70,6 +69,7 @@ namespace mtl {
 		//Player and Enemy Movements
 		public const float PLAYER_BASE_MOVE_SPEED = 18f; //base player move speed. All other movement variables should be a function of this variable.
 		public const float MOVEMENT_SMOOTH_COEFF = 5f;//interpolation free parameter smoothing coefficient for movement
+		
 		//AI Movements
 		public const float AI_FOLLOW_ANGULAR_SPEED = 1 * (2 * Mathf.PI);//rad per s
 
@@ -118,25 +118,19 @@ namespace mtl {
 	}
 
 	public class Spell {
+		public const float BASE_MANA_REGEN_DELAY = 0.5f;
+
+		public const int ELEMENT_NULL = 100;//this is for entities that dont have elements defined eg. Bunny Melee
+		public const int ELEMENT_FIRE = 0;
+		public const int ELEMENT_ICE = 1;
+		public const int ELEMENT_SHADOW = 2;
 		
-			public float damage;
-			public const int ELEMENT_NULL = 100;//this is for entities that dont have elements defined eg. Bunny Melee
-			public const int ELEMENT_FIRE = 0;
-			public const int ELEMENT_ICE = 1;
-			public const int ELEMENT_SHADOW = 2;
-
-			//no dev checking on this one
-			//the properties of spells that the ProjectileLauncher has to know about
-
-			public struct CastProperties {
-				public float mana;
-				public float fireDelay;
-			};
-
-			//this should be in each spell class
-			//this variable makes it so their is a half second delay inbetween shots
-			public const float DelayBetweenShots1 = 0.25f;
-			public const float DelayBetweenShots2 = 1f;
+		//no dev checking on this one
+		//the properties of spells that the ProjectileLauncher has to know about
+		public struct CastProperties {
+			public float mana;
+			public float fireDelay;
+		};
 	}
 
     public class Buff {

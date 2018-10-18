@@ -31,13 +31,17 @@ public class Flamethrower : Abstract_Spell {
 		Debug.Log("Instantiate Flamethrower Particle");
 	}
 
+	public override void UseMana(GameObject o) {
+		o.GetComponent<HealthState>().UseMana(manaCost);
+	}
+
 	public override void ApplyBuffs(GameObject o) {
 		List<Abstract_TimedBuff> buffs = this.BList(o);
 		Buffable b = o.GetComponent<Buffable>();
 
 		foreach (Abstract_TimedBuff atb in buffs) {
 			b.AddBuff(atb);
-			print("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
+			Debug.Log("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
 		}
 	}
 }

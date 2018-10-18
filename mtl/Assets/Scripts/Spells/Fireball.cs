@@ -12,6 +12,7 @@ public class Fireball : Abstract_Spell {
 	public Fireball() {
 		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
 		this.manaCost = 10f;
+		this.fireDelay = 0.9f;
 
 
 		this.launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
@@ -34,17 +35,17 @@ public class Fireball : Abstract_Spell {
 		Debug.Log("Instantiate Fireball");
 	}
 
+	public override void UseMana(GameObject o) {
+		o.GetComponent<HealthState>().UseMana(manaCost);
+	}
+
 	public override void ApplyBuffs(GameObject o) {
 		List<Abstract_TimedBuff> buffs = this.BList(o);
 		Buffable b = o.GetComponent<Buffable>();
 
 		foreach (Abstract_TimedBuff atb in buffs) {
 			b.AddBuff(atb);
-			print("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
+			Debug.Log("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
 		}
-	}
-
-	public override string ToString() {
-		return "Fireball";
 	}
 }

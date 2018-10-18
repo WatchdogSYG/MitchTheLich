@@ -9,6 +9,7 @@ public class SoulVortex : Abstract_Spell {
 
 	public SoulVortex() {
 		this.damage = 70f;
+		this.manaCost = 50f;
 		this.launchSpeed = 5f;
 	}
 
@@ -29,7 +30,11 @@ public class SoulVortex : Abstract_Spell {
 		Debug.Log("Instantiate SoulVortex");
 	}
 
+	public override void UseMana(GameObject o) {
+		o.GetComponent<HealthState>().UseMana(manaCost);
+	}
+
 	public override void ApplyBuffs(GameObject o) {
-		print("No Buffs Implemented!");
+		Debug.Log("No Buffs Implemented!");
 	}
 }

@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour {
 		//check if buffable
 		Buffable b = o.GetComponent<Buffable>();
 		if (b) {
-			Fireball f = new Fireball();
+			Fireball f = ScriptableObject.CreateInstance<Fireball>();
 			print(o.tag + " is Buffable, applying buffs.");
 			f.ApplyBuffs(o);
 		} else {

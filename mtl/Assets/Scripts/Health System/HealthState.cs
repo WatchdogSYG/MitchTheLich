@@ -11,22 +11,22 @@ public class HealthState : MonoBehaviour {
 	public float currentMana;
 	public float maxHealth;
 	public float maxMana;
+	public bool isRegenMana;
+	public float lastManaUseTime;
+	public float manaRegenDelay;
 
 	public float speedMultiplier = 1f;
 	public float manaRegenRate = mtl.Buff.DEFAULT_MANA_REGEN;
 	public float manaRegenMultiplier = 1f;
 
-    
+    //UIFX
     public Slider HealthSlider; // Referenceing UI Slider
     public Slider ManaSlider; //Reference UI ManaSlider
     public Image damageImage;   // Reference to an image to flash on the screen on being hurt.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to flash.
     bool damaged;   //  when the player gets damaged.
-
-
-
-
+	
     //unused concept buffs
     /*
 	public float damageDealtMultiplier = 1f;
@@ -44,20 +44,30 @@ public class HealthState : MonoBehaviour {
 		maxHealth = mtl.Health.AssignHealth(gameObject.tag);
 		maxMana = mtl.Buff.AssignMana(gameObject.tag);
 		currentHealth = maxHealth;
-		currentMana = 1000;
+		lastManaUseTime = -mtl.Spell.BASE_MANA_REGEN_DELAY;//able to use spells immediately
+		manaRegenDelay = mtl.Spell.BASE_MANA_REGEN_DELAY;
+		isRegenMana = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//refresh stats
-		if (currentMana < maxMana) {
-			//everyone has constant mana regen
-			UseMana(-manaRegenRate * manaRegenMultiplier * Time.deltaTime);
+		//check if delay has passed then regen mana
+		if((Time.time-lastManaUseTime) >= manaRegenDelay) {
+			isRegenMana = true;
+		} else {
+			isRegenMana = false;
 		}
-		else {
-			currentMana = maxMana;
-		}
-        
+
+		if (isRegenMana) {
+			if (currentMana < maxMana) {
+				//everyone has constant mana regen
+				UseMana(-manaRegenRate * manaRegenMultiplier * Time.deltaTime);
+			}
+			else {
+				currentMana = maxMana;
+			}
+		}     
     }
 
 
@@ -77,7 +87,6 @@ public class HealthState : MonoBehaviour {
         damaged = false;
     }*/
 
-
 	public void TakeDamage(float damage) {
         //DamageFlash();
         // Set the damaged flag so the screen will flash.
@@ -96,21 +105,23 @@ public class HealthState : MonoBehaviour {
 	}
 
 	public void UseMana(float mana) {
+		//use mana
+		currentMana -= mana;
 
-
-        //currentMana -= mana;
 		//this debug gets annoying if it regens per frame
 		//Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
-		
-        //CAUSING ERRORS
-		//ManaSlider.value = currentMana;
+
+		//start the regen delay only if we used mana
+		if (mana > 0) {
+			lastManaUseTime = Time.time;
+			print(lastManaUseTime.ToString("F3") + "s");
+			print("Mana Not Regenerating...");
+		}
 
 
-        //an entity can only die if it takes damage, therefore check for death here
-       /* if (currentHealth <= 0) {
-			Death();
-		}*/
-		return;
+		//update UI
+		//CAUSING ERRORS - FIXED
+		ManaSlider.value = currentMana;
 	}
 
 	void Death() {
