@@ -24,7 +24,7 @@ namespace mtl {
 
 		//spallcast world offsets
 		public const float SPELL_DEFAULT_CAST_OFFSET_DISTANCE = 5f;//how far from the centre of the hitbox along transform.forward do we want to fire spells?
-		public const float SPELL_DEFAULT_CAST_HEIGHT = 5f;//how high off the groud does an entity shoot?
+		public const float SPELL_DEFAULT_CAST_HEIGHT = 2f;//how high off the groud does an entity shoot?
 	}
 
     public class Health {
