@@ -11,7 +11,7 @@ public class Fireball : Abstract_Spell {
 	//set specific stats
 	public Fireball() {
 		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
-		this.manaCost = 0.1f;
+		this.manaCost = 10f;
 
 
 		this.launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;

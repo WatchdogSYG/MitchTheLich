@@ -17,6 +17,8 @@ using UnityEngine;
 	//you should be able to custimose a particular bullet without effecting the other
 
     Edited: MDT_Timothy 28?09/2018: Edited to add mana use
+
+	Edited: MDT_Brandon Sprints 5 and 6: Abstracted spells into classes, implemented spell switching and equpping to M0 and M1. Fixed geometry.
   */
 public class ProjectileLauncher : MonoBehaviour {
 
@@ -66,19 +68,21 @@ public class ProjectileLauncher : MonoBehaviour {
 		};*/
 	
 	//the possible bound spells to m0/m1
-	Abstract_Spell[] SpellIndex0 = new Abstract_Spell[3] { new Fireball(), new Fireball(), new SoulVortex() };//elements on Mouse0
+	Abstract_Spell[] SpellIndex0 = new Abstract_Spell[3] { new Fireball(), new BreathOfUller(), new SoulVortex() };//elements on Mouse0
 	Abstract_Spell[] SpellIndex1 = new Abstract_Spell[3] { new Flamethrower(), new Fireball(), new Fireball() };//elements on Mouse1
 
 
 	void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player");
-        healthState = player.GetComponent<HealthState>(); ;
+        //healthState = player.GetComponent<HealthState>(); ;
 		/*projectileSpawner = gameObject.transform;//redundant now*/
 		//Object reference not set to an instance of an object
 		//GetComponent<HealthState>().UseMana(Attackmana);
 		ChangeSpell(element);
     }
 
+	void Start() {
+		healthState = gameObject.GetComponent<HealthState>();
+	}
 
 
 	// Update is called once per frame

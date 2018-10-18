@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour {
 	//to OnTriggerEnter and (Collider other)
 	void OnTriggerEnter (Collider other)
     {
+		print(gameObject.tag + " has collided with " + other.gameObject.tag + ".");
 		healthState = other.GetComponent<HealthState>();
 
 		/*if(other.gameObject.tag == "Player")
@@ -73,8 +74,10 @@ public class Bullet : MonoBehaviour {
 		Buffable b = o.GetComponent<Buffable>();
 		if (b) {
 			Fireball f = new Fireball();
-			print("This entity is Buffable, applying buffs.");
+			print(o.tag + " is Buffable, applying buffs.");
 			f.ApplyBuffs(o);
+		} else {
+			print(o.tag + " is immune to buffs!");
 		}
 	}
 }

@@ -44,7 +44,7 @@ public class HealthState : MonoBehaviour {
 		maxHealth = mtl.Health.AssignHealth(gameObject.tag);
 		maxMana = mtl.Buff.AssignMana(gameObject.tag);
 		currentHealth = maxHealth;
-		currentMana = 0;
+		currentMana = 1000;
 	}
 	
 	// Update is called once per frame
@@ -85,9 +85,9 @@ public class HealthState : MonoBehaviour {
 
        
         //this debug gets annoying if it regens per frame... it doesnt call this per frame tho
-        Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
-		currentHealth -= damage;
-
+        currentHealth -= damage;
+		Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
+		
         //an entity can only die if it takes damage, therefore check for death here
         if (currentHealth <= 0) {
 			Death();
@@ -98,12 +98,12 @@ public class HealthState : MonoBehaviour {
 	public void UseMana(float mana) {
 
 
-        currentMana -= mana;
+        //currentMana -= mana;
 		//this debug gets annoying if it regens per frame
 		//Debug.Log(gameObject.tag + " has used " + mana.ToString("F0") + " mana! It now has " + currentMana.ToString("F0") + "MP.");
 		
         //CAUSING ERRORS
-		ManaSlider.value = currentMana;
+		//ManaSlider.value = currentMana;
 
 
         //an entity can only die if it takes damage, therefore check for death here
@@ -115,8 +115,10 @@ public class HealthState : MonoBehaviour {
 
 	void Death() {
 		Debug.Log(gameObject.tag + " has died.");
+		//ragdoll the thing
+		Destroy(gameObject);
 		return;
 	}
 }
-//MDT_Brandon startContribution
+//MDT_Brandon endContribution
                                
