@@ -25,10 +25,10 @@ public class Flamethrower : Abstract_Spell {
 
 		rb = r.GetComponent<Rigidbody>();
 		Rigidbody projectileInstance;
-		projectileInstance = Instantiate(rb, spawner.transform.position, spawner.transform.rotation) as Rigidbody;
+		projectileInstance = Instantiate(rb, spawner.transform.position + new Vector3(0f, mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT, 0f) + (mtl.Camera.SPELL_DEFAULT_CAST_OFFSET_DISTANCE * spawner.transform.forward), spawner.transform.rotation) as Rigidbody;
 
 		projectileInstance.velocity = launchSpeed * spawner.transform.forward;
-		Debug.Log("Instantiate Fireball");
+		Debug.Log("Instantiate Flamethrower Particle");
 	}
 
 	public override void ApplyBuffs(GameObject o) {

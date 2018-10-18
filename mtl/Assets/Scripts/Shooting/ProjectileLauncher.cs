@@ -83,9 +83,10 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-		//make the gameObject face in a direction
-		gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3(1, 0, 1);
-		Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 20f);
+		//make the gameObject face in a direction (redundant since its conrolled by the player or AI
+		//gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3(1, 0, 1);
+		//Debug.Log(gameObject.transform.position.ToString() + "|" + gameObject.transform.forward.ToString());
+		Debug.DrawRay(gameObject.transform.position + new Vector3(0f,mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT,0f), gameObject.transform.forward * 20f, new Color(0f,0f,255f));
 
 		//if the player wants to change elements, set spells then check for shoot intent
 		//else check for if the player wants to shoot
@@ -107,7 +108,7 @@ public class ProjectileLauncher : MonoBehaviour {
 				lastFireTime = Time.time;
 				SpellIndex0[element].Launch(gameObject);
                 UseMana();//MDT_Brandon renamed to explicitly state using mana
-				print ("I have Primary Fired element " + element);
+				print ("I have Primary Fired an Element " + element + " spell called " + SpellIndex0[element].ToString() + " costing " + SpellIndex0[element].manaCost + " mana.");
             }
             
         }

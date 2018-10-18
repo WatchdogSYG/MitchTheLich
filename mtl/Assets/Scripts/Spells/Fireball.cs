@@ -11,7 +11,7 @@ public class Fireball : Abstract_Spell {
 	//set specific stats
 	public Fireball() {
 		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
-		this.manaCost = 10f;
+		this.manaCost = 0.1f;
 
 
 		this.launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
@@ -28,7 +28,7 @@ public class Fireball : Abstract_Spell {
 
 		rb = r.GetComponent<Rigidbody>();
 		Rigidbody projectileInstance;
-		projectileInstance = Instantiate(rb, spawner.transform.position, spawner.transform.rotation) as Rigidbody;
+		projectileInstance = Instantiate(rb, spawner.transform.position + new Vector3(0f,mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT,0f) +(mtl.Camera.SPELL_DEFAULT_CAST_OFFSET_DISTANCE * spawner.transform.forward), spawner.transform.rotation) as Rigidbody;
 
 		projectileInstance.velocity = launchSpeed * spawner.transform.forward;
 		Debug.Log("Instantiate Fireball");
