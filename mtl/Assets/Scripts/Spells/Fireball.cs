@@ -44,7 +44,7 @@ public class Fireball : Abstract_Spell {
 		Buffable b = o.GetComponent<Buffable>();
 
 		foreach (Abstract_TimedBuff atb in buffs) {
-			b.AddBuff(atb);
+			//b.AddBuff(atb);//not yet
 			Debug.Log("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
 		}
 	}

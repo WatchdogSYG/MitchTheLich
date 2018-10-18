@@ -18,9 +18,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 	float readyDistance = 15f;//TO ABSTRACT
 
 	float timer = 0;//timer for switching states
-
 	
-
 	// Use this for initialization
 	void Start() {
 		//find follow target

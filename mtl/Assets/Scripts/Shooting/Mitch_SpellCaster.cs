@@ -20,7 +20,7 @@ using UnityEngine;
 
 	Edited: MDT_Brandon Sprints 5 and 6: Abstracted spells into classes, implemented spell switching and equpping to M0 and M1. Fixed geometry.
   */
-public class ProjectileLauncher : MonoBehaviour {
+public class Mitch_SpellCaster : MonoBehaviour {
 
 	//this is where the bullet spawns
 	/*public Transform projectileSpawner;//redundant now*/
@@ -44,10 +44,7 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	//starts at zero and equals what ever Time.time was before
 	private float lastFireTime;
-
-    GameObject player;
     HealthState healthState;
-    public float Attackmana = mtl.Buff.PLAYER_DEFAULT_MANA; //set the mana used
 
 	//the spell's data we use (for mouse0 and mouse1)
 	mtl.Spell.CastProperties properties0;
@@ -107,7 +104,7 @@ public class ProjectileLauncher : MonoBehaviour {
 		//if leftclick is pressed run this code
 		//MDT_Brandon removed element argument, its handled above
 		if (Input.GetButton("Primary Fire")) {
-			if ((healthState.currentMana > SpellIndex0[element].manaCost) && (Time.time > (lastFireTime + SpellIndex0[element].fireDelay))){
+			if ((healthState.currentMana >= SpellIndex0[element].manaCost) && (Time.time > (lastFireTime + SpellIndex0[element].fireDelay))){
 				lastFireTime = Time.time;
 				SpellIndex0[element].Launch(gameObject);
                 SpellIndex0[element].UseMana(gameObject);//MDT_Brandon renamed to explicitly state using mana
@@ -118,11 +115,11 @@ public class ProjectileLauncher : MonoBehaviour {
 
 		//if rightclick is pressed run this code
 		if (Input.GetButton("Secondary Fire")) {
-			if ((healthState.currentMana > SpellIndex1[element].manaCost) && (Time.time > (lastFireTime + SpellIndex1[element].fireDelay))) {
+			if ((healthState.currentMana >= SpellIndex1[element].manaCost) && (Time.time > (lastFireTime + SpellIndex1[element].fireDelay))) {
 				lastFireTime = Time.time;
 				SpellIndex1[element].Launch(gameObject);
-				SpellIndex0[element].UseMana(gameObject);//MDT_Brandon renamed to explicitly state using mana
-				print("I have Secondary Fired element " + element);
+				SpellIndex1[element].UseMana(gameObject);//MDT_Brandon renamed to explicitly state using mana
+				print("I have Secondary Fired an Element " + element + " spell called " + SpellIndex1[element].ToString() + " costing " + SpellIndex1[element].manaCost + " mana.");
 			}
 		}
 	}
@@ -153,7 +150,6 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	private void ChangeSpell(int e) {
 		//unfortunately we have to hard code this twice
-		print(SpellIndex0[element].ToString());
 		properties0.mana = SpellIndex0[element].manaCost;
 		properties1.mana = SpellIndex1[element].manaCost;
 

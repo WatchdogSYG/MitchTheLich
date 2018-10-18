@@ -127,9 +127,10 @@ namespace mtl {
 
 		//particluar spell class variables
 		public const float BEAM_TICK_RATE = 60f;
+		public const float BLINK_MANA_COST = 25f;
 		
 		//no dev checking on this one
-		//the properties of spells that the ProjectileLauncher has to know about
+		//the properties of spells that the Mitch_SpellCaster has to know about
 		public struct CastProperties {
 			public float mana;
 			public float fireDelay;
@@ -190,6 +191,7 @@ namespace mtl {
 		public const int STATE_LOOK = 1;//statenumber for when object is stationary and looks at a target
 		public const int STATE_FOLLOW = 2;//statenumber when an object follows a target
 		public const int STATE_LUNGE_MELEE = 3;//statenumber when an object moves through a target quickly and does damage
+		public const int STATE_SHOOTING = 4;//statenumber when an object has a shoot intent
 	}
 
     public class Familiar {

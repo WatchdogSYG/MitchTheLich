@@ -54,7 +54,7 @@ public class EnemyShooting : MonoBehaviour {
 			
 	}
 
-	//same Fire() function as in ProjectileLauncher but with EnemyBullet
+	//same Fire() function as in Mitch_SpellCaster but with EnemyBullet
 	private void Fire()
 	{
 		Rigidbody projectileInstance = Instantiate(EnemBullet, projectileSpawner.position, projectileSpawner.rotation) as Rigidbody;
