@@ -5,11 +5,17 @@ using UnityEngine;
 public class BreathOfUller : Abstract_Spell {
 
 	public float range;
+	public float manaPerSecond;
+	public float tickRate;
 
 	public BreathOfUller() {
 		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
 		this.range = 20f;
-		this.manaCost = 30f;
+
+		this.manaPerSecond = 30f;
+		this.tickRate = mtl.Spell.BEAM_TICK_RATE;
+		this.manaCost = manaPerSecond / tickRate;
+		this.fireDelay = 0f;
 	}
 
 	public override void Launch(GameObject spawner) {
@@ -27,7 +33,7 @@ public class BreathOfUller : Abstract_Spell {
 	}
 
 	public override void UseMana(GameObject o) {
-		o.GetComponent<HealthState>().UseMana(manaCost*Time.deltaTime);
+		o.GetComponent<HealthState>().UseMana(manaCost*tickRate*Time.deltaTime);
 	}
 
 	public override void ApplyBuffs(GameObject o) {

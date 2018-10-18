@@ -1942,6 +1942,9 @@ MonoBehaviour:
   currentMana: 0
   maxHealth: 0
   maxMana: 0
+  isRegenMana: 0
+  lastManaUseTime: 0
+  manaRegenDelay: 0
   speedMultiplier: 1
   manaRegenRate: 30
   manaRegenMultiplier: 1
@@ -6670,9 +6673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10524ca15fff14e439372f97c13288e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Element1RedBullet: {fileID: 0}
-  Element2BlueBullet: {fileID: 0}
-  Element3FlameThrower: {fileID: 0}
   Attackmana: 100
 --- !u!1001 &75132529
 Prefab:
@@ -10085,12 +10085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10524ca15fff14e439372f97c13288e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Element1RedBullet: {fileID: 54292640184746672, guid: e059a22f98485364fb4b091963738dc6,
-    type: 2}
-  Element2BlueBullet: {fileID: 54014504988065998, guid: 27a362ec81f33804a9359eb1626fcd0f,
-    type: 2}
-  Element3FlameThrower: {fileID: 54225098720099290, guid: 6b34258bd9863b54eabd3ac7689f6f2f,
-    type: 2}
   Attackmana: 20
 --- !u!1001 &205735616
 Prefab:
@@ -21405,7 +21399,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 668011683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5726f887d9b9b594e8b0cb21ce5f7bfa, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af7b62938e94b7468b41744db350638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &668011686
@@ -21423,6 +21417,9 @@ MonoBehaviour:
   currentMana: 0
   maxHealth: 0
   maxMana: 0
+  isRegenMana: 0
+  lastManaUseTime: 0
+  manaRegenDelay: 0
   speedMultiplier: 1
   manaRegenRate: 30
   manaRegenMultiplier: 1
@@ -25641,6 +25638,9 @@ MonoBehaviour:
   currentMana: 0
   maxHealth: 0
   maxMana: 0
+  isRegenMana: 0
+  lastManaUseTime: 0
+  manaRegenDelay: 0
   speedMultiplier: 1
   manaRegenRate: 30
   manaRegenMultiplier: 1
@@ -25710,7 +25710,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 843271419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82.9, y: 5.83, z: 139.1}
+  m_LocalPosition: {x: 82.9, y: 3.16, z: 139.1}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 329196610}
@@ -30442,7 +30442,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1029681039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5726f887d9b9b594e8b0cb21ce5f7bfa, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af7b62938e94b7468b41744db350638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1029681042
@@ -30460,6 +30460,9 @@ MonoBehaviour:
   currentMana: 0
   maxHealth: 0
   maxMana: 0
+  isRegenMana: 0
+  lastManaUseTime: 0
+  manaRegenDelay: 0
   speedMultiplier: 1
   manaRegenRate: 30
   manaRegenMultiplier: 1

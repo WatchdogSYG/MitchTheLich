@@ -124,6 +124,9 @@ namespace mtl {
 		public const int ELEMENT_FIRE = 0;
 		public const int ELEMENT_ICE = 1;
 		public const int ELEMENT_SHADOW = 2;
+
+		//particluar spell class variables
+		public const float BEAM_TICK_RATE = 60f;
 		
 		//no dev checking on this one
 		//the properties of spells that the ProjectileLauncher has to know about
