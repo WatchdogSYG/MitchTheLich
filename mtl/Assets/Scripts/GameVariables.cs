@@ -21,6 +21,10 @@ namespace mtl {
 		public const float DESIRED_ASPECT_RATIO = 16f / 9f;
 
 		public const float CAM_SMOOTH_COEFF = 2f;//interpolation free parameter smoothing coefficient
+
+		//spallcast world offsets
+		public const float SPELL_DEFAULT_CAST_OFFSET_DISTANCE = 5f;//how far from the centre of the hitbox along transform.forward do we want to fire spells?
+		public const float SPELL_DEFAULT_CAST_HEIGHT = 2f;//how high off the groud does an entity shoot?
 	}
 
     public class Health {
@@ -56,28 +60,21 @@ namespace mtl {
 		}
     }
 
-	public class Damage
-    {
+	public class Damage{
 		public const float DEV_TEST_BULLET_DAMAGE = 10f;
         //public int attackDamage = 10; //Tim Edit - Trying to call from GameVariables to bullet damage is difficult
     }
 
 	public class Movement {
+		//Player and Enemy Movements
 		public const float PLAYER_BASE_MOVE_SPEED = 18f; //base player move speed. All other movement variables should be a function of this variable.
-
-		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
-		public const float BASE_PROJECTILE_SPEED2 = 60f;//base projectile speed (a "medium" speed projectile)
-		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
-
 		public const float MOVEMENT_SMOOTH_COEFF = 5f;//interpolation free parameter smoothing coefficient for movement
+		
+		//AI Movements
 		public const float AI_FOLLOW_ANGULAR_SPEED = 1 * (2 * Mathf.PI);//rad per s
 
 		public const float BUNNY_LUNGE_DISTANCE = 10f;
 		public const float BUNNY_LUNGE_TIME = 0.05f;
-
-        //v=s/t
-		public const float BLINK_DISTANCE = 14f;
-		public const float BLINK_TIME = 0.025f;
 
 		public static string AssignAI(string tag) {
 
@@ -103,6 +100,16 @@ namespace mtl {
 			return ai;
 		}
 
+		//Projectile Movements and Spell Movements
+		public const float BASE_PROJECTILE_SPEED = 30f;//base projectile speed (a "medium" speed projectile)
+		public const float BASE_PROJECTILE_SPEED2 = 60f;//base projectile speed (a "medium" speed projectile)
+		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
+
+        //v=s/t
+		public const float BLINK_DISTANCE = 14f;
+		public const float BLINK_TIME = 0.025f;
+
+		//unused smoothing function
 		public float easeFunction(float coeff, float t, float desiredSpeed) {
 			//v=50e^(coeff(t-1))
 			float v = 50 * Mathf.Exp(coeff * (t - 1));
@@ -111,25 +118,19 @@ namespace mtl {
 	}
 
 	public class Spell {
+		public const float BASE_MANA_REGEN_DELAY = 0.5f;
+
+		public const int ELEMENT_NULL = 100;//this is for entities that dont have elements defined eg. Bunny Melee
+		public const int ELEMENT_FIRE = 0;
+		public const int ELEMENT_ICE = 1;
+		public const int ELEMENT_SHADOW = 2;
 		
-			public float damage;
-			public const int ELEMENT_NULL = 100;//this is for entities that dont have elements defined eg. Bunny Melee
-			public const int ELEMENT_FIRE = 0;
-			public const int ELEMENT_ICE = 1;
-			public const int ELEMENT_SHADOW = 2;
-
-			//no dev checking on this one
-			//the properties of spells that the ProjectileLauncher has to know about
-
-			public struct CastProperties {
-				public float mana;
-				public float fireDelay;
-			};
-
-
-			//this variable makes it so their is a half second delay inbetween shots
-			public const float DelayBetweenShots1 = 0.25f;
-			public const float DelayBetweenShots2 = 1f;
+		//no dev checking on this one
+		//the properties of spells that the ProjectileLauncher has to know about
+		public struct CastProperties {
+			public float mana;
+			public float fireDelay;
+		};
 	}
 
     public class Buff {
@@ -138,6 +139,7 @@ namespace mtl {
 		public const float WIZARD1_MANA = 50f;
 
         public const float BLINK_SPEED_MAGNITUDE = (mtl.Movement.BLINK_DISTANCE / mtl.Movement.BLINK_TIME) / mtl.Movement.PLAYER_BASE_MOVE_SPEED;
+
 		public static float AssignMana(string tag) {
 
 			//temporary kv for mana, extend to json for entity atributes
@@ -164,6 +166,7 @@ namespace mtl {
 		}
 	}
 
+	//please deprecate this asap
 	public class EnemyShooting {
 		//this variable makes it so their is a 1 second delay inbetween shots
 		public const float DelayBetweenShots = 1f;
@@ -173,7 +176,6 @@ namespace mtl {
 	}
 
 	public class EnemySpawner {
-
 		// this variable will delay each enemy spawned by 2 seconds
 		public const float spawnTimer = 2f;
 		// this variable controls how many enemies spawn from a particular spawn point

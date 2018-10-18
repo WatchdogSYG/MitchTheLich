@@ -24,6 +24,7 @@ public class AI_FollowTarget : MonoBehaviour {
 																angularVelocity*Time.deltaTime,
 																0f);
 		//move at constant speed
+
 		gameObject.transform.position += moveSpeed * gameObject.transform.forward;
 	}
 }

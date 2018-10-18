@@ -17,14 +17,10 @@ using UnityEngine;
 	//you should be able to custimose a particular bullet without effecting the other
 
     Edited: MDT_Timothy 28?09/2018: Edited to add mana use
+
+	Edited: MDT_Brandon Sprints 5 and 6: Abstracted spells into classes, implemented spell switching and equpping to M0 and M1. Fixed geometry.
   */
 public class ProjectileLauncher : MonoBehaviour {
-
-	//two rigidbodys which are in prefabs
-
-	public Rigidbody Element1RedBullet;
-	public Rigidbody Element2BlueBullet;
-	public Rigidbody Element3FlameThrower;
 
 	//this is where the bullet spawns
 	/*public Transform projectileSpawner;//redundant now*/
@@ -64,28 +60,36 @@ public class ProjectileLauncher : MonoBehaviour {
 		new Abstract_Spell[3] { new Fireball(), new Fireball(), new Fireball() },
 		new Abstract_Spell[3] { new Flamethrower(), new Fireball(), new Fireball() }
 		};*/
-	
+
 	//the possible bound spells to m0/m1
-	Abstract_Spell[] SpellIndex0 = new Abstract_Spell[3] { new Fireball(), new Fireball(), new SoulVortex() };//elements on Mouse0
-	Abstract_Spell[] SpellIndex1 = new Abstract_Spell[3] { new Flamethrower(), new Fireball(), new Fireball() };//elements on Mouse1
+	Abstract_Spell[] SpellIndex0;
+	Abstract_Spell[] SpellIndex1;
 
 
 	void Awake() {
-        player = GameObject.FindGameObjectWithTag("Player");
-        healthState = player.GetComponent<HealthState>(); ;
+		//healthState = player.GetComponent<HealthState>(); ;
 		/*projectileSpawner = gameObject.transform;//redundant now*/
 		//Object reference not set to an instance of an object
 		//GetComponent<HealthState>().UseMana(Attackmana);
+		SpellIndex0 = new Abstract_Spell[3] { ScriptableObject.CreateInstance<Fireball>(),			ScriptableObject.CreateInstance <BreathOfUller>(),	ScriptableObject.CreateInstance<SoulVortex>() };//elements on Mouse0
+		SpellIndex1 = new Abstract_Spell[3] { ScriptableObject.CreateInstance <Flamethrower>(),	ScriptableObject.CreateInstance<Fireball>(),		ScriptableObject.CreateInstance<Fireball>() };//elements on Mouse1
+
+		Debug.Log("Set Spell Slots M0: " + SpellIndex0[0].ToString() + " | " + SpellIndex0[1].ToString() + " | " + SpellIndex0[2].ToString());
+		Debug.Log("Set Spell Slots M1: " + SpellIndex1[0].ToString() + " | " + SpellIndex1[1].ToString() + " | " + SpellIndex1[2].ToString());
 		ChangeSpell(element);
     }
 
+	void Start() {
+		healthState = gameObject.GetComponent<HealthState>();
+	}
 
 
 	// Update is called once per frame
 	void Update() {
-		//make the gameObject face in a direction
-		gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3(1, 0, 1);
-		Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * 20f);
+		//make the gameObject face in a direction (redundant since its conrolled by the player or AI
+		//gameObject.transform.forward = (CursorTargeting.mouseWorldPoint - gameObject.transform.position) + new Vector3(1, 0, 1);
+		//Debug.Log(gameObject.transform.position.ToString() + "|" + gameObject.transform.forward.ToString());
+		Debug.DrawRay(gameObject.transform.position + new Vector3(0f,mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT,0f), gameObject.transform.forward * 20f, new Color(0f,0f,255f));
 
 		//if the player wants to change elements, set spells then check for shoot intent
 		//else check for if the player wants to shoot
@@ -106,8 +110,8 @@ public class ProjectileLauncher : MonoBehaviour {
 			if ((healthState.currentMana > SpellIndex0[element].manaCost) && (Time.time > (lastFireTime + SpellIndex0[element].fireDelay))){
 				lastFireTime = Time.time;
 				SpellIndex0[element].Launch(gameObject);
-                UseMana();//MDT_Brandon renamed to explicitly state using mana
-				print ("I have Primary Fired element " + element);
+                SpellIndex0[element].UseMana(gameObject);//MDT_Brandon renamed to explicitly state using mana
+				print ("I have Primary Fired an Element " + element + " spell called " + SpellIndex0[element].ToString() + " costing " + SpellIndex0[element].manaCost + " mana.");
             }
             
         }
@@ -117,21 +121,10 @@ public class ProjectileLauncher : MonoBehaviour {
 			if ((healthState.currentMana > SpellIndex1[element].manaCost) && (Time.time > (lastFireTime + SpellIndex1[element].fireDelay))) {
 				lastFireTime = Time.time;
 				SpellIndex1[element].Launch(gameObject);
-				UseMana();//MDT_Brandon renamed to explicitly state using mana
+				SpellIndex0[element].UseMana(gameObject);//MDT_Brandon renamed to explicitly state using mana
 				print("I have Secondary Fired element " + element);
 			}
 		}
-
-		/*UNUSED
-						//if leftclick and 3 was pressed run this Element3Fire code
-						if (Input.GetButton ("Primary Fire") && Element3IsReady == true) {
-							print ("i have fired");
-							//if (healthState.currentMana > 10)
-							//{
-								Element3Fire();
-							//	Mana();
-							//}
-						}*/
 	}
 	
     private int SelectElement() {
@@ -160,18 +153,12 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	private void ChangeSpell(int e) {
 		//unfortunately we have to hard code this twice
-
+		print(SpellIndex0[element].ToString());
 		properties0.mana = SpellIndex0[element].manaCost;
 		properties1.mana = SpellIndex1[element].manaCost;
 
 		properties0.fireDelay = SpellIndex0[element].fireDelay;
 		properties1.fireDelay = SpellIndex1[element].fireDelay;
-	}
-
-	void UseMana() {
-		if (healthState.currentMana > 0) {
-			healthState.UseMana(Attackmana);
-		}
 	}
 
 		/*UNUSED

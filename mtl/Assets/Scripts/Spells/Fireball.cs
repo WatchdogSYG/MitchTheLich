@@ -12,6 +12,7 @@ public class Fireball : Abstract_Spell {
 	public Fireball() {
 		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
 		this.manaCost = 10f;
+		this.fireDelay = 0.9f;
 
 
 		this.launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
@@ -28,10 +29,14 @@ public class Fireball : Abstract_Spell {
 
 		rb = r.GetComponent<Rigidbody>();
 		Rigidbody projectileInstance;
-		projectileInstance = Instantiate(rb, spawner.transform.position, spawner.transform.rotation) as Rigidbody;
+		projectileInstance = Instantiate(rb, spawner.transform.position + new Vector3(0f,mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT,0f) +(mtl.Camera.SPELL_DEFAULT_CAST_OFFSET_DISTANCE * spawner.transform.forward), spawner.transform.rotation) as Rigidbody;
 
 		projectileInstance.velocity = launchSpeed * spawner.transform.forward;
 		Debug.Log("Instantiate Fireball");
+	}
+
+	public override void UseMana(GameObject o) {
+		o.GetComponent<HealthState>().UseMana(manaCost);
 	}
 
 	public override void ApplyBuffs(GameObject o) {
@@ -40,7 +45,7 @@ public class Fireball : Abstract_Spell {
 
 		foreach (Abstract_TimedBuff atb in buffs) {
 			b.AddBuff(atb);
-			print("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
+			Debug.Log("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
 		}
 	}
 }

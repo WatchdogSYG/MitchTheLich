@@ -13,19 +13,16 @@ public class Bullet : MonoBehaviour {
 
    // public int attackDamage = 10; //The amount of health damaged
 
-    HealthState healthState;    // Reference to the player's health.
-    GameObject player;          // Reference to the player GameObject.
+    HealthState healthState;    // Reference to the entity's health.
     public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
 
     public float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
-
-	// this bool is to determine whether the bullet hits the player or the enemy
-	private bool whoIsHit = false;
+	
 
     void Awake()
     {//Setting references
-        player = GameObject.FindGameObjectWithTag("Player");
-        healthState = player.GetComponent<HealthState>();//
+        //player = GameObject.FindGameObjectWithTag("Player");
+       //healthState = gameObject.GetComponent<HealthState>();//we cant call this now, there is no gameobject!
 		//Error: Object reference not set to an instance of an object
        // GetComponent<HealthState>().TakeDamage(attackDamage);
        //attackDamage = GetComponent<mtl.Damage>();
@@ -47,20 +44,8 @@ public class Bullet : MonoBehaviour {
 	//to OnTriggerEnter and (Collider other)
 	void OnTriggerEnter (Collider other)
     {
-		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
-
-		if(other.gameObject.tag == "Player")
-		{
-			whoIsHit = false;
-		Destroy(gameObject);
-        Damage(); //Call damage on collision
-		}
-
-		if (other.gameObject.tag == "Enemy") {
-			whoIsHit = true;
-			Destroy (gameObject);
-			Damage ();
-		}
+		print(gameObject.tag + " has collided with " + other.gameObject.tag + ".");
+		healthState = other.GetComponent<HealthState>();
 
 		/*if(other.gameObject.tag == "Player")
 		{*/
@@ -73,13 +58,14 @@ public class Bullet : MonoBehaviour {
 
     void Damage()
     {
-        // If the player has health to lose...
-        if (healthState.currentHealth > 0)
+		healthState.TakeDamage(attackDamage);
+		// If the player has health to lose...
+		/*if (healthState.currentHealth > 0)
         {
             // damage the player
-			healthState.TakeDamage(attackDamage,whoIsHit);
+			
 
-        }
+        }*/
         //redundant if, it already checks in healthstate update.
     }
 
@@ -87,9 +73,11 @@ public class Bullet : MonoBehaviour {
 		//check if buffable
 		Buffable b = o.GetComponent<Buffable>();
 		if (b) {
-			Fireball f = new Fireball();
-			print("this entity is Buffable");
+			Fireball f = ScriptableObject.CreateInstance<Fireball>();
+			print(o.tag + " is Buffable, applying buffs.");
 			f.ApplyBuffs(o);
+		} else {
+			print(o.tag + " is immune to buffs!");
 		}
 	}
 }

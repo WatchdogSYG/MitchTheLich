@@ -25,10 +25,14 @@ public class Flamethrower : Abstract_Spell {
 
 		rb = r.GetComponent<Rigidbody>();
 		Rigidbody projectileInstance;
-		projectileInstance = Instantiate(rb, spawner.transform.position, spawner.transform.rotation) as Rigidbody;
+		projectileInstance = Instantiate(rb, spawner.transform.position + new Vector3(0f, mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT, 0f) + (mtl.Camera.SPELL_DEFAULT_CAST_OFFSET_DISTANCE * spawner.transform.forward), spawner.transform.rotation) as Rigidbody;
 
 		projectileInstance.velocity = launchSpeed * spawner.transform.forward;
-		Debug.Log("Instantiate Fireball");
+		Debug.Log("Instantiate Flamethrower Particle");
+	}
+
+	public override void UseMana(GameObject o) {
+		o.GetComponent<HealthState>().UseMana(manaCost);
 	}
 
 	public override void ApplyBuffs(GameObject o) {
@@ -37,7 +41,7 @@ public class Flamethrower : Abstract_Spell {
 
 		foreach (Abstract_TimedBuff atb in buffs) {
 			b.AddBuff(atb);
-			print("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
+			Debug.Log("Applied Buff: " + atb.ToString() + " to " + o.tag + ".");
 		}
 	}
 }
