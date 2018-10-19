@@ -62,17 +62,17 @@ public class Mitch_SpellCaster : MonoBehaviour {
 	Abstract_Spell[] SpellIndex0;
 	Abstract_Spell[] SpellIndex1;
 
-
 	void Awake() {
 		//healthState = player.GetComponent<HealthState>(); ;
 		/*projectileSpawner = gameObject.transform;//redundant now*/
 		//Object reference not set to an instance of an object
 		//GetComponent<HealthState>().UseMana(Attackmana);
 		SpellIndex0 = new Abstract_Spell[3] { ScriptableObject.CreateInstance<Fireball>(),			ScriptableObject.CreateInstance <BreathOfUller>(),	ScriptableObject.CreateInstance<SoulVortex>() };//elements on Mouse0
-		SpellIndex1 = new Abstract_Spell[3] { ScriptableObject.CreateInstance <Flamethrower>(),	ScriptableObject.CreateInstance<Fireball>(),		ScriptableObject.CreateInstance<Fireball>() };//elements on Mouse1
+		SpellIndex1 = new Abstract_Spell[3] { ScriptableObject.CreateInstance <Flamethrower>(),	ScriptableObject.CreateInstance<BlackHole>(),		ScriptableObject.CreateInstance<Fireball>() };//elements on Mouse1
 
 		Debug.Log("Set Spell Slots M0: " + SpellIndex0[0].ToString() + " | " + SpellIndex0[1].ToString() + " | " + SpellIndex0[2].ToString());
 		Debug.Log("Set Spell Slots M1: " + SpellIndex1[0].ToString() + " | " + SpellIndex1[1].ToString() + " | " + SpellIndex1[2].ToString());
+
 		ChangeSpell(element);
     }
 
