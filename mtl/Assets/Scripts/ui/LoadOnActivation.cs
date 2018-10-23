@@ -1,0 +1,12 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LoadOnActivation : MonoBehaviour {
+
+    private void OnEnable()
+    {
+        SceneManager.LoadScene("mtl_01", LoadSceneMode.Single);
+    }
+}
