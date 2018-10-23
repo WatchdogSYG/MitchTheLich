@@ -1898,6 +1898,7 @@ GameObject:
   - component: {fileID: 75102729}
   - component: {fileID: 75102732}
   - component: {fileID: 75102735}
+  - component: {fileID: 75102737}
   m_Layer: 0
   m_Name: mitchModel
   m_TagString: Player
@@ -6672,6 +6673,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10524ca15fff14e439372f97c13288e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &75102737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 75102721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0151be44301e734a9188d9bec3530ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &75132529
@@ -25636,7 +25648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &843271420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57546,7 +57558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2023671592
 Transform:
   m_ObjectHideFlags: 0
