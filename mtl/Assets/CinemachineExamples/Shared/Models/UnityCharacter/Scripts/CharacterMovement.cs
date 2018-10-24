@@ -50,7 +50,7 @@ public class CharacterMovement : MonoBehaviour
         anim.SetFloat("Direction", direction);
 	    
 
-        // set sprinting
+        // set sprinting ... Mitch is not supposed to sprint
 	    if ((Input.GetKeyDown(sprintJoystick) || Input.GetKeyDown(sprintKeyboard)) && input != Vector2.zero && direction >= 0f) isSprinting = true;
 	    if ((Input.GetKeyUp(sprintJoystick) || Input.GetKeyUp(sprintKeyboard))|| input == Vector2.zero) isSprinting = false;
         anim.SetBool("isSprinting", isSprinting);

@@ -6686,6 +6686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0151be44301e734a9188d9bec3530ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EPress_Shield: {fileID: 1029681043}
 --- !u!1001 &75132529
 Prefab:
   m_ObjectHideFlags: 0

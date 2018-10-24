@@ -34,29 +34,36 @@ public class PlayerController : MonoBehaviour {
 	private int countere = 0;
 	private int counterf = 0;
 	private int counterls = 0;
+
+	bool[] ActionFlag;
+	
+	//Declare all RigidBodys used in qerf spells
+	public Rigidbody EPress_Shield;
+
+
 	// Update is called once per frame
 	void Start()
 	{
 		//lastDelayTime2 = Time.time;
-
+		ActionFlag = new bool[5] { false, false, false, false , false};//Q,E,R,F,LShift
 	}
-	void Update ()
+	void Update()
 	{
-		QHoldDelay ();
-		QDoubleTap ();
-		QButton ();
+		QHoldDelay();
+		QDoubleTap();
+		QButton();
 
-		EHoldDelay ();
-		EDoubleTap ();
-		EButton ();
+		EHoldDelay();
+		EDoubleTap();
+		EButton();
 
 		FHoldDelay();
-		FDoubleTap ();
-		FButton ();
+		FDoubleTap();
+		FButton();
 
-		LShiftHoldDelay ();
-		LShiftDoubleTap ();
-		LShiftButton ();
+		LShiftHoldDelay();
+		LShiftDoubleTap();
+		LShiftButton();
 
 	}
 	//holdown button, button pressed, button released
@@ -222,7 +229,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonUp("Shield")) 
 		{
 			print ("I've released E");
-
+			Instantiate(EPress_Shield, CursorTargeting.mouseWorldPoint , gameObject.transform.rotation);
 		}
 
 
