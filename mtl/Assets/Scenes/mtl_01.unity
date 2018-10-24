@@ -36745,7 +36745,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.55
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36791,6 +36791,18 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e8c8c5feebb38af4e9fb3982989294fc, type: 2}
+    - target: {fileID: 9500000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2b1be3818e43f6845bb85a33dc59183b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
   m_IsPrefabAsset: 0
@@ -54685,7 +54697,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 125e05b88d93c7449a43b1f68afdf939, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -54706,7 +54718,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 4
+  m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -54734,7 +54746,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1883073277}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 0.35
   stopAction: 0
   looping: 1
   prewarm: 0
@@ -54805,7 +54817,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.33
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -55296,7 +55308,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -1.43
       minScalar: 0
       maxCurve:
         serializedVersion: 2
