@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 	bool[] ActionFlag;
 	
 	//Declare all RigidBodys used in qerf spells
-	public Rigidbody EPress_Shield;
+	public GameObject EPress_Shield;
 
 
 	// Update is called once per frame

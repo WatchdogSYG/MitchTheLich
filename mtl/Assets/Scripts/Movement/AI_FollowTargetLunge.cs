@@ -6,16 +6,17 @@ using UnityEngine;
 public class AI_FollowTargetLunge : MonoBehaviour {
 	GameObject target;//TO ABSTRACT
 
-	readonly int[] aiSequence = new int[5] {	mtl.AIStates.STATE_FOLLOW,
+	readonly int[] aiSequence = new int[5] {    mtl.AIStates.STATE_IDLE,
+												mtl.AIStates.STATE_FOLLOW,
 												mtl.AIStates.STATE_LOOK,
 												mtl.AIStates.STATE_IDLE,
-												mtl.AIStates.STATE_LUNGE_MELEE,
-												mtl.AIStates.STATE_IDLE};
-	readonly float[] aiTime = new float[5] {-1f,0.5f,0.2f,0.05f,1f};
+												mtl.AIStates.STATE_LUNGE_MELEE};
+	readonly float[] aiTime = new float[5] {-1f,-1f,0.5f,0.2f,0.05f};
 
 	int currentStateSequence = 0;
 
 	float readyDistance = 15f;//TO ABSTRACT
+	float searchDistance = 50f;
 
 	float timer = 0;//timer for switching states
 	
@@ -30,7 +31,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		//check for what state it should be
 		switch (aiSequence[currentStateSequence]) {
 			case mtl.AIStates.STATE_IDLE:
-				Idle();
+				Idle(searchDistance);
 				break;
 			case mtl.AIStates.STATE_LOOK:
 				Look(1f);
@@ -64,8 +65,11 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		}
 	}
 
-	void Idle() {
-		
+	void Idle(float triggerDistance) {
+		float dx = Vector3.Magnitude(target.transform.position - gameObject.transform.position);
+		if (dx < triggerDistance) {
+			currentStateSequence++;
+		}
 	}
 	
 	//0 < angularStickyness <= 1 //to implement stickyness, it currently locks on perfectly
@@ -89,7 +93,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		gameObject.transform.position += (moveSpeed * gameObject.GetComponent<HealthState>().speedMultiplier * Time.deltaTime) * gameObject.transform.forward;
 
 		//are we too close?
-		if (Vector3.Magnitude(target.transform.position - gameObject.transform.position) < readyDistance) {
+		if (Vector3.Magnitude(target.transform.position - gameObject.transform.position) < triggerDistance) {
 			currentStateSequence++;
 		}
 	}
