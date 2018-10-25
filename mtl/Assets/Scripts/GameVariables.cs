@@ -7,8 +7,8 @@ using UnityEngine;
 namespace mtl {
 
 	public class Camera {
-		public const float ISO_PITCH = 60f;//degrees downwards around the x axis for this isometric camera
-		public const float ISO_YAW = 0f;//degrees around the y axis for this isometric camera
+		public const float ISO_PITCH = 45f;//degrees downwards around the x axis for this isometric camera
+		public const float ISO_YAW = 15f;//degrees around the y axis for this isometric camera
 		public const float ISO_ROLL = 0f;//degrees around the z axis for this isometric camera
 		public const float CAM_DISPLACEMENT = 200f;//metres from focus target (for lighting and near-clip plane modifications only)
 		public const float ORTHO_HEIGHT = 25f;//length of the orthographic half-box height
@@ -193,6 +193,7 @@ namespace mtl {
 		public const int STATE_FOLLOW = 2;//statenumber when an object follows a target
 		public const int STATE_LUNGE_MELEE = 3;//statenumber when an object moves through a target quickly and does damage
 		public const int STATE_SHOOTING = 4;//statenumber when an object has a shoot intent
+		public const int STATE_SEARCHING = 5;//statenumber when an object is looking for a target with some criteria and not doing anything else
 	}
 
     public class Familiar {

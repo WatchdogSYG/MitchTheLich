@@ -6,17 +6,19 @@ using UnityEngine;
 public class AI_FollowTargetLunge : MonoBehaviour {
 	GameObject target;//TO ABSTRACT
 
-	readonly int[] aiSequence = new int[5] {    mtl.AIStates.STATE_IDLE,
+	readonly int[] aiSequence = new int[6] {	mtl.AIStates.STATE_SEARCHING,
 												mtl.AIStates.STATE_FOLLOW,
 												mtl.AIStates.STATE_LOOK,
 												mtl.AIStates.STATE_IDLE,
-												mtl.AIStates.STATE_LUNGE_MELEE};
-	readonly float[] aiTime = new float[5] {-1f,-1f,0.5f,0.2f,0.05f};
+												mtl.AIStates.STATE_LUNGE_MELEE,
+												mtl.AIStates.STATE_IDLE};
+	readonly float[] aiTime = new float[6] {-1f,-1f,0.5f,0.2f,0.05f,0.3f};
 
 	int currentStateSequence = 0;
 
 	float readyDistance = 15f;//TO ABSTRACT
 	float searchDistance = 50f;
+	bool idleTimeToggle = false;
 
 	float timer = 0;//timer for switching states
 	
@@ -31,7 +33,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		//check for what state it should be
 		switch (aiSequence[currentStateSequence]) {
 			case mtl.AIStates.STATE_IDLE:
-				Idle(searchDistance);
+				Idle( idleTimeToggle, searchDistance);
 				break;
 			case mtl.AIStates.STATE_LOOK:
 				Look(1f);
@@ -41,6 +43,9 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 				break;
 			case mtl.AIStates.STATE_LUNGE_MELEE:
 				LungeMelee(mtl.Movement.BUNNY_LUNGE_DISTANCE);
+				break;
+			case mtl.AIStates.STATE_SEARCHING:
+				SearchForPlayer();//currently player is the only target needed to be searched for
 				break;
 			default:
 				Debug.Log(gameObject.tag + " is not in a valid AI state");
@@ -65,11 +70,8 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		}
 	}
 
-	void Idle(float triggerDistance) {
-		float dx = Vector3.Magnitude(target.transform.position - gameObject.transform.position);
-		if (dx < triggerDistance) {
-			currentStateSequence++;
-		}
+	void Idle(bool useTime, float triggerDistance) {
+		
 	}
 	
 	//0 < angularStickyness <= 1 //to implement stickyness, it currently locks on perfectly
@@ -93,7 +95,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		gameObject.transform.position += (moveSpeed * gameObject.GetComponent<HealthState>().speedMultiplier * Time.deltaTime) * gameObject.transform.forward;
 
 		//are we too close?
-		if (Vector3.Magnitude(target.transform.position - gameObject.transform.position) < triggerDistance) {
+		if ( CheckDistance(gameObject,target) < triggerDistance) {
 			currentStateSequence++;
 		}
 	}
@@ -103,10 +105,17 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 		gameObject.transform.position += (2* lungeDistance / aiTime[currentStateSequence]) * Time.deltaTime * Vector3.Normalize(gameObject.transform.forward);
 	}
 
-	void BunnyDeath()
-	{
-		enabled = false;
+	void SearchForPlayer() {
+		float dx = Vector3.Magnitude(target.transform.position - gameObject.transform.position);
+		if (CheckDistance(gameObject,target) < searchDistance) {
+			currentStateSequence++;
+		}
+		
+	}
 
+	//returns the magnitude of the displacement from t1 to t2
+	float CheckDistance(GameObject o1, GameObject o2) {
+		return Vector3.Magnitude(o2.transform.position - o1.transform.position);
 	}
 }
 //MDT_Brandon endContrubution
