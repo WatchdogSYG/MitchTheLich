@@ -9,6 +9,7 @@ TagManager:
   - Dummy
   - Terrain
   - Shield
+  - Iceball
   layers:
   - Default
   - TransparentFX
