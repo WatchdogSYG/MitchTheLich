@@ -27,7 +27,12 @@ public class HealthState : MonoBehaviour {
 	public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
 	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to flash.
 	bool damaged;   //  when the player gets damaged.
-
+	// this variable must be public, gets set to true in bullet code
+	public bool isSlowed = false;
+	//delay time for iceball
+	private float lastDelayTime = 2f;
+	//this variable sets lastDelayTime back to 2
+	private float slowDuration = 2f;
 	//unused concept buffs
 	/*
 	public float damageDealtMultiplier = 1f;
@@ -71,6 +76,26 @@ public class HealthState : MonoBehaviour {
 			else {
 				currentMana = maxMana;
 			}
+		}
+
+	//in bullet code if been hit by iceball make isSlowed equals true therefore...
+		if (isSlowed == true) 
+		{
+			//speed multiplier is halved
+			speedMultiplier = 0.5f;
+			//start timer
+			lastDelayTime -= Time.deltaTime;
+			//print ("im slowed");
+			//print (lastDelayTime);
+			//if timer reaches 0 set variables back to normal
+			if (lastDelayTime <= 0) 
+			{
+				isSlowed = false;
+				lastDelayTime = slowDuration;
+				speedMultiplier = 1f;
+				//print ("OH BABY");
+			}
+
 		}
 	}
 
