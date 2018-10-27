@@ -12,6 +12,8 @@ public class EnemyCounter : MonoBehaviour {
     }
 	
 	// Update is called once per frame
+    // When Bunnycheck has no objects attached to the tag, call the fungus message. 
+    // When bunnies are spawned, they are added to the enemies array. Constantly checks to see if the array is empty. 
 	void Update () {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("BunnyCheck");
         remainingEnemies = enemies.Length;
