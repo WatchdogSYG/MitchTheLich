@@ -14,10 +14,10 @@ public class Bullet : MonoBehaviour {
    // public int attackDamage = 10; //The amount of health damaged
 
     HealthState healthState;    // Reference to the entity's health.
+
     public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
 
     public float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
-	
 
     void Awake()
     {//Setting references
@@ -38,8 +38,10 @@ public class Bullet : MonoBehaviour {
         ParticleSystem ps = GetComponent<ParticleSystem>();
         ps.Play();
         Destroy(ps, ps.main.duration);
+
 	}
-	
+
+
 	//modified from OnCollisionEnter(Collision other)
 	//to OnTriggerEnter and (Collider other)
 	void OnTriggerEnter (Collider other)
@@ -52,10 +54,18 @@ public class Bullet : MonoBehaviour {
 		Destroy(gameObject);
         Damage(); //Call damage on collision
 		ApplyBuff(other.gameObject);
-		//}
-        //why player specifically
-	}
+		//if bullet == iceball call make variable in healthState isSlowed equal to true
+		if (gameObject.tag == "Iceball") {
+			healthState.isSlowed = true;
 
+		} else 
+		{
+			//if get hit by anything other than iceball set multiplier back to 1
+			healthState.speedMultiplier = 1f;
+		}
+	}
+		
+	
     void Damage()
     {
 		healthState.TakeDamage(attackDamage);
@@ -80,4 +90,8 @@ public class Bullet : MonoBehaviour {
 			print(o.tag + " is immune to buffs!");
 		}
 	}
+
+
+
+
 }

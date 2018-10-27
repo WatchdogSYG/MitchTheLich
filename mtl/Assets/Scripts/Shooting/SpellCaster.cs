@@ -16,7 +16,9 @@ public class SpellCaster : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		SpellIndex = new Abstract_Spell[3] { ScriptableObject.CreateInstance<Fireball>(), ScriptableObject.CreateInstance<BreathOfUller>(), ScriptableObject.CreateInstance<SoulVortex>() };//elements on Mouse0
+		//replaced fireball with rock for now
+		//SpellIndex = new Abstract_Spell[3] { ScriptableObject.CreateInstance<Fireball>(), ScriptableObject.CreateInstance<BreathOfUller>(), ScriptableObject.CreateInstance<SoulVortex>() };//elements on Mouse0
+		SpellIndex = new Abstract_Spell[3] { ScriptableObject.CreateInstance<Rock>(), ScriptableObject.CreateInstance<Fireball>(), ScriptableObject.CreateInstance<SoulVortex>() };//elements on Mouse0
 	}
 
 	void Start() {
