@@ -1,5 +1,6 @@
 ﻿//MDT_Brandon startContribution
 //MDT_Timothy Added References and code to UI Health and mana sliders and image //No value given to damage or Take Damage causing NullReference Exceptions I think
+//MDT_Owen Added Iceball functionality to Update
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
