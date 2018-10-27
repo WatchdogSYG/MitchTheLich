@@ -26,7 +26,28 @@ public class DialogueCollider : MonoBehaviour {
 
         if(other.gameObject.name == "Trigger3")
         {
-            Fungus.Flowchart.BroadcastFungusMessage("Spells");
+            Fungus.Flowchart.BroadcastFungusMessage("spells");
+            Debug.Log("its working");
+
+        }
+
+        if (other.gameObject.name == "Trigger4")
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("killBunnies");
+            Debug.Log("its working");
+
+        }
+
+        if (other.gameObject.name == "Trigger5")
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("killBunnies_2");
+            Debug.Log("its working");
+
+        }
+
+        if (other.gameObject.name == "Trigger6")
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("killBunnies_3");
             Debug.Log("its working");
 
         }

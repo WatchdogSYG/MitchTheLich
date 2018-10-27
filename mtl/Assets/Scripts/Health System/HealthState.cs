@@ -34,8 +34,8 @@ public class HealthState : MonoBehaviour {
 	private float lastDelayTime = 2f;
 	//this variable sets lastDelayTime back to 2
 	private float slowDuration = 2f;
-	//unused concept buffs
-	/*
+    //unused concept buffs
+    /*
 	public float damageDealtMultiplier = 1f;
 	public float damageTakenMultiplier = 1f;
 	public float healthRegenRate = 0f;
@@ -43,8 +43,9 @@ public class HealthState : MonoBehaviour {
 	public bool redirectSpell = false;
 	public bool spreadOnContact = false;
 	*/
-
 	// Use this for initialization
+
+
 	void Start() {
 		//what object is this? set stats to appropriate values as defined in mtl class
 		string tag = gameObject.tag;
@@ -162,6 +163,7 @@ public class HealthState : MonoBehaviour {
 			Debug.Log("Game Over!");
 			Destroy(gameObject);
 		}
+
 		else {
 			Debug.Log(gameObject.tag + " has died.");
 			//ragdoll the thing

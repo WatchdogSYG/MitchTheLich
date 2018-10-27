@@ -10,6 +10,8 @@ TagManager:
   - Terrain
   - Shield
   - Iceball
+  - BunnyCheck
+  - Laser
   layers:
   - Default
   - TransparentFX

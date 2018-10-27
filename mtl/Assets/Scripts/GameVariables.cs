@@ -38,7 +38,8 @@ namespace mtl {
 			List<KeyValuePair<string, float>> healthKV = new List<KeyValuePair<string, float>>();
 			healthKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Bunny", 10f));
-			healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
+            healthKV.Add(new KeyValuePair<string, float>("BunnyCheck", 10f));
+            healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Enemy", ENEMY_DEFAULT_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Shield", SHIELD_DEFAULT_HEALTH));
 			float h= -1f;
@@ -185,6 +186,7 @@ namespace mtl {
 		public const float spawnTimer = 2f;
 		// this variable controls how many enemies spawn from a particular spawn point
 		public const int AmountOfEnemies = 5;
+        public int killCounter = 0;
 	}
 
 	public class AIStates {
