@@ -26,7 +26,7 @@ public class DialogueCollider : MonoBehaviour {
 
         if(other.gameObject.name == "Trigger3")
         {
-            Fungus.Flowchart.BroadcastFungusMessage("Arena");
+            Fungus.Flowchart.BroadcastFungusMessage("Spells");
             Debug.Log("its working");
 
         }

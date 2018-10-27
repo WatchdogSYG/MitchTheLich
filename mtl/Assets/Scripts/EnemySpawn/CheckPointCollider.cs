@@ -17,6 +17,11 @@ public class CheckPointCollider : MonoBehaviour {
     public Transform enemyspawner3;
     public Transform enemyspawner4;
     public Transform enemyspawner5;
+    public Transform enemyspawner6;
+    public Transform enemyspawner7;
+    public Transform enemyspawner8;
+    public Transform enemyspawner9;
+    public Transform enemyspawner10;
 
 
 
@@ -35,6 +40,11 @@ public class CheckPointCollider : MonoBehaviour {
             Instantiate(bunny, enemyspawner3.position, enemyspawner3.rotation);
             Instantiate(bunny, enemyspawner4.position, enemyspawner4.rotation);
             Instantiate(bunny, enemyspawner5.position, enemyspawner5.rotation);
+            Instantiate(bunny, enemyspawner6.position, enemyspawner6.rotation);
+            Instantiate(bunny, enemyspawner7.position, enemyspawner7.rotation);
+            Instantiate(bunny, enemyspawner8.position, enemyspawner8.rotation);
+            Instantiate(bunny, enemyspawner9.position, enemyspawner9.rotation);
+            Instantiate(bunny, enemyspawner10.position, enemyspawner10.rotation);
 
 
         }
