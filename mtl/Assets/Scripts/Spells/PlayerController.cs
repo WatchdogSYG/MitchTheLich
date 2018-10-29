@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+	//why dont we put this in an array?
 	//Author: Owen.Gunter
 	//Purpose: To eventually make spells bound to these keys instead and to give extra functionality such as double tap (press key twice to make something happen once)
 	//HoldDelay which is holding key down for a period time to make something happen once
 	//Getbutton = holding button down
 	//GetbuttonDown = when key is pressed
 	//GetbuttonUp = when key is released from the press
+
+	GameObject o;
 
 	//this will become true if lastDelayTime > delay 1 this for the HoldDelay() functions
 	private bool cooldownq = false;
@@ -46,12 +49,14 @@ public class PlayerController : MonoBehaviour {
 	{
 		//lastDelayTime2 = Time.time;
 		ActionFlag = new bool[5] { false, false, false, false , false};//Q,E,R,F,LShift
+		 o = GameObject.FindWithTag("Player");
 	}
 	void Update()
 	{
-		QHoldDelay();
-		QDoubleTap();
-		QButton();
+			QHoldDelay();
+			QDoubleTap();
+			QButton();
+		
 
 		EHoldDelay();
 		EDoubleTap();
@@ -68,26 +73,26 @@ public class PlayerController : MonoBehaviour {
 	}
 	//holdown button, button pressed, button released
 	void QButton()
-{
-
-	//if hold q down print this
-	if (Input.GetButton("Buff")) 
-	{
-		print ("I'm Holding Down Q");
-	}
-	//if q is pressed print this
-	if (Input.GetButtonDown("Buff"))
-	{
-		print ("I've pressed Q");
-	}
-	//if q is released from the press print this
-	if (Input.GetButtonUp("Buff")) 
 	{
 
-		print ("I've released Q");
-	}
+		//if hold q down print this
+		if (Input.GetButton("Buff")) 
+		{
+			print ("I'm Holding Down Q");
+		}
+		//if q is pressed print this
+		if (Input.GetButtonDown("Buff"))
+		{
+			print ("I've pressed Q");
+		}
+		//if q is released from the press print this
+		if (Input.GetButtonUp("Buff")) 
+		{
+			print("I've released Q");
+			new ArcaneFocus().ApplyBuffs(o);
+		}
 
-}
+	}
 		
 	// after 2 seconds of holding q down print message
 	void QHoldDelay()

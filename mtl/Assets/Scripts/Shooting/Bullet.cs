@@ -15,9 +15,9 @@ public class Bullet : MonoBehaviour {
 
     HealthState healthState;    // Reference to the entity's health.
 
-    public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
+    float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
 
-    public float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
+    float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
 
     void Awake()
     {//Setting references
@@ -38,7 +38,6 @@ public class Bullet : MonoBehaviour {
         ParticleSystem ps = GetComponent<ParticleSystem>();
         ps.Play();
         Destroy(ps, ps.main.duration);
-
 	}
 
 
@@ -69,14 +68,6 @@ public class Bullet : MonoBehaviour {
     void Damage()
     {
 		healthState.TakeDamage(attackDamage);
-		// If the player has health to lose...
-		/*if (healthState.currentHealth > 0)
-        {
-            // damage the player
-			
-
-        }*/
-        //redundant if, it already checks in healthstate update.
     }
 
 	void ApplyBuff(GameObject o) {

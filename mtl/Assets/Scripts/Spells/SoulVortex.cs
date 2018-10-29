@@ -49,9 +49,9 @@ public class SoulVortex : Abstract_Spell {
 		//launchSpeed = ((-Physics.gravity.y * dx) / (2f * linearProjectileFlightConstant * Mathf.Sin(parabolicLaunchAngle)))-(mtl.Camera.SPELL_DEFAULT_CAST_OFFSET_DISTANCE/(dx * Mathf.Sin(parabolicLaunchAngle)));
 		//launchSpeed = Mathf.Sqrt(Mathf.Pow((-Physics.gravity.y*dx/(linearProjectileFlightConstant*2)-(mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT*dx/linearProjectileFlightConstant)), 2f))+linearProjectileFlightConstant;
 		//launchSpeed = ((-Physics.gravity.y * Mathf.Pow((dx / linearProjectileFlightConstant),2f))-mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT+dx) / ((dx*(Mathf.Sin(parabolicLaunchAngle)+Mathf.Cos(parabolicLaunchAngle)))/linearProjectileFlightConstant);
-		launchSpeed = Vector3.Magnitude(new Vector3(1.5f*dx/lifetime,(0.5f*-Physics.gravity.y/lifetime)-(mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT/lifetime)));
+		launchSpeed = Vector3.Magnitude(new Vector3(1.55f*dx/lifetime,(0.5f*-Physics.gravity.y/lifetime)-(mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT/lifetime)));
 
-		//ok i tried, but this launchspeed is hardcoded (*1.5f) to hit near the cursor.
+		//ok i tried, but this launchspeed is hardcoded (*1.55f) to hit near the cursor.
 
 		projectileInstance.velocity = launchSpeed * (spawner.transform.forward + (new Vector3(0f,1f,0f) * Mathf.Tan(parabolicLaunchAngle)));
 		projectileInstance.useGravity = true;
@@ -74,6 +74,10 @@ public class SoulVortex : Abstract_Spell {
 	public void Pull(GameObject o, GameObject v, float speed) {
 		Vector3 pullDir = v.transform.position - o.transform.position;
 		o.transform.position += speed * Vector3.Normalize(pullDir) * Time.deltaTime;
+	}
+
+	void Update() {
+		Debug.Log("hi");
 	}
 }
 

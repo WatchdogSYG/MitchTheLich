@@ -31,7 +31,7 @@ namespace mtl {
 		public const float DEV_TEST_DUMMY_HEALTH = 1000f;
 		public const float PLAYER_DEFAULT_HEALTH = 100f;
 		public const float ENEMY_DEFAULT_HEALTH = 30f;
-		public const float SHIELD_DEFAULT_HEALTH = 20f;
+		public const float SHIELD_DEFAULT_HEALTH = 50f;
 		public static float AssignHealth(string tag) {
 			
 			//temporary kv for health, extend to json for entity atributes
@@ -130,6 +130,8 @@ namespace mtl {
 		//particluar spell class variables
 		public const float BEAM_TICK_RATE = 60f;
 		public const float BLINK_MANA_COST = 25f;
+
+		public const float ARCANEFOCUS_MANACOST = 60f;
 		
 		//no dev checking on this one
 		//the properties of spells that the Mitch_SpellCaster has to know about
@@ -145,6 +147,8 @@ namespace mtl {
 		public const float WIZARD1_MANA = 50f;
 
         public const float BLINK_SPEED_MAGNITUDE = (mtl.Movement.BLINK_DISTANCE / mtl.Movement.BLINK_TIME) / mtl.Movement.PLAYER_BASE_MOVE_SPEED;
+
+		public const float MANA_REGEN_RATE_BUFF_MULTIPLIER = 1.2f;
 
 		public static float AssignMana(string tag) {
 
