@@ -12,6 +12,7 @@ TagManager:
   - Iceball
   - BunnyCheck
   - Laser
+  - Boss
   layers:
   - Default
   - TransparentFX
