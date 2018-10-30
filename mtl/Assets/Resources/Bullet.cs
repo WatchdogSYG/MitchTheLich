@@ -15,26 +15,28 @@ public class Bullet : MonoBehaviour {
 
     HealthState healthState;    // Reference to the entity's health.
 
-    float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
-
-    float MaxLifeTime = mtl.Movement.BASE_PROJECTILE_LIFETIME;//MDT_Brandon cleaned up
+    float attackDamage; // Set the attack damage
+    float MaxLifeTime;//MDT_Brandon cleaned up
 
     void Awake()
     {//Setting references
-        //player = GameObject.FindGameObjectWithTag("Player");
-       //healthState = gameObject.GetComponent<HealthState>();//we cant call this now, there is no gameobject!
-		//Error: Object reference not set to an instance of an object
-       // GetComponent<HealthState>().TakeDamage(attackDamage);
-       //attackDamage = GetComponent<mtl.Damage>();
-       //why player specifically
+	 //player = GameObject.FindGameObjectWithTag("Player");
+	 //healthState = gameObject.GetComponent<HealthState>();//we cant call this now, there is no gameobject!
+	 //Error: Object reference not set to an instance of an object
+	 // GetComponent<HealthState>().TakeDamage(attackDamage);
+	 //attackDamage = GetComponent<mtl.Damage>();
+	 //why player specifically
+		Fireball f = ScriptableObject.CreateInstance<Fireball>();
 
-    }
+		attackDamage = f.damage; // Set the attack damage
+		MaxLifeTime = f.lifetime;
+	}
 
 
 
     void Start () {
         // if it isnt already destroyed kill object after 2 seconds
-        Destroy(gameObject, MaxLifeTime);
+        //Destroy(gameObject, MaxLifeTime);
         ParticleSystem ps = GetComponent<ParticleSystem>();
         ps.Play();
         Destroy(ps, ps.main.duration);

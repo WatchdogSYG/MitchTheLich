@@ -1892,8 +1892,8 @@ GameObject:
   - component: {fileID: 75102730}
   - component: {fileID: 75102733}
   - component: {fileID: 75102734}
-  - component: {fileID: 75102722}
   - component: {fileID: 75102723}
+  - component: {fileID: 75102722}
   - component: {fileID: 75102736}
   - component: {fileID: 75102724}
   - component: {fileID: 75102726}
@@ -1966,7 +1966,7 @@ Transform:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 75102721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 40, y: 0, z: 141.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1977,7 +1977,7 @@ Transform:
   - {fileID: 1883073278}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &75102726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38447,6 +38447,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2b1be3818e43f6845bb85a33dc59183b, type: 2}
+    - target: {fileID: 100000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caa284f63eecf5e47913acd8c60314cf, type: 3}
   m_IsPrefabAsset: 0
@@ -39950,7 +39954,7 @@ Transform:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1315979151}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -50721,7 +50725,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1608551175430938, guid: 331f171b62855bf4f8a8180e72596d71, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 331f171b62855bf4f8a8180e72596d71, type: 2}
