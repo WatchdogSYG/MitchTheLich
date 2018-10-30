@@ -26,7 +26,15 @@ public class Buffable : MonoBehaviour {
     }
 
     public void AddBuff(Abstract_TimedBuff buff){
-        CurrentBuffs.Add(buff);
+		System.Type t = buff.GetType();
+		print("BuffType = "+t.ToString());
+		//removes other occurences of the same buff to prevent stacking
+		foreach (Abstract_TimedBuff b in CurrentBuffs){
+			if(b.GetType() == buff.GetType()) {
+				b.EndBuff();
+			}
+		}
+		CurrentBuffs.Add(buff);
         buff.ActivateBuff();
     }
 }
