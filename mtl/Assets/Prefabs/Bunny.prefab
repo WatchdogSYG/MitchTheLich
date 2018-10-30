@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 114276953058572320}
   - component: {fileID: 114705832822274396}
   - component: {fileID: 114603011063585102}
+  - component: {fileID: 114142926671531624}
   m_Layer: 0
   m_Name: Bunny
   m_TagString: Enemy
@@ -577,7 +578,7 @@ Animator:
   m_GameObject: {fileID: 1834690004104502}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b13da3560aac44b4a8f73af033252169, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e45e545fb71b2ce4c8f03e6f6dc6f505, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -586,6 +587,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114142926671531624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ede3bfaa82ae646a644f1683c1ce6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114276953058572320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,10 +643,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235bcdec5b7bbd24b863696e152cf4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   currentHealth: 0
   currentMana: 0
   maxHealth: 0
   maxMana: 0
+  isRegenMana: 0
+  lastManaUseTime: 0
+  manaRegenDelay: 0
   speedMultiplier: 1
   manaRegenRate: 30
   manaRegenMultiplier: 1
@@ -643,6 +659,7 @@ MonoBehaviour:
   damageImage: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  isSlowed: 0
 --- !u!137 &137699088173774984
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

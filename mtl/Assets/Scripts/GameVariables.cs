@@ -29,9 +29,10 @@ namespace mtl {
 
     public class Health {
 		public const float DEV_TEST_DUMMY_HEALTH = 1000f;
+		public const float BOSS_DEFAULT_HEALTH = 500f;
 		public const float PLAYER_DEFAULT_HEALTH = 100f;
 		public const float ENEMY_DEFAULT_HEALTH = 30f;
-		public const float SHIELD_DEFAULT_HEALTH = 20f;
+		public const float SHIELD_DEFAULT_HEALTH = 50f;
 		public static float AssignHealth(string tag) {
 			
 			//temporary kv for health, extend to json for entity atributes
@@ -42,6 +43,7 @@ namespace mtl {
             healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Enemy", ENEMY_DEFAULT_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Shield", SHIELD_DEFAULT_HEALTH));
+			healthKV.Add(new KeyValuePair<string, float>("Boss", BOSS_DEFAULT_HEALTH));
 			float h= -1f;
 			float h0 = 696969f;//fallback for untagged (a entity must have health)
 
@@ -130,6 +132,8 @@ namespace mtl {
 		//particluar spell class variables
 		public const float BEAM_TICK_RATE = 60f;
 		public const float BLINK_MANA_COST = 25f;
+
+		public const float ARCANEFOCUS_MANACOST = 60f;
 		
 		//no dev checking on this one
 		//the properties of spells that the Mitch_SpellCaster has to know about
@@ -146,6 +150,8 @@ namespace mtl {
 
         public const float BLINK_SPEED_MAGNITUDE = (mtl.Movement.BLINK_DISTANCE / mtl.Movement.BLINK_TIME) / mtl.Movement.PLAYER_BASE_MOVE_SPEED;
 
+		public const float MANA_REGEN_RATE_BUFF_MULTIPLIER = 1.2f;
+
 		public static float AssignMana(string tag) {
 
 			//temporary kv for mana, extend to json for entity atributes
@@ -153,7 +159,7 @@ namespace mtl {
 			manaKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_MANA));
 			manaKV.Add(new KeyValuePair<string, float>("Wizard1", WIZARD1_MANA));
 			manaKV.Add(new KeyValuePair<string, float>("Dummy", WIZARD1_MANA));
-
+			manaKV.Add(new KeyValuePair<string, float>("Boss", WIZARD1_MANA));
 			float m = -1f;
 			float m0 = 0f;//if its untagged, it doesnt have any mana
 

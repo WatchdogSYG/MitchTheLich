@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 135295409946373924}
   - component: {fileID: 54591651542739976}
   - component: {fileID: 114012569824538696}
+  - component: {fileID: 114106590046994512}
   - component: {fileID: 114740130525526708}
   - component: {fileID: 198027921036871044}
   - component: {fileID: 199655603892152460}
@@ -98,7 +99,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74bb7aed8351964281fe5d0479aec99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114740130525526708
+--- !u!114 &114106590046994512
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,11 +124,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1923026522298418}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2f74a9f0f519f42ad1b36de0398794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PullSphere: {fileID: 1800829687929092, guid: 3e9df17fd5c44b54db6bf1f03fac72da, type: 2}
+--- !u!114 &114740130525526708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923026522298418}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 290bdca729d1ab948abc38e1003b3aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
-  MaxLifeTime: 2
 --- !u!135 &135295409946373924
 SphereCollider:
   m_ObjectHideFlags: 1
