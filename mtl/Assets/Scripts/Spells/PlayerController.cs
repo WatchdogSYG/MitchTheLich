@@ -365,6 +365,7 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	//i didnt ask for a switch hotbar functionality, this is scope creep. Replace this with a resist buff.
 	void LShiftButton()
 	{
 		//if hold Left shift down print this
@@ -376,7 +377,9 @@ public class PlayerController : MonoBehaviour {
 		//if Left shift is pressed print this
 		if (Input.GetButtonDown("Switch Hotbar")) 
 		{
-			print ("I've pressed Left Shift");
+			print("I've pressed Left Shift");
+			TimedResistBuff resist = new TimedResistBuff(mtl.Spell.MISTIFY_TIME, ScriptableObject.CreateInstance("ResistBuff") as Abstract_ScriptableBuff, gameObject);
+			gameObject.GetComponent<Buffable>().AddBuff(resist);
 
 		}
 		//if Left shift is released from the press print this

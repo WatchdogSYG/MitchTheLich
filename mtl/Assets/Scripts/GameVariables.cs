@@ -134,6 +134,8 @@ namespace mtl {
 		public const float BLINK_MANA_COST = 35f;
 
 		public const float ARCANEFOCUS_MANACOST = 60f;
+		public const float MISTIFY_RESIST_MULTIPLIER = 0.5f;
+		public const float MISTIFY_TIME = 2f;
 		
 		//no dev checking on this one
 		//the properties of spells that the Mitch_SpellCaster has to know about
