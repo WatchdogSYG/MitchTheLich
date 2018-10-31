@@ -110,7 +110,7 @@ namespace mtl {
 		public const float BASE_PROJECTILE_LIFETIME = 2f;//self explanatory
 
         //v=s/t
-		public const float BLINK_DISTANCE = 14f;
+		public const float BLINK_DISTANCE = 8f;
 		public const float BLINK_TIME = 0.025f;
 
 		//unused smoothing function

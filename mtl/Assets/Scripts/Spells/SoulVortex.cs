@@ -15,7 +15,7 @@ public class SoulVortex : Abstract_Spell {
 	//set specific stats
 	public SoulVortex() {
 		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
-		this.manaCost = 10f;
+		this.manaCost = 45f;
 		this.fireDelay = 0.9f;
 
 		this.lifetime = 10f;//the lifetime is also the travel time of the projectile (HARDCODED)
@@ -23,7 +23,7 @@ public class SoulVortex : Abstract_Spell {
 		this.parabolicLaunchAngle = Mathf.PI / 4f;//radians
 												  //launchspeed is calculated at launch
 
-		pullVelocity = 10f;
+		pullVelocity = 15f;
 		pullDuration = 3f;
 	}
 
