@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 114276953058572320}
   - component: {fileID: 114939526725639420}
   - component: {fileID: 114603011063585102}
+  - component: {fileID: 114356541421862454}
   m_Layer: 0
   m_Name: Bunny2
   m_TagString: BunnyCheck
@@ -577,7 +578,7 @@ Animator:
   m_GameObject: {fileID: 1834690004104502}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b13da3560aac44b4a8f73af033252169, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e45e545fb71b2ce4c8f03e6f6dc6f505, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -595,6 +596,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e81d4d65c7f3b3449a30d699e568bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114356541421862454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834690004104502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ede3bfaa82ae646a644f1683c1ce6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114576898715125786

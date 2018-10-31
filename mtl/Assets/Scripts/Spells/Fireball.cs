@@ -10,8 +10,8 @@ public class Fireball : Abstract_Spell {
 
 	//set specific stats
 	public Fireball() {
-		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
-		this.manaCost = 10f;
+		this.damage = 30f;
+		this.manaCost = 30f;
 		this.fireDelay = 0.9f;
 
 

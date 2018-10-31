@@ -10,12 +10,12 @@ public class Iceball : Abstract_Spell {
 
 	//set specific stats
 	public Iceball() {
-		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
+		this.damage = 20f;
 		this.manaCost = 10f;
-		this.fireDelay = 0.9f;
+		this.fireDelay = 0.4f;
 
 
-		this.launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED;
+		this.launchSpeed = mtl.Movement.BASE_PROJECTILE_SPEED * 3;
 	}
 
 	public override void Launch(GameObject spawner) {

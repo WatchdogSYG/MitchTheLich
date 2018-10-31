@@ -10,6 +10,7 @@ public class SoulVortex : Abstract_Spell {
 	public float parabolicLaunchAngle;
 
 	public float pullVelocity;
+	public float pullDuration;
 
 	//set specific stats
 	public SoulVortex() {
@@ -17,12 +18,13 @@ public class SoulVortex : Abstract_Spell {
 		this.manaCost = 10f;
 		this.fireDelay = 0.9f;
 
-		this.lifetime = 5f;//the lifetime is also the travel time of the projectile
+		this.lifetime = 10f;//the lifetime is also the travel time of the projectile (HARDCODED)
 
 		this.parabolicLaunchAngle = Mathf.PI / 4f;//radians
 												  //launchspeed is calculated at launch
 
-		pullVelocity = 2f;
+		pullVelocity = 10f;
+		pullDuration = 3f;
 	}
 
 
@@ -49,8 +51,9 @@ public class SoulVortex : Abstract_Spell {
 		//launchSpeed = ((-Physics.gravity.y * dx) / (2f * linearProjectileFlightConstant * Mathf.Sin(parabolicLaunchAngle)))-(mtl.Camera.SPELL_DEFAULT_CAST_OFFSET_DISTANCE/(dx * Mathf.Sin(parabolicLaunchAngle)));
 		//launchSpeed = Mathf.Sqrt(Mathf.Pow((-Physics.gravity.y*dx/(linearProjectileFlightConstant*2)-(mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT*dx/linearProjectileFlightConstant)), 2f))+linearProjectileFlightConstant;
 		//launchSpeed = ((-Physics.gravity.y * Mathf.Pow((dx / linearProjectileFlightConstant),2f))-mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT+dx) / ((dx*(Mathf.Sin(parabolicLaunchAngle)+Mathf.Cos(parabolicLaunchAngle)))/linearProjectileFlightConstant);
-		launchSpeed = Vector3.Magnitude(new Vector3(1.5f*dx/lifetime,(0.5f*-Physics.gravity.y/lifetime)-(mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT/lifetime)));
+		launchSpeed = Vector3.Magnitude(new Vector3(1.5f*dx/5f,(0.5f*-Physics.gravity.y/lifetime)-(mtl.Camera.SPELL_DEFAULT_CAST_HEIGHT/lifetime)));
 
+		//launchSpeed = (dx / lifetime) / (Mathf.Cos(parabolicLaunchAngle));
 		//ok i tried, but this launchspeed is hardcoded (*1.5f) to hit near the cursor.
 
 		projectileInstance.velocity = launchSpeed * (spawner.transform.forward + (new Vector3(0f,1f,0f) * Mathf.Tan(parabolicLaunchAngle)));
@@ -72,7 +75,8 @@ public class SoulVortex : Abstract_Spell {
 	}
 
 	public void Pull(GameObject o, GameObject v, float speed) {
-		Vector3 pullDir = v.transform.position - o.transform.position;
+		Debug.Log("Pull " + o.tag + " towards SoulVortex with speed: " + speed.ToString("F3"));
+		Vector3 pullDir = Vector3.ProjectOnPlane(v.transform.position - o.transform.position,new Vector3(0f,1f,0f));
 		o.transform.position += speed * Vector3.Normalize(pullDir) * Time.deltaTime;
 	}
 }
