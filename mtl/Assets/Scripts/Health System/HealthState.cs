@@ -1,13 +1,16 @@
 ﻿//MDT_Brandon startContribution
 //MDT_Timothy Added References and code to UI Health and mana sliders and image //No value given to damage or Take Damage causing NullReference Exceptions I think
 //MDT_Owen Added Iceball functionality to Update
+//MDT_Liam added Scene transitions on death of player or boss
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthState : MonoBehaviour {
 	public bool isPlayer = false;//if this is a player, we can set the ui elements to this HS
+    private bool isBoss = false;
 
 	public float currentHealth;
 	public float currentMana;
@@ -52,6 +55,9 @@ public class HealthState : MonoBehaviour {
 		if (tag == "Player") {
 			isPlayer = true;
 		}
+        else if (tag == "Boss") {
+            isBoss = true;
+        }
 		maxHealth = mtl.Health.AssignHealth(tag);
 		maxMana = mtl.Buff.AssignMana(tag);
 		currentHealth = maxHealth;
@@ -158,11 +164,38 @@ public class HealthState : MonoBehaviour {
 		}
 	}
 
-	void Death() {
+    IEnumerator LoadScene(string SceneName) //Called to transition to the Game Over and Victory screen MDT_Liam Contribution
+    {
+        // Find and disable the movement and shooting scripts
+        planarTranslate movement = gameObject.GetComponent<planarTranslate>();
+        RotateWithMouse rotation = gameObject.GetComponent<RotateWithMouse>();
+        PlayerController shooting = gameObject.GetComponent<PlayerController>();
+        Mitch_SpellCaster projectile = gameObject.GetComponent<Mitch_SpellCaster>();
+        shooting.enabled = false;
+        movement.enabled = false;
+        rotation.enabled = false;
+        projectile.enabled = false;
+
+        // Play the fade out animation
+        GameObject GameOverImage = GameObject.Find("FadeOutImage");
+        Animator GameOverAnimator = GameOverImage.GetComponent<Animator>();
+        GameOverAnimator.SetTrigger("End");
+
+        // Let the animation finish then load the scene
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneName);
+    }
+
+    void Death() {
 		if (isPlayer) {
 			Debug.Log("Game Over!");
-			Destroy(gameObject);
+            StartCoroutine(LoadScene("GameOver"));
 		}
+
+        else if (isBoss) {
+            Debug.Log("Victory!");
+            StartCoroutine(LoadScene("Victory"));
+        }
 
 		else {
 			Debug.Log(gameObject.tag + " has died.");
