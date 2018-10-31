@@ -35,13 +35,14 @@ namespace mtl {
 		public const float BIGBUNNY_DEFAULT_HEALTH = 90f;
 		public const float SHIELD_DEFAULT_HEALTH = 50f;
 		public const float DRAGON_DEFAULT_HEALTH = 150f;
-		public static float AssignHealth(string tag) {
+        public static float AssignHealth(string tag) {
 			
 			//temporary kv for health, extend to json for entity atributes
 			List<KeyValuePair<string, float>> healthKV = new List<KeyValuePair<string, float>>();
 			healthKV.Add(new KeyValuePair<string, float>("Player", PLAYER_DEFAULT_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Bunny", 10f));
             healthKV.Add(new KeyValuePair<string, float>("BunnyCheck", 10f));
+            healthKV.Add(new KeyValuePair<string, float>("Boss", BOSS_DEFAULT_HEALTH));
             healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Enemy", ENEMY_DEFAULT_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Shield", SHIELD_DEFAULT_HEALTH));

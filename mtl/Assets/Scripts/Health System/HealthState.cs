@@ -42,7 +42,8 @@ public class HealthState : MonoBehaviour {
 
 	public float healthRegenRate = 0f;
     
-	//unused concept buffs
+	
+    //unused concept buffs
     /*
 	public float damageDealtMultiplier = 1f;
 	public float lifeStealMagnitude = 0f;
@@ -53,6 +54,7 @@ public class HealthState : MonoBehaviour {
 
 
 	void Start() {
+
 		//what object is this? set stats to appropriate values as defined in mtl class
 		string tag = gameObject.tag;
 		if (tag == "Player") {
@@ -192,16 +194,9 @@ public class HealthState : MonoBehaviour {
 
     IEnumerator LoadScene(string SceneName) //Called to transition to the Game Over and Victory screen MDT_Liam Contribution
     {
-        // Find and disable the movement and shooting scripts
-        planarTranslate movement = gameObject.GetComponent<planarTranslate>();
-        RotateWithMouse rotation = gameObject.GetComponent<RotateWithMouse>();
-        PlayerController shooting = gameObject.GetComponent<PlayerController>();
-        Mitch_SpellCaster projectile = gameObject.GetComponent<Mitch_SpellCaster>();
-        shooting.enabled = false;
-        movement.enabled = false;
-        rotation.enabled = false;
-        projectile.enabled = false;
-
+        
+        
+        
         // Play the fade out animation
         GameObject GameOverImage = GameObject.Find("FadeOutImage");
         Animator GameOverAnimator = GameOverImage.GetComponent<Animator>();
@@ -214,7 +209,16 @@ public class HealthState : MonoBehaviour {
 
     void Death() {
 		if (isPlayer) {
-			Debug.Log("Game Over!");
+            // Find and disable the movement and shooting scripts
+            planarTranslate movement = gameObject.GetComponent<planarTranslate>();
+            RotateWithMouse rotation = gameObject.GetComponent<RotateWithMouse>();
+            PlayerController shooting = gameObject.GetComponent<PlayerController>();
+            Mitch_SpellCaster projectile = gameObject.GetComponent<Mitch_SpellCaster>();
+            shooting.enabled = false;
+            movement.enabled = false;
+            rotation.enabled = false;
+            projectile.enabled = false;
+            Debug.Log("Game Over!");
             StartCoroutine(LoadScene("GameOver"));
 		}
 
