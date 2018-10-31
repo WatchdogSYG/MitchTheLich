@@ -52,7 +52,15 @@ public class MovementAnimation : MonoBehaviour {
         {
             anim.SetBool("moveS", false);
         }
-    }
+
+		if (Input.GetKeyDown("mouse 0")) {
+			anim.SetBool("Fire", true);
+		}
+
+		if (Input.GetKeyUp("mouse 0")) {
+			anim.SetBool("Fire", false);
+		}
+	}
     
    
 

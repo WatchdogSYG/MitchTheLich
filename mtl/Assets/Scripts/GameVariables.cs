@@ -131,7 +131,7 @@ namespace mtl {
 
 		//particluar spell class variables
 		public const float BEAM_TICK_RATE = 60f;
-		public const float BLINK_MANA_COST = 25f;
+		public const float BLINK_MANA_COST = 35f;
 
 		public const float ARCANEFOCUS_MANACOST = 60f;
 		
