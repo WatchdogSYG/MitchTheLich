@@ -97,5 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bunny: {fileID: 1834690004104502, guid: 2a35cb30831d3824b871d31bfb3bf5e2, type: 2}
   enemyspawner: {fileID: 4813862751810290}
-  spawnDelay: 5
-  amountofenemies: 5
+  spawnDelay: 3
+  amountofenemies: 3

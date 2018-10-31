@@ -60,7 +60,18 @@ public class MovementAnimation : MonoBehaviour {
 		if (Input.GetKeyUp("mouse 0")) {
 			anim.SetBool("Fire", false);
 		}
-	}
+
+        if (Input.GetKeyDown("mouse 1"))
+        {
+            anim.SetBool("Fire", true);
+        }
+
+        if (Input.GetKeyUp("mouse 1"))
+        {
+            anim.SetBool("Fire", false);
+        }
+    }
+
     
    
 

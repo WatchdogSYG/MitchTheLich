@@ -16,7 +16,15 @@ public class DialogueCollider : MonoBehaviour {
            
         }
 
-        if(other.gameObject.name == "Trigger2")
+        if (other.gameObject.name == "flowers1" || other.gameObject.name == "flowers2" || other.gameObject.name == "flowers3")
+        {
+
+            Fungus.Flowchart.BroadcastFungusMessage("suffer");
+            Debug.Log("its working");
+
+        }
+
+        if (other.gameObject.name == "Trigger2")
         {
 
             Fungus.Flowchart.BroadcastFungusMessage("Attack");
@@ -55,6 +63,13 @@ public class DialogueCollider : MonoBehaviour {
         if (other.gameObject.name == "Trigger7")
         {
             Fungus.Flowchart.BroadcastFungusMessage("boss");
+            Debug.Log("its working");
+
+        }
+
+        if (other.gameObject.name == "TRIGGERD")
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("dragon");
             Debug.Log("its working");
 
         }

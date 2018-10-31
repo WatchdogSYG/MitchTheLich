@@ -17,6 +17,7 @@ public class planarTranslate : MonoBehaviour {
 	void Start () {
 		//aligns control axes with camera axes
 		AlignWithCamera(UnityEngine.Camera.main);
+        Cursor.visible = true;
     }
 	
 	// Update is called once per frame

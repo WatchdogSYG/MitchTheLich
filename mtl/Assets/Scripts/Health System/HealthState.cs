@@ -193,10 +193,10 @@ public class HealthState : MonoBehaviour {
 	}
 
     IEnumerator LoadScene(string SceneName) //Called to transition to the Game Over and Victory screen MDT_Liam Contribution
-    {
+    {// Find and disable the movement and shooting scripts
         
-        
-        
+
+
         // Play the fade out animation
         GameObject GameOverImage = GameObject.Find("FadeOutImage");
         Animator GameOverAnimator = GameOverImage.GetComponent<Animator>();
@@ -209,22 +209,16 @@ public class HealthState : MonoBehaviour {
 
     void Death() {
 		if (isPlayer) {
-            // Find and disable the movement and shooting scripts
-            planarTranslate movement = gameObject.GetComponent<planarTranslate>();
-            RotateWithMouse rotation = gameObject.GetComponent<RotateWithMouse>();
-            PlayerController shooting = gameObject.GetComponent<PlayerController>();
-            Mitch_SpellCaster projectile = gameObject.GetComponent<Mitch_SpellCaster>();
-            shooting.enabled = false;
-            movement.enabled = false;
-            rotation.enabled = false;
-            projectile.enabled = false;
             Debug.Log("Game Over!");
             StartCoroutine(LoadScene("GameOver"));
-		}
+            
 
-        else if (isBoss) {
+        }
+
+        if (isBoss) {
             Debug.Log("Victory!");
             StartCoroutine(LoadScene("Victory"));
+            Destroy(gameObject, 3);
         }
 
 		else {
