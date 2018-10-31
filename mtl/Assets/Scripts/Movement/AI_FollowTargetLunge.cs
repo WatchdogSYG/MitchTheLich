@@ -39,7 +39,7 @@ public class AI_FollowTargetLunge : MonoBehaviour {
 				Look(1f);
 				break;
 			case mtl.AIStates.STATE_FOLLOW:
-				Follow(mtl.Movement.PLAYER_BASE_MOVE_SPEED, mtl.Movement.AI_FOLLOW_ANGULAR_SPEED, readyDistance);//TO ABSTRACT
+				Follow(12f, mtl.Movement.AI_FOLLOW_ANGULAR_SPEED, readyDistance);//TO ABSTRACT
 				break;
 			case mtl.AIStates.STATE_LUNGE_MELEE:
 				LungeMelee(mtl.Movement.BUNNY_LUNGE_DISTANCE);
