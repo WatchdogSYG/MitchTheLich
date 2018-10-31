@@ -27,6 +27,8 @@ public class cameraFollow : MonoBehaviour {
 		UnityEngine.Camera.main.transform.rotation = rotation;
 		//give a unit vector in the direction of the player facing the camera
 		unitPlayerToCam = rotation * worldDefaultUnitVector;
+
+		planarTranslate.AlignWithCamera(UnityEngine.Camera.main);
 		
 		//define where mitch wants to be on screen TOFIX
 		manualCameraDisplacement = new Vector3(-(mtl.Camera.MITCH_DEFAULT_XPOS_RATIO - 0.5f) * mtl.Camera.ORTHO_HEIGHT * mtl.Camera.DESIRED_ASPECT_RATIO,

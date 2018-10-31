@@ -10,16 +10,13 @@ using mtl;
 
 public class planarTranslate : MonoBehaviour {
 
-    Vector3 playerForward, playerRight;
+    static Vector3 playerForward, playerRight;
 	float desiredSpeed;
 
 	// Use this for initialization
 	void Start () {
-        //aligns control axes with camera axes
-        playerForward = UnityEngine.Camera.main.transform.forward;//must explicitly use UnityEngine.* (vs/unity bug?)
-        playerForward.y = 0;
-        playerForward = Vector3.Normalize(playerForward);//transform to unit vector for next transform
-        playerRight = Quaternion.Euler(0, 90, 0) * playerForward;//note zxy order
+		//aligns control axes with camera axes
+		AlignWithCamera(UnityEngine.Camera.main);
     }
 	
 	// Update is called once per frame
@@ -41,9 +38,15 @@ public class planarTranslate : MonoBehaviour {
         //change transform in world space to calculated vectors
         transform.position += forwardMovement;
         transform.position += rightMovement;
-
-		
         return;
     }
+
+	//will also be called once Camera is instantiated, technically removed a race condition
+	public static void AlignWithCamera(UnityEngine.Camera c) {
+		playerForward = c.transform.forward;//must explicitly use UnityEngine.* (vs/unity bug?)
+		playerForward.y = 0;
+		playerForward = Vector3.Normalize(playerForward);//transform to unit vector for next transform
+		playerRight = Quaternion.Euler(0, 90, 0) * playerForward;//note zxy order
+	}
 }
 // MDT_Brandon endContribution
