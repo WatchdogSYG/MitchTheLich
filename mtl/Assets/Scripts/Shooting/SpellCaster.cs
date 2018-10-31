@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellCaster : MonoBehaviour {
-
-	//private float lastFireTime;//there is no need for a fire delay on an AI, we will balance it per AI
-	HealthState healthState;
+    
+    //private float lastFireTime;//there is no need for a fire delay on an AI, we will balance it per AI
+    HealthState healthState;
 	int element = mtl.Spell.ELEMENT_NULL;//UNUSED
 
 	//the spell's data we use (for mouse0 and mouse1)
