@@ -19,9 +19,10 @@ public class LineDrawer : MonoBehaviour {
 
     IEnumerator DrawReset(Vector3 endpoint)
     {
-        Vector3 drawPoint = Vector3.Scale(endpoint, new Vector3(0, 1, 1));
-        LRend.SetPosition(1, drawPoint);
-        yield return new WaitForSeconds(0.2f);
+        LRend.SetPosition(0, gameObject.transform.position);
+        LRend.SetPosition(1, endpoint);
+        yield return new WaitForSeconds(0.3f);
+        LRend.SetPosition(0, new Vector3(0, 0, 0));
         LRend.SetPosition(1, new Vector3(0, 0, 0));
     }
 }
