@@ -21,6 +21,7 @@ public class cameraFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
+        Cursor.visible = true;
         //set initial camera rotation and size
         UnityEngine.Camera.main.orthographicSize = mtl.Camera.ORTHO_HEIGHT;
 		Quaternion rotation = Quaternion.Euler(mtl.Camera.ISO_PITCH, mtl.Camera.ISO_YAW, mtl.Camera.ISO_ROLL);
