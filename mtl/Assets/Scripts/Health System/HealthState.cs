@@ -39,11 +39,12 @@ public class HealthState : MonoBehaviour {
 	private float slowDuration = 2f;
 
 	public float damageTakenMultiplier = 1f;
-    //unused concept buffs
+
+	public float healthRegenRate = 0f;
+    
+	//unused concept buffs
     /*
 	public float damageDealtMultiplier = 1f;
-	
-	public float healthRegenRate = 0f;
 	public float lifeStealMagnitude = 0f;
 	public bool redirectSpell = false;
 	public bool spreadEffectOnContact = false;
@@ -88,6 +89,8 @@ public class HealthState : MonoBehaviour {
 			}
 		}
 
+		RegenHealth(healthRegenRate);
+
 	//in bullet code if been hit by iceball make isSlowed equals true therefore...
 		if (isSlowed == true) 
 		{
@@ -105,11 +108,25 @@ public class HealthState : MonoBehaviour {
 				speedMultiplier = 1f;
 				//print ("OH BABY");
 			}
-
+		}
+		if (isPlayer) {
+			HealthSlider.value = currentHealth;
 		}
 	}
 
+	public void RegenHealth(float r) {
+		if ((currentHealth < maxHealth) && (r > 0)) {
+			Debug.Log("Healing " + r + "HP/s");
+			currentHealth += r * Time.deltaTime;
+			if (currentHealth > maxHealth) {
+				currentHealth = maxHealth;
+			}
+		}
 
+		if (currentHealth <= 0) {
+			Death();
+		}
+	}
 	/*public void DamageFlash()
     {
         //Bullets need to do actual damage otherwise Null errors occure because damage is not being done - I need to be able to reference enemy attacks that will cause damage to player

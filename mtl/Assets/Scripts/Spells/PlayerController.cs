@@ -302,7 +302,10 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown("Familiar")) 
 		{
 			print ("I've pressed F");
-
+			HealthState hs = o.gameObject.GetComponent<HealthState>();
+			TimedHealBuff heal = new TimedHealBuff(mtl.Spell.REST_DURATION, ScriptableObject.CreateInstance("HealBuff") as Abstract_ScriptableBuff, gameObject);
+			gameObject.GetComponent<Buffable>().AddBuff(heal);
+			hs.UseMana(hs.currentMana);
 		}
 		//if f is released from the press print this
 		if (Input.GetButtonUp("Familiar")) 
@@ -378,8 +381,13 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown("Switch Hotbar")) 
 		{
 			print("I've pressed Left Shift");
-			TimedResistBuff resist = new TimedResistBuff(mtl.Spell.MISTIFY_TIME, ScriptableObject.CreateInstance("ResistBuff") as Abstract_ScriptableBuff, gameObject);
-			gameObject.GetComponent<Buffable>().AddBuff(resist);
+			HealthState hs = o.gameObject.GetComponent<HealthState>();
+			if (hs.currentMana >= mtl.Spell.MISTIFY_MANA_COST) {
+				hs.UseMana(mtl.Spell.MISTIFY_MANA_COST);
+				TimedResistBuff resist = new TimedResistBuff(mtl.Spell.MISTIFY_TIME, ScriptableObject.CreateInstance("ResistBuff") as Abstract_ScriptableBuff, gameObject);
+				gameObject.GetComponent<Buffable>().AddBuff(resist);
+			}
+			
 
 		}
 		//if Left shift is released from the press print this

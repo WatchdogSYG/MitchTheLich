@@ -137,6 +137,9 @@ namespace mtl {
 		public const float ARCANEFOCUS_MANACOST = 60f;
 		public const float MISTIFY_RESIST_MULTIPLIER = 0.5f;
 		public const float MISTIFY_TIME = 2f;
+		public const float MISTIFY_MANA_COST = 20f;
+
+		public const float REST_DURATION = 4f;
 		
 		//no dev checking on this one
 		//the properties of spells that the Mitch_SpellCaster has to know about
@@ -154,6 +157,7 @@ namespace mtl {
         public const float BLINK_SPEED_MAGNITUDE = (mtl.Movement.BLINK_DISTANCE / mtl.Movement.BLINK_TIME) / mtl.Movement.PLAYER_BASE_MOVE_SPEED;
 
 		public const float MANA_REGEN_RATE_BUFF_MULTIPLIER = 1.2f;
+
 
 		public static float AssignMana(string tag) {
 
