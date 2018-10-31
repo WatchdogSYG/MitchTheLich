@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellCaster : MonoBehaviour {
-
-	//private float lastFireTime;//there is no need for a fire delay on an AI, we will balance it per AI
-	HealthState healthState;
+    
+    //private float lastFireTime;//there is no need for a fire delay on an AI, we will balance it per AI
+    HealthState healthState;
 	int element = mtl.Spell.ELEMENT_NULL;//UNUSED
 
 	//the spell's data we use (for mouse0 and mouse1)
@@ -18,7 +18,18 @@ public class SpellCaster : MonoBehaviour {
 	void Awake () {
 		//replaced fireball with rock for now
 		//SpellIndex = new Abstract_Spell[3] { ScriptableObject.CreateInstance<Fireball>(), ScriptableObject.CreateInstance<BreathOfUller>(), ScriptableObject.CreateInstance<SoulVortex>() };//elements on Mouse0
+		if(gameObject.tag == "Boss")
+		{
 		SpellIndex = new Abstract_Spell[3] { ScriptableObject.CreateInstance<Rock>(), ScriptableObject.CreateInstance<Fireball>(), ScriptableObject.CreateInstance<SoulVortex>() };//elements on Mouse0
+		}
+		if (gameObject.tag == "Dragon")
+		{
+			SpellIndex = new Abstract_Spell[3] {
+				ScriptableObject.CreateInstance<Fireball> (),
+				ScriptableObject.CreateInstance<Fireball> (),
+				ScriptableObject.CreateInstance<SoulVortex> ()
+			};
+		}
 	}
 
 	void Start() {
