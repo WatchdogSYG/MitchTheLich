@@ -32,6 +32,7 @@ public class Buffable : MonoBehaviour {
 		foreach (Abstract_TimedBuff b in CurrentBuffs){
 			if(b.GetType() == buff.GetType()) {
 				b.EndBuff();
+				CurrentBuffs.Remove(b);
 			}
 		}
 		CurrentBuffs.Add(buff);

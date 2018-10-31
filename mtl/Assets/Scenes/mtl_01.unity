@@ -2073,6 +2073,7 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   isSlowed: 0
+  damageTakenMultiplier: 1
 --- !u!4 &75102725
 Transform:
   m_ObjectHideFlags: 0
@@ -24041,6 +24042,7 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   isSlowed: 0
+  damageTakenMultiplier: 1
 --- !u!114 &668011687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28603,6 +28605,7 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   isSlowed: 0
+  damageTakenMultiplier: 1
 --- !u!135 &843271421
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -34113,6 +34116,7 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   isSlowed: 0
+  damageTakenMultiplier: 1
 --- !u!54 &1029681043
 Rigidbody:
   m_ObjectHideFlags: 0

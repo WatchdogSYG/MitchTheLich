@@ -14,7 +14,7 @@ public class SoulVortex : Abstract_Spell {
 
 	//set specific stats
 	public SoulVortex() {
-		this.damage = mtl.Damage.DEV_TEST_BULLET_DAMAGE;
+		this.damage = 10f;
 		this.manaCost = 45f;
 		this.fireDelay = 0.9f;
 
@@ -24,7 +24,7 @@ public class SoulVortex : Abstract_Spell {
 												  //launchspeed is calculated at launch
 
 		pullVelocity = 15f;
-		pullDuration = 3f;
+		pullDuration = 4.5f;
 	}
 
 

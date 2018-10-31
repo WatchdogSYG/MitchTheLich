@@ -37,14 +37,16 @@ public class HealthState : MonoBehaviour {
 	private float lastDelayTime = 2f;
 	//this variable sets lastDelayTime back to 2
 	private float slowDuration = 2f;
+
+	public float damageTakenMultiplier = 1f;
     //unused concept buffs
     /*
 	public float damageDealtMultiplier = 1f;
-	public float damageTakenMultiplier = 1f;
+	
 	public float healthRegenRate = 0f;
 	public float lifeStealMagnitude = 0f;
 	public bool redirectSpell = false;
-	public bool spreadOnContact = false;
+	public bool spreadEffectOnContact = false;
 	*/
 	// Use this for initialization
 
@@ -129,13 +131,20 @@ public class HealthState : MonoBehaviour {
 		// Set the damaged flag so the screen will flash.
 		damaged = true;
 
+		float taken = damage;
 
-		//this debug gets annoying if it regens per frame... it doesnt call this per frame tho
-		currentHealth -= damage;
+		//take no damage if multiplier is less than 0
+		if (damageTakenMultiplier < 0f) {
+			taken = 0f;
+		} else {
+			taken = damage * damageTakenMultiplier;
+		}
+		currentHealth -= taken;
+
 		if (isPlayer) {
 			HealthSlider.value = currentHealth;
 		}
-		Debug.Log(gameObject.tag + " has taken " + damage.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
+		Debug.Log(gameObject.tag + " has taken " + taken.ToString("F0") + " damage! It now has " + currentHealth.ToString("F0") + "HP.");
 
 		//an entity can only die if it takes damage, therefore check for death here
 		if (currentHealth <= 0) {
