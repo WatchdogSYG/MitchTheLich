@@ -32,6 +32,7 @@ namespace mtl {
 		public const float BOSS_DEFAULT_HEALTH = 500f;
 		public const float PLAYER_DEFAULT_HEALTH = 100f;
 		public const float ENEMY_DEFAULT_HEALTH = 30f;
+		public const float BIGBUNNY_DEFAULT_HEALTH = 90f;
 		public const float SHIELD_DEFAULT_HEALTH = 50f;
 		public static float AssignHealth(string tag) {
 			
@@ -43,7 +44,7 @@ namespace mtl {
             healthKV.Add(new KeyValuePair<string, float>("Dummy", DEV_TEST_DUMMY_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Enemy", ENEMY_DEFAULT_HEALTH));
 			healthKV.Add(new KeyValuePair<string, float>("Shield", SHIELD_DEFAULT_HEALTH));
-			healthKV.Add(new KeyValuePair<string, float>("Boss", BOSS_DEFAULT_HEALTH));
+			healthKV.Add(new KeyValuePair<string, float>("BigBunny", BIGBUNNY_DEFAULT_HEALTH));
 			float h= -1f;
 			float h0 = 696969f;//fallback for untagged (a entity must have health)
 
