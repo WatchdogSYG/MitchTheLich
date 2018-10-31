@@ -52,6 +52,20 @@ public class DialogueCollider : MonoBehaviour {
 
         }
 
+        if (other.gameObject.name == "Trigger7")
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("boss");
+            Debug.Log("its working");
+
+        }
+
+        if (other.gameObject.name == "TRIGGERD")
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("dragon");
+            Debug.Log("its working");
+
+        }
+
         /*if (bunny health = 0)
         {
         
