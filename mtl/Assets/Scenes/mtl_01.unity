@@ -46169,7 +46169,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 2}
       propertyPath: m_TagString
-      value: Boss
+      value: Dragon
       objectReference: {fileID: 0}
     - target: {fileID: 100102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 2}
       propertyPath: m_IsActive
@@ -69763,7 +69763,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007508627}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3, z: 0.3}
