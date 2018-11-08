@@ -425,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 128
+    x: 127
     y: 149
     width: 120
     height: 40
@@ -557,8 +557,8 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: mtl_01
-  loadingImage: {fileID: 2800000, guid: a3850401348404655bd0352054c28683, type: 3}
+    stringVal: Cutscene02
+  loadingImage: {fileID: 2800000, guid: 7df7ef7a23e39fb45a91256052a868e8, type: 3}
   sceneNameOLD: 
 --- !u!114 &1048182077
 MonoBehaviour:
@@ -892,6 +892,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 1256285ce02f0a949bd3cb00fa7c99f7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ddaa2b340910a2545800469fdaa327f9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1256285ce02f0a949bd3cb00fa7c99f7, type: 3}
   m_IsPrefabAsset: 0
