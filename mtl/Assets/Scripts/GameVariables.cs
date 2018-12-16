@@ -143,7 +143,15 @@ namespace mtl {
 		public const float MISTIFY_MANA_COST = 20f;
 
 		public const float REST_DURATION = 4f;
-		
+
+		public const float BaseShotDelay = 0.9f;
+		public const float IceShotDelay = 0.4f;
+		public const float FlameThrowerShotDelay = 0.1f;
+
+		public const float BaseProjectileSpeed = 30f;
+		public const float IceProjectileSpeed = 60f;
+		public const float FlameThrowerProjectileSpeed = 30f;
+
 		//no dev checking on this one
 		//the properties of spells that the Mitch_SpellCaster has to know about
 		public struct CastProperties {
