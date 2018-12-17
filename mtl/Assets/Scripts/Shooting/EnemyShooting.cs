@@ -24,7 +24,10 @@ public class EnemyShooting : MonoBehaviour {
 
 	// starts at zero and equals whatever Time.time was before
 	private float lastFireTime;
-
+	void Start()
+	{
+		target = GameObject.FindGameObjectWithTag ("Player").transform;
+	}
 	void Update()
 	{
 		//if target is not null which will always be true
@@ -48,8 +51,9 @@ public class EnemyShooting : MonoBehaviour {
 			//print (Time.time);
 		//	print (lastFireTime);
 			lastFireTime = Time.time;
-			Fireball f = new Fireball();
-			f.Launch(gameObject);//temp fire
+			/*Fireball f = new Fireball();
+			f.Launch(gameObject);//temp fire*/
+			Fire ();
 		}
 			
 	}

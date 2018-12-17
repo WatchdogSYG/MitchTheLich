@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 114539991480899786}
   - component: {fileID: 114886298109535074}
   - component: {fileID: 114412080047518526}
+  - component: {fileID: 114808434624505626}
   m_Layer: 0
   m_Name: dragon
   m_TagString: Dragon
@@ -553,6 +554,21 @@ GameObject:
   - component: {fileID: 4061458276946164}
   m_Layer: 0
   m_Name: B_Root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1771688462490748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4581632452389210}
+  m_Layer: 0
+  m_Name: Dragon_SpellCaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1225,6 +1241,19 @@ Transform:
   m_Father: {fileID: 4020528184553816}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4581632452389210
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771688462490748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08, y: 0.5, z: 0.371}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4740231711638152}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4619660162716672
 Transform:
   m_ObjectHideFlags: 1
@@ -1347,11 +1376,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220135619197120}
   m_LocalRotation: {x: -0, y: -0.77825016, z: -0, w: 0.6279545}
-  m_LocalPosition: {x: 484.4, y: 1.36, z: 180.9}
+  m_LocalPosition: {x: 88.73384, y: 0, z: 154.28839}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 4061458276946164}
   - {fileID: 4767958671768564}
+  - {fileID: 4581632452389210}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -102.201004, z: 0}
@@ -1614,18 +1644,36 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220135619197120}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2911c81b6d27cb4688b729b8a226117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114886298109535074
+--- !u!114 &114808434624505626
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220135619197120}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c4e74980c817d48b880aef728a53ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemBullet: {fileID: 54292640184746672, guid: e059a22f98485364fb4b091963738dc6,
+    type: 2}
+  projectileSpawner: {fileID: 4581632452389210}
+  launchSpeed: 30
+  delay: 1
+  maxAttackDistance: 40
+  target: {fileID: 0}
+--- !u!114 &114886298109535074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1220135619197120}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc48f22b0b309304b9ba22713783b37d, type: 3}
   m_Name: 

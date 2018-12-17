@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -171,18 +171,17 @@ MonoBehaviour:
 
     Primary fire - Mouse 1
 
-    Secondary Fire - Mouse 2
+    Fireball Element - 1
 
-    Fire Element - 1
+    Iceball Element - 2
 
-    Ice Element - 2
-
-    Shadow Element - 3
+    Flamethrower Element - 3
 
 
-    Buff Q - Q
 
-    Shield - E on courser'
+    Shield - E on courser
+
+    Heal - F'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -250,10 +249,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -190.76538, w: -373.49866}
   m_textInfo:
     textComponent: {fileID: 118954418}
-    characterCount: 140
+    characterCount: 128
     spriteCount: 0
-    spaceCount: 32
-    wordCount: 32
+    spaceCount: 27
+    wordCount: 26
     linkCount: 0
     lineCount: 9
     pageCount: 1
