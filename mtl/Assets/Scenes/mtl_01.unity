@@ -23822,9 +23822,7 @@ GameObject:
   - component: {fileID: 843271422}
   - component: {fileID: 843271421}
   - component: {fileID: 843271426}
-  - component: {fileID: 843271428}
   - component: {fileID: 843271427}
-  - component: {fileID: 843271425}
   - component: {fileID: 843271420}
   m_Layer: 0
   m_Name: TestDummy
@@ -23931,17 +23929,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &843271425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 843271419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2911c81b6d27cb4688b729b8a226117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &843271426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23964,18 +23951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e81d4d65c7f3b3449a30d699e568bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &843271428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 843271419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc48f22b0b309304b9ba22713783b37d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireDelay: 1.1
 --- !u!4 &845722182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4142718939200722, guid: b07f9293eb27f0845aa76d51616e5217,
@@ -42609,8 +42584,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1453018678}
+  selectedCommands:
+  - {fileID: 1453018677}
   variables:
   - {fileID: 1453018671}
   description: 
@@ -42876,8 +42853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 8
   indentLevel: 0
-  storyText: "Press \u201CLeft Click\u201D to cast a Fire Bolt\nHold \u201CRight Click\u201D
-    to cast Flamethrower"
+  storyText: "Press \u201CLeft Click\u201D to cast a Fireball\n"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -43009,8 +42985,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 28
   indentLevel: 0
-  storyText: "Press \u201C1\u201D to change to Fire Spells\r\nPress \u201C2\u201D
-    to change to Ice Spells\r\nPress \u201C3\u201D to change to Shadow Spells"
+  storyText: "Press \u201C1\u201D to change to Fireball\nPress \u201C2\u201D to change
+    to Iceball\nPress \u201C3\u201D to change to FlameThrower"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}

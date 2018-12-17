@@ -15,24 +15,8 @@ public class Bullet : MonoBehaviour {
 
     HealthState healthState;    // Reference to the entity's health.
 
-    float attackDamage; // Set the attack damage
+    public float attackDamage; // Set the attack damage
     float MaxLifeTime;//MDT_Brandon cleaned up
-
-    void Awake()
-    {//Setting references
-	 //player = GameObject.FindGameObjectWithTag("Player");
-	 //healthState = gameObject.GetComponent<HealthState>();//we cant call this now, there is no gameobject!
-	 //Error: Object reference not set to an instance of an object
-	 // GetComponent<HealthState>().TakeDamage(attackDamage);
-	 //attackDamage = GetComponent<mtl.Damage>();
-	 //why player specifically
-		Fireball f = ScriptableObject.CreateInstance<Fireball>();
-
-		attackDamage = f.damage; // Set the attack damage
-		MaxLifeTime = f.lifetime;
-	}
-
-
 
     void Start () {
         // if it isnt already destroyed kill object after 2 seconds
@@ -54,7 +38,7 @@ public class Bullet : MonoBehaviour {
 		{*/
 		Destroy(gameObject);
         Damage(); //Call damage on collision
-		ApplyBuff(other.gameObject);
+
 		//if bullet == iceball call make variable in healthState isSlowed equal to true
 		if (gameObject.tag == "Iceball") {
 			healthState.isSlowed = true;
@@ -72,17 +56,6 @@ public class Bullet : MonoBehaviour {
 		healthState.TakeDamage(attackDamage);
     }
 
-	void ApplyBuff(GameObject o) {
-		//check if buffable
-		Buffable b = o.GetComponent<Buffable>();
-		if (b) {
-			Fireball f = ScriptableObject.CreateInstance<Fireball>();
-			print(o.tag + " is Buffable, applying buffs.");
-			f.ApplyBuffs(o);
-		} else {
-			print(o.tag + " is immune to buffs!");
-		}
-	}
 
 
 

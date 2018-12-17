@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonUp("Buff")) 
 		{
 			print("I've released Q");
-			new ArcaneFocus().ApplyBuffs(o);
+		
 		}
 
 	}
