@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour {
 
+	//Author Owen.Gunter
+	//Purpose: To give bunny the abitlity to deal damage to player
+	//Date: 01/11/2018
+
 	HealthState healthState;    // Reference to the player's health.
 	GameObject player;          // Reference to the player GameObject.
-	public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage
-	private bool whoIsHit = false;
+	public float attackDamage = mtl.Damage.DEV_TEST_BULLET_DAMAGE; // Set the attack damage for Bunny
 
 	void Awake()
 	{//Setting references
 		player = GameObject.FindGameObjectWithTag("Player");
 		healthState = player.GetComponent<HealthState>();//
-		//Error: Object reference not set to an instance of an object
-		// GetComponent<HealthState>().TakeDamage(attackDamage);
-		//attackDamage = GetComponent<mtl.Damage>();
-		//why player specifically
-
 	}
 
 	void OnTriggerEnter (Collider other)
 	{
 
-		//other.gameObject.GetComponent<HealthState>().TakeDamage(mtl.Damage.DEV_TEST_BULLET_DAMAGE);
+
 		if(other.gameObject.tag == "Player")
 		{
-			//Destroy(gameObject);
-			DamagePlayer(); //Call damage on collision
+			//Call DamagePlayer on collision
+			DamagePlayer(); 
 		}
-		//why player specifically
+
 	}
 
 	void DamagePlayer()
@@ -41,7 +39,7 @@ public class Damage : MonoBehaviour {
 			healthState.TakeDamage(attackDamage);
 
 		}
-		//redundant if, it already checks in healthstate update.
+	
 	}
 
 

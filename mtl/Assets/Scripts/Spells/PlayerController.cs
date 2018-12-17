@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    //why dont we put this in an array?
     //Author: Owen.Gunter
     //Purpose: To eventually make spells bound to these keys instead and to give extra functionality such as double tap (press key twice to make something happen once)
     //HoldDelay which is holding key down for a period time to make something happen once
@@ -11,8 +10,6 @@ public class PlayerController : MonoBehaviour {
     //GetbuttonDown = when key is pressed
     //GetbuttonUp = when key is released from the press
     
-	GameObject o;
-
 	//this will become true if lastDelayTime > delay 1 this for the HoldDelay() functions
 	private bool cooldownq = false;
 	private bool cooldowne = false;
@@ -38,26 +35,21 @@ public class PlayerController : MonoBehaviour {
 	private int counterf = 0;
 	private int counterls = 0;
 
-	bool[] ActionFlag;
-	
-	//Declare all RigidBodys used in qerf spells
 	public GameObject EPress_Shield;
 
-
+	GameObject o;
 	// Update is called once per frame
+
 	void Start()
 	{
-        //lastDelayTime2 = Time.time;
-        Cursor.visible = false;
-        ActionFlag = new bool[5] { false, false, false, false , false};//Q,E,R,F,LShift
-		 o = GameObject.FindWithTag("Player");
+		o = GameObject.FindWithTag("Player");
 	}
+
 	void Update()
 	{
-			QHoldDelay();
-			QDoubleTap();
-			QButton();
-		
+		QHoldDelay();
+		QDoubleTap();
+		QButton();
 
 		EHoldDelay();
 		EDoubleTap();

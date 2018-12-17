@@ -7,16 +7,12 @@ public class Projectile : MonoBehaviour {
 	    /*Purpose: gives the player the ability to shoot
         Date: 05/09/2018
       
-     	Edited: MDT_Brandon 11/09/18: renamed variables to make them physically meaningful, removed hard coding of variables.
-     	TODO: make this script fire any prefab, 
-     	remove hard dependency on the Primary Fire button so other things can be done with it,
-     	make the speed of the projectile dependent on the prefab
      	Edited: MDT_Owen 17/09/18: Added two rigidbodys with different colours that represent different bullets
      	//also this script can now fire any prefab as long as its defined in mitch_spellcaster
      	//you should be able to custimose a particular bullet without effecting the other
          Edited: MDT_Timothy 28?09/2018: Edited to add mana use
        */
-     	//two rigidbodys which are in prefabs
+     	//three rigidbodys which are in prefabs
 
      	public Rigidbody Element1RedBullet;
      	public Rigidbody Element2BlueBullet;
@@ -28,7 +24,7 @@ public class Projectile : MonoBehaviour {
 	public float launchSpeed = mtl.Spell.BaseProjectileSpeed;
 	public float launchSpeed2 = mtl.Spell.IceProjectileSpeed;
 	public float launchSpeed3 = mtl.Spell.FlameThrowerProjectileSpeed;
-     	//variable for delay between shots
+     	//variables for delay between shots
      	public float shotDelay = mtl.Spell.BaseShotDelay;
 		public float shotDelay2 = mtl.Spell.IceShotDelay;
 		public float shotDelay3 = mtl.Spell.FlameThrowerShotDelay;

@@ -7,20 +7,14 @@ public class Bullet : MonoBehaviour {
     //Purpose: to give properties to bullet
     //Date: 06/09/2018
 
-   
-    //Edit Author - Timothy
-    //Purpose: to give damage to the bullet when it hits the player
-
-   // public int attackDamage = 10; //The amount of health damaged
-
     HealthState healthState;    // Reference to the entity's health.
 
     public float attackDamage; // Set the attack damage
-    float MaxLifeTime;//MDT_Brandon cleaned up
+    float MaxLifeTime;
 
     void Start () {
         // if it isnt already destroyed kill object after 2 seconds
-        //Destroy(gameObject, MaxLifeTime);
+		//Destroy(gameObject,MaxLifeTime);
         ParticleSystem ps = GetComponent<ParticleSystem>();
         ps.Play();
         Destroy(ps, ps.main.duration);

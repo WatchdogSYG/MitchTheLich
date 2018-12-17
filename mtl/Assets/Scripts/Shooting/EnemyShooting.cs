@@ -51,8 +51,6 @@ public class EnemyShooting : MonoBehaviour {
 			//print (Time.time);
 		//	print (lastFireTime);
 			lastFireTime = Time.time;
-			/*Fireball f = new Fireball();
-			f.Launch(gameObject);//temp fire*/
 			Fire ();
 		}
 			
