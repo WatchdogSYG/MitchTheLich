@@ -142,8 +142,6 @@ GameObject:
   - component: {fileID: 111815779919821028}
   - component: {fileID: 65690068800141750}
   - component: {fileID: 114418912999572808}
-  - component: {fileID: 114539991480899786}
-  - component: {fileID: 114886298109535074}
   - component: {fileID: 114412080047518526}
   - component: {fileID: 114808434624505626}
   m_Layer: 0
@@ -1248,7 +1246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1771688462490748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 0.5, z: 0.371}
+  m_LocalPosition: {x: -0.102, y: 0.5, z: 0.237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4740231711638152}
@@ -1376,7 +1374,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220135619197120}
   m_LocalRotation: {x: -0, y: -0.77825016, z: -0, w: 0.6279545}
-  m_LocalPosition: {x: 88.73384, y: 0, z: 154.28839}
+  m_LocalPosition: {x: 592.9055, y: 0, z: 173.9322}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 4061458276946164}
@@ -1638,17 +1636,6 @@ MonoBehaviour:
   isSlowed: 0
   damageTakenMultiplier: 1
   healthRegenRate: 0
---- !u!114 &114539991480899786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1220135619197120}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2911c81b6d27cb4688b729b8a226117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114808434624505626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1663,22 +1650,10 @@ MonoBehaviour:
   EnemBullet: {fileID: 54292640184746672, guid: e059a22f98485364fb4b091963738dc6,
     type: 2}
   projectileSpawner: {fileID: 4581632452389210}
-  launchSpeed: 30
-  delay: 1
-  maxAttackDistance: 40
+  launchSpeed: 50
+  delay: 0.7
+  maxAttackDistance: 120
   target: {fileID: 0}
---- !u!114 &114886298109535074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1220135619197120}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc48f22b0b309304b9ba22713783b37d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireDelay: 1.1
 --- !u!137 &137293445982370928
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

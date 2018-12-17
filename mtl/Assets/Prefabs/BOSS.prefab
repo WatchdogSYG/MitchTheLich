@@ -640,8 +640,6 @@ GameObject:
   - component: {fileID: 65854682439991082}
   - component: {fileID: 114680991295291484}
   - component: {fileID: 114928744344882862}
-  - component: {fileID: 114569310539572582}
-  - component: {fileID: 114434485196416900}
   - component: {fileID: 114485168656146764}
   m_Layer: 0
   m_Name: BOSS
@@ -1783,18 +1781,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114434485196416900
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1608551175430938}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc48f22b0b309304b9ba22713783b37d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireDelay: 1.1
 --- !u!114 &114485168656146764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1809,21 +1795,10 @@ MonoBehaviour:
   EnemBullet: {fileID: 54543380089108154, guid: 2cde361892401a14dbf8b9dfab37c444,
     type: 2}
   projectileSpawner: {fileID: 4170487926016344}
-  launchSpeed: 30
-  delay: 1
-  maxAttackDistance: 40
+  launchSpeed: 50
+  delay: 0.5
+  maxAttackDistance: 100
   target: {fileID: 0}
---- !u!114 &114569310539572582
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1608551175430938}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2911c81b6d27cb4688b729b8a226117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114680991295291484
 MonoBehaviour:
   m_ObjectHideFlags: 1
